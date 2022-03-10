@@ -12,10 +12,8 @@ extension KeyValue on ThemeType {
     switch (this) {
       case ThemeType.mdsStandardTheme:
         return 'mdsStandardTheme';
-        break;
       case ThemeType.mdsStandardDarkTheme:
         return 'mdsStandardDarkTheme';
-        break;
       default:
         return 'mdsStandardTheme';
     }
