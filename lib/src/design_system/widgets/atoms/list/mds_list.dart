@@ -21,7 +21,7 @@ class MDSList extends StatefulWidget {
   /// method is called when rightHeader is tapped
   final Function? sectionHeadingActionOnClick;
 
-  /// ScrollContoller
+  /// ScrollController
   final ScrollController? scrollController;
 
   /// Scroll Physics
