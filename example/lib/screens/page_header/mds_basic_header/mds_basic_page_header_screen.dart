@@ -1,5 +1,5 @@
-import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 
 class MDSBasicPageHeaderScreen extends StatelessWidget {
   static const String routeName = '/basic_page_header_screen';

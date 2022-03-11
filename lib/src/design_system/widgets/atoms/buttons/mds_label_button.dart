@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../innovaccer_design_system.dart';
+
 enum LabelButtonState {
   active,
   defaultType,
@@ -58,7 +59,9 @@ class MDSLabelButton extends StatelessWidget with ColorMixin, SpacingMixin, Font
           return primary;
         }),
       ),
-      onPressed: ()=>onTap,
+      onPressed: () {
+        onTap!();
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,7 +79,7 @@ class MDSLabelButton extends StatelessWidget with ColorMixin, SpacingMixin, Font
           ],
           Flexible(
             child: MDSLink(
-              title,
+              title!,
               textAlign: TextAlign.center,
               textOverflow: TextOverflow.ellipsis,
               maxLines: 2,

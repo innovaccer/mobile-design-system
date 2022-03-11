@@ -60,7 +60,9 @@ class MDSIconButton extends StatelessWidget with ColorMixin, SpacingMixin, FontM
       child: Material(
         color: ColorToken.transparent,
         child: InkWell(
-          onTap: ()=>onTap,
+          onTap: () {
+            onTap!();
+          },
           borderRadius: BorderRadius.circular(spacing3),
           hoverColor: buttonActiveColor,
           splashColor: buttonActiveColor,
@@ -103,38 +105,38 @@ class MDSIconButton extends StatelessWidget with ColorMixin, SpacingMixin, FontM
   }
 
   Map<IconButtonType, Map<IconButtonState, Color>> get _buttonColorMapping => {
-    IconButtonType.basic: {
-      IconButtonState.active: secondaryDark,
-      IconButtonState.defaultType: secondaryLight,
-      IconButtonState.disabled: secondaryLight,
-      IconButtonState.loading: secondaryLight,
-      IconButtonState.selected: primaryLightest,
-    },
-    IconButtonType.transparent: {
-      IconButtonState.active: secondaryDark,
-      IconButtonState.defaultType: ColorToken.transparent,
-      IconButtonState.disabled: ColorToken.transparent,
-      IconButtonState.loading: ColorToken.transparent,
-      IconButtonState.selected: primaryLightest,
-    },
-  };
+        IconButtonType.basic: {
+          IconButtonState.active: secondaryDark,
+          IconButtonState.defaultType: secondaryLight,
+          IconButtonState.disabled: secondaryLight,
+          IconButtonState.loading: secondaryLight,
+          IconButtonState.selected: primaryLightest,
+        },
+        IconButtonType.transparent: {
+          IconButtonState.active: secondaryDark,
+          IconButtonState.defaultType: ColorToken.transparent,
+          IconButtonState.disabled: ColorToken.transparent,
+          IconButtonState.loading: ColorToken.transparent,
+          IconButtonState.selected: primaryLightest,
+        },
+      };
 
   Map<IconButtonType, Map<IconButtonState, Color>> get _contentColorMapping => {
-    IconButtonType.basic: {
-      IconButtonState.active: inverse,
-      IconButtonState.defaultType: inverse,
-      IconButtonState.disabled: inverseLightest,
-      IconButtonState.loading: inverseLightest,
-      IconButtonState.selected: primary,
-    },
-    IconButtonType.transparent: {
-      IconButtonState.active: inverse,
-      IconButtonState.defaultType: inverse,
-      IconButtonState.disabled: inverseLightest,
-      IconButtonState.loading: inverseLightest,
-      IconButtonState.selected: primary,
-    },
-  };
+        IconButtonType.basic: {
+          IconButtonState.active: inverse,
+          IconButtonState.defaultType: inverse,
+          IconButtonState.disabled: inverseLightest,
+          IconButtonState.loading: inverseLightest,
+          IconButtonState.selected: primary,
+        },
+        IconButtonType.transparent: {
+          IconButtonState.active: inverse,
+          IconButtonState.defaultType: inverse,
+          IconButtonState.disabled: inverseLightest,
+          IconButtonState.loading: inverseLightest,
+          IconButtonState.selected: primary,
+        },
+      };
 
   bool get _isInLoadingState => state == IconButtonState.loading;
 }

@@ -1,10 +1,10 @@
-import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 
 class MDSPageHeaderWithOutSubHeadingScreen extends StatelessWidget {
   static const String routeName = '/without_subheading_page_header_screen';
 
-  MDSPageHeaderWithOutSubHeadingScreen({Key key}) : super(key: key);
+  MDSPageHeaderWithOutSubHeadingScreen({Key? key}) : super(key: key);
   final ScrollController scrollController = ScrollController();
 
   @override

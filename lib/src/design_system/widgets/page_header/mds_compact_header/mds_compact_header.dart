@@ -29,11 +29,10 @@ class MDSCompactPageHeader extends StatefulWidget {
       this.listOfActionIcons,
       this.scaffoldKey})
       : assert(
-            (listOfActionIcons == null && (actionButtonText == null || actionButtonText == '') ||
-                (listOfActionIcons == null && actionButtonText != null && actionButtonText != '') ||
-                (listOfActionIcons != null && (actionButtonText == null || actionButtonText == ''))),
-            'Can not provide both listOfActionIcons and actionButtonText together'),
-        assert((heading != null), 'heading can not be null');
+            (listOfActionIcons == null && (actionButtonText == '') ||
+                (listOfActionIcons == null && actionButtonText != '') ||
+                (listOfActionIcons != null && (actionButtonText == ''))),
+            'Can not provide both listOfActionIcons and actionButtonText together');
 
   @override
   _PageHeaderScreenState createState() => _PageHeaderScreenState();
@@ -94,6 +93,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
                         padding: pl2,
                         child: MDSIconButton(
                           onTap: () {
+                            print('---2---$showBackButton');
                             widget.backButtonCallback ?? Navigator.pop(context);
                           },
                           type: IconButtonType.transparent,
