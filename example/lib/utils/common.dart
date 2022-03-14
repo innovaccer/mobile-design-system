@@ -1,7 +1,7 @@
 class Common {
   /// validator for email
-  static String? validateEmail(String value) {
-    if (value.isEmpty) {
+  static String? validateEmail(String? value) {
+    if (value!.isEmpty) {
       return 'Email cannot be blank';
     }
     String regex = '[a-zA-Z0-9\+\.\_\%\-\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+';
