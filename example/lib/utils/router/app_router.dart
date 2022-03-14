@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:example/screens/action_sheet/mds_action_sheet_screen.dart';
+import 'package:example/screens/bottom_sheet/mds_bottom_sheet_screen.dart';
 import 'package:example/screens/buttons/button/mds_button_screen.dart';
 import 'package:example/screens/buttons/button_screen.dart';
 import 'package:example/screens/buttons/icon_button/mds_icon_button_screen.dart';
@@ -156,6 +157,11 @@ class AppRouter with RouteHandlers {
     _router!.define(
       MDSCardScreen.routeName,
       handler: mdsCardScreenHandler,
+      transitionType: transitionType,
+    );
+    _router!.define(
+      MDSBottomSheetScreen.routeName,
+      handler: mdsBottomSheetScreenHandler,
       transitionType: transitionType,
     );
   }

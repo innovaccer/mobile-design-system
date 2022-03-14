@@ -1,4 +1,5 @@
 import 'package:example/screens/action_sheet/mds_action_sheet_screen.dart';
+import 'package:example/screens/bottom_sheet/mds_bottom_sheet_screen.dart';
 import 'package:example/screens/buttons/button/mds_button_screen.dart';
 import 'package:example/screens/buttons/button_screen.dart';
 import 'package:example/screens/buttons/icon_button/mds_icon_button_screen.dart';
@@ -27,9 +28,10 @@ class Constants {
     'PageHeaders': PageHeadersScreen.routeName,
     'Action Sheet': MDSActionSheetScreen.routeName,
     'Card': MDSCardScreen.routeName,
+    'Bottom Sheet': MDSBottomSheetScreen.routeName,
     // 'Toast': MDSToastScreen.routeName,
   };
-  
+
   /// title and routes of all typography widgets
   static final Map<String, String> typographyWidgetMap = {
     'MDSTitle': MDSTitleScreen.routeName,

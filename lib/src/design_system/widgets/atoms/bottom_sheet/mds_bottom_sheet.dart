@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../../../../innovaccer_design_system.dart';
-import '../action_sheet/custom_bottom_sheet.dart' as custom_bottom_sheet;
+import '../../miscellaneous/custom_bottom_sheet.dart' as custom_bottom_sheet;
 
 class MDSBottomSheet with SpacingMixin, ColorMixin {
   Future<void> open({
     required BuildContext context,
     required String heading,
+    required Widget child,
     String? subHeading,
     bool? dragHandle,
-    Widget? child,
     Color? barrierColor,
     bool? isDismissible,
   }) async {
@@ -54,7 +54,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                 bottom: true,
                 child: AnimatedContainer(
                   height: heightContainer,
-                  decoration: _bottomSheetDecoration(isDismissible!),
+                  decoration: _bottomSheetDecoration(isDismissible),
                   curve: Cubic(0.0, 0.0, 0.3, 1.0),
                   duration: Duration(milliseconds: 240),
                   child: GestureDetector(
@@ -119,7 +119,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                             MeasureSize(
                               onChange: (size) {
                                 actionSheetSetState(() {
-                                  headerHeight = size.height;
+                                  headerHeight = size!.height;
                                   contentHeight = headerHeight + childHeight;
                                 });
                               },
@@ -135,7 +135,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                               child: MeasureSize(
                                 onChange: (size) {
                                   actionSheetSetState(() {
-                                    childHeight = size.height;
+                                    childHeight = size!.height;
                                     contentHeight = headerHeight + childHeight;
                                   });
                                 },
@@ -160,12 +160,11 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
     return BoxDecoration(
         color: ColorToken.white,
         borderRadius: BorderRadius.only(topLeft: Radius.circular(spacingL), topRight: Radius.circular(spacingL)),
-        boxShadow: !isDismissible
-            ? [BoxShadow(color: secondaryLight, spreadRadius: 1, blurRadius: 10, offset: Offset(0, 3))]
-            : null);
+        boxShadow:
+            !isDismissible ? [BoxShadow(color: secondaryLight, spreadRadius: 1, blurRadius: 10, offset: Offset(0, 3))] : null);
   }
 
-  Widget _header(BuildContext context, bool isDismissible, String heading, String subHeading, bool dragHandle) {
+  Widget _header(BuildContext context, bool isDismissible, String heading, String? subHeading, bool dragHandle) {
     return Column(
       children: [
         /// drag handle to update bottomSheet height
@@ -183,7 +182,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     /// heading of bottom sheet
-                    MDSHeadline(heading),
+                    if (heading.trim().isNotEmpty) MDSHeadline(heading),
 
                     /// subheading of bottom sheet
                     subHeading != null
