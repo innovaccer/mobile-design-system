@@ -1,5 +1,5 @@
 import 'package:example/utils/locator/locator.dart';
-import 'package:example/widget/checkBox_widget.dart';
+import 'package:example/widget/check_box_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 
@@ -14,6 +14,7 @@ class _MDSBottomSheetScreenState extends State<MDSBottomSheetScreen> with Spacin
   late String heading;
   late String subHeading;
   late Widget child;
+
   // late Color barrierColor;
   late bool dragHandle, isDismissible, headingChecked, subHeadingChecked, smallContentChecked, fieldChecked, largeContentChecked;
 

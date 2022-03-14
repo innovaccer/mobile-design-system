@@ -5,6 +5,7 @@ import 'package:example/screens/buttons/button_screen.dart';
 import 'package:example/screens/buttons/icon_button/mds_icon_button_screen.dart';
 import 'package:example/screens/buttons/label_button/mds_label_button_screen.dart';
 import 'package:example/screens/card/mds_card_screen.dart';
+import 'package:example/screens/list/mds_list_screen.dart';
 import 'package:example/screens/page_header/mds_basic_header/mds_basic_page_header_screen.dart';
 import 'package:example/screens/page_header/mds_compact_page_header/mds_compact_header_screen.dart';
 import 'package:example/screens/page_header/mds_page_header_with_subHeading/mds_page_header_with_subHeading_screen.dart';
@@ -106,5 +107,8 @@ mixin RouteHandlers {
   });
   var mdsBottomSheetScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
     return MDSBottomSheetScreen();
+  });
+  var mdsListScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+    return MDSListScreen();
   });
 }
