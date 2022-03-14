@@ -1,9 +1,11 @@
 import 'package:example/screens/action_sheet/mds_action_sheet_screen.dart';
+import 'package:example/screens/bottom_sheet/mds_bottom_sheet_screen.dart';
 import 'package:example/screens/buttons/button/mds_button_screen.dart';
 import 'package:example/screens/buttons/button_screen.dart';
 import 'package:example/screens/buttons/icon_button/mds_icon_button_screen.dart';
 import 'package:example/screens/buttons/label_button/mds_label_button_screen.dart';
 import 'package:example/screens/card/mds_card_screen.dart';
+import 'package:example/screens/list/mds_list_screen.dart';
 import 'package:example/screens/page_header/mds_basic_header/mds_basic_page_header_screen.dart';
 import 'package:example/screens/page_header/mds_compact_page_header/mds_compact_header_screen.dart';
 import 'package:example/screens/page_header/mds_page_header_with_subHeading/mds_page_header_with_subHeading_screen.dart';
@@ -24,7 +26,6 @@ import 'package:flutter/material.dart';
 import '../../screens/home_screen.dart';
 
 mixin RouteHandlers {
-
   var homeScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
     return HomeScreen();
   });
@@ -39,9 +40,7 @@ mixin RouteHandlers {
     return MDSBasicPageHeaderScreen();
   });
   var withOutSubheadingPageHeaderScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
-    return
-      MDSPageHeaderWithOutSubHeadingScreen();
-
+    return MDSPageHeaderWithOutSubHeadingScreen();
   });
   var withSubheadingPageHeaderScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
     return MDSPageHeaderWithSubHeadingScreen();
@@ -105,5 +104,11 @@ mixin RouteHandlers {
 
   var mdsCardScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
     return MDSCardScreen();
+  });
+  var mdsBottomSheetScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+    return MDSBottomSheetScreen();
+  });
+  var mdsListScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+    return MDSListScreen();
   });
 }
