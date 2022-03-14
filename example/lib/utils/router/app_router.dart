@@ -5,6 +5,7 @@ import 'package:example/screens/buttons/button/mds_button_screen.dart';
 import 'package:example/screens/buttons/button_screen.dart';
 import 'package:example/screens/buttons/icon_button/mds_icon_button_screen.dart';
 import 'package:example/screens/buttons/label_button/mds_label_button_screen.dart';
+import 'package:example/screens/card/mds_card_screen.dart';
 import 'package:example/screens/home_screen.dart';
 import 'package:example/screens/page_header/mds_basic_header/mds_basic_page_header_screen.dart';
 import 'package:example/screens/page_header/mds_compact_page_header/mds_compact_header_screen.dart';
@@ -150,6 +151,11 @@ class AppRouter with RouteHandlers {
     _router!.define(
       MDSActionSheetScreen.routeName,
       handler: mdsActionSheetScreenHandler,
+      transitionType: transitionType,
+    );
+    _router!.define(
+      MDSCardScreen.routeName,
+      handler: mdsCardScreenHandler,
       transitionType: transitionType,
     );
   }
