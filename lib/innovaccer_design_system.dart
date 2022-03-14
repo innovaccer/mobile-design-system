@@ -29,6 +29,7 @@ export 'src/design_system/widgets/atoms/buttons/mds_icon_button.dart';
 export 'src/design_system/widgets/atoms/buttons/mds_label_button.dart';
 export 'src/design_system/widgets/atoms/list/mds_list.dart';
 export 'src/design_system/widgets/atoms/list/mds_list_item.dart';
+export 'src/design_system/widgets/atoms/toast/mds_toast.dart';
 export 'src/theme/color_themes/base.dart';
 export 'src/theme/color_themes/color_themes.dart';
 export 'src/theme/colors/colors.dart';

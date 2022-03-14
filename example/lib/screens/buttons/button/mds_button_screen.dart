@@ -307,11 +307,10 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
   void _updatePrefixIconValue(bool value) {
     if (value) {
       if (_suffixIcon != null) {
-        //TODO: what should be used here if not MDSToast?
-        // displayToast(
-        //   message: 'Prefix and suffix icons can\'t be used together!',
-        //   appearanceType: ToastAppearanceType.alert,
-        // );
+        displayToast(
+          message: 'Prefix and suffix icons can\'t be used together!',
+          appearanceType: ToastAppearanceType.alert,
+        );
       } else {
         setState(() {
           _prefixIcon = Icons.fingerprint;
@@ -327,11 +326,10 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
   void _updateSuffixIconValue(bool value) {
     if (value) {
       if (_prefixIcon != null) {
-        //TODO: what should be used here if not MDSToast?
-        // displayToast(
-        //   message: 'Prefix and suffix icons can\'t be used together!',
-        //   appearanceType: ToastAppearanceType.alert,
-        // );
+        displayToast(
+          message: 'Prefix and suffix icons can\'t be used together!',
+          appearanceType: ToastAppearanceType.alert,
+        );
       } else {
         setState(() {
           _suffixIcon = Icons.fingerprint;

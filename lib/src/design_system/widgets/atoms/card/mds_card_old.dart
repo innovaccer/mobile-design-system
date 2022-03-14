@@ -8,11 +8,11 @@ enum CardShadowType {
   dark,
 }
 
-class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
+class MDSCardOld extends StatelessWidget with ColorMixin, SpacingMixin {
   final CardShadowType? shadowType;
   final Widget child;
 
-  MDSCard({
+  MDSCardOld({
     required this.child,
     this.shadowType,
   });
