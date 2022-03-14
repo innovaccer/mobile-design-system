@@ -93,7 +93,6 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
                         padding: pl2,
                         child: MDSIconButton(
                           onTap: () {
-                            print('---2---$showBackButton');
                             widget.backButtonCallback ?? Navigator.pop(context);
                           },
                           type: IconButtonType.transparent,

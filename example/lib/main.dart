@@ -25,14 +25,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return TextScaler<TextScalingFactor>(
       initialScaleFactor: TextScalingFactor(scaleFactor: 1.0),
-      child:  MaterialApp(
-          title: 'Core UI Examples',
-          debugShowCheckedModeBanner: false,
-          navigatorKey: appNavigator.navigatorKey,
-          onGenerateRoute: AppRouter.shared.generator,
-          onUnknownRoute: AppRouter.shared.unKnownRouteHandler,
-          initialRoute: HomeScreen.routeName,
-        ),
+      child:  MDSToast(
+        child: MaterialApp(
+            title: 'Core UI Examples',
+            debugShowCheckedModeBanner: false,
+            navigatorKey: appNavigator.navigatorKey,
+            onGenerateRoute: AppRouter.shared.generator,
+            onUnknownRoute: AppRouter.shared.unKnownRouteHandler,
+            initialRoute: HomeScreen.routeName,
+          ),
+      ),
 
     );
   }
