@@ -1,3 +1,3 @@
 ## [0.0.1] - 15th Mar 2022
 
-* Release Notes
+* Support for Theme, Typography, Action Sheet, Bottom Sheet, Buttons, Inputs, List and Page Headers
