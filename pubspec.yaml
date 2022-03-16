@@ -11,12 +11,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: 2.0.13
-  flutter_inappwebview: 5.3.2
-  url_launcher: 6.0.17
-  flutter_styled_toast: 2.0.0
-  flutter_linkify: 5.0.2
-  sms_autofill: 2.2.0
+  shared_preferences: ^2.0.13
+  url_launcher: ^6.0.17
+  flutter_styled_toast: ^2.0.0
+  flutter_linkify: ^5.0.2
+  sms_autofill: ^2.2.0
 
 dev_dependencies:
   flutter_test:
