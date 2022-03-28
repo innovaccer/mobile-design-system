@@ -67,10 +67,10 @@ class MDSBody extends StatelessWidget with ColorMixin, FontMixin {
     double? fontLineHeight,
     double? fontSize,
   }) {
-    double _textScaleFactor = 1.0;
+    double? _textScaleFactor = 1.0;
     // ignore: unnecessary_null_comparison
     if (TextScaler.of<TextScalingFactor>(context) != null) {
-      _textScaleFactor = TextScaler.of<TextScalingFactor>(context).scaleFactor;
+      _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
     }
 
     return Padding(
