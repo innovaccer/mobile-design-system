@@ -50,9 +50,9 @@ class TextScaler<T> extends StatefulWidget {
   @override
   _TextScalerState<T> createState() => _TextScalerState<T>();
 
-  static T of<T>(BuildContext context) {
-    final _ScalingFactorBindingScope<T> scope = context.dependOnInheritedWidgetOfExactType<_ScalingFactorBindingScope<T>>()!;
-    return scope.scalingFactorBindingState.currentValue;
+  static T? of<T>(BuildContext context) {
+    final _ScalingFactorBindingScope<T>? scope = context.dependOnInheritedWidgetOfExactType<_ScalingFactorBindingScope<T>>();
+    return scope?.scalingFactorBindingState.currentValue;
   }
 
   static void update<T>(BuildContext context, T newModel) {

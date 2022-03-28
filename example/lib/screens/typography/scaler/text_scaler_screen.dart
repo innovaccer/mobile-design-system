@@ -10,7 +10,7 @@ class TextScalerScreen extends StatefulWidget {
 }
 
 class _TextScalerScreenState extends State<TextScalerScreen> with SpacingMixin, ColorMixin {
-  double sliderValue = 0.0;
+  double? sliderValue = 0.0;
 
   bool isInit = true;
 
@@ -19,7 +19,8 @@ class _TextScalerScreenState extends State<TextScalerScreen> with SpacingMixin, 
     if (isInit) {
       // ignore: unnecessary_null_comparison
       if (TextScaler.of<TextScalingFactor>(context) != null) {
-        sliderValue = TextScaler.of<TextScalingFactor>(context).scaleFactor - 1.0;
+        sliderValue = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
+        sliderValue = (sliderValue ?? 0.0) - 1.0;
       }
       isInit = false;
     }
@@ -66,12 +67,12 @@ class _TextScalerScreenState extends State<TextScalerScreen> with SpacingMixin, 
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MDSFootnote(
-                      'Scale Factor ${(1 + sliderValue).toStringAsFixed(2)}',
+                      'Scale Factor ${(1 + (sliderValue ?? 0.0)).toStringAsFixed(2)}',
                     ),
                     Slider(
                       min: 0,
                       max: 1,
-                      value: sliderValue,
+                      value: (sliderValue ?? 0.0),
                       onChanged: (value) {
                         // ignore: unnecessary_null_comparison
                         if (TextScaler.of<TextScalingFactor>(context) != null) {
