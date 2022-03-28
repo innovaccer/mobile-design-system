@@ -24,7 +24,11 @@ class MDSLink extends StatelessWidget with ColorMixin, FontMixin {
       return Container();
     }
 
-    double _textScaleFactor = TextScaler.of<TextScalingFactor>(context).scaleFactor;
+    double _textScaleFactor = 1.0;
+    // ignore: unnecessary_null_comparison
+    if (TextScaler.of<TextScalingFactor>(context) != null) {
+      _textScaleFactor = TextScaler.of<TextScalingFactor>(context).scaleFactor;
+    }
 
     return Padding(
       padding:
