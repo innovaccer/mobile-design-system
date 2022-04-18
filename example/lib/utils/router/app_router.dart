@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:example/screens/action_sheet/mds_action_sheet_screen.dart';
+import 'package:example/screens/avatar/mds_avatar_screen.dart';
 import 'package:example/screens/bottom_sheet/mds_bottom_sheet_screen.dart';
 import 'package:example/screens/buttons/button/mds_button_screen.dart';
 import 'package:example/screens/buttons/button_screen.dart';
@@ -174,6 +175,11 @@ class AppRouter with RouteHandlers {
     _router!.define(
       MDSInputScreen.routeName,
       handler: mdsInputScreenHandler,
+      transitionType: transitionType,
+    );
+    _router!.define(
+      MDSAvatarScreen.routeName,
+      handler: mdsAvatarHandler,
       transitionType: transitionType,
     );
   }
