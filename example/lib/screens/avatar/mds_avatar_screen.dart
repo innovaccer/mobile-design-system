@@ -9,6 +9,19 @@ class MDSAvatarScreen extends StatefulWidget {
 }
 
 class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, ColorMixin {
+  List<AvatarType> _avatarList = [
+    AvatarType.neel,
+    AvatarType.haldi,
+    AvatarType.stone,
+    AvatarType.jamun,
+    AvatarType.tawak,
+    AvatarType.nimbu,
+    AvatarType.neem,
+    AvatarType.mirch,
+    AvatarType.jal,
+  ];
+  String avatarText = 'JL';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,19 +31,68 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
           type: TitleType.title3,
         ),
       ),
-      body: Center(
+      body: Padding(
+        padding: p6,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            MDSButton(
-              type: ButtonType.primary,
-              title: 'Open sample action sheet 1',
-              onTap: () {},
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[0],
+                ),
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[1],
+                ),
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[2],
+                ),
+              ],
             ),
             SizedBox(
-              height: 16,
+              height: spacing3,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[3],
+                ),
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[4],
+                ),
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[5],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: spacing3,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[6],
+                ),
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[7],
+                ),
+                MDSAvatar(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[8],
+                ),
+              ],
             ),
           ],
         ),
