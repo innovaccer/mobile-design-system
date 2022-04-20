@@ -185,7 +185,7 @@ class MDSInput extends StatefulWidget {
     this.isMetric = false,
     this.isVerificationCode = false,
     this.verificationCodeLength = 4,
-  });
+  }) : assert(textEditingController != null && parentContext != null, 'Either textEditingController or parentContext is null');
 
   @override
   _MDSInputState createState() => _MDSInputState();
