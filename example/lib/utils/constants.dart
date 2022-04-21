@@ -1,4 +1,5 @@
 import 'package:example/screens/action_sheet/mds_action_sheet_screen.dart';
+import 'package:example/screens/badge/mds_badge_screen.dart';
 import 'package:example/screens/bottom_sheet/mds_bottom_sheet_screen.dart';
 import 'package:example/screens/buttons/button/mds_button_screen.dart';
 import 'package:example/screens/buttons/button_screen.dart';
@@ -33,7 +34,7 @@ class Constants {
     'Bottom Sheet': MDSBottomSheetScreen.routeName,
     'List': MDSListScreen.routeName,
     'Input': MDSInputScreen.routeName,
-    // 'Toast': MDSToastScreen.routeName,
+    'Badge': MDSBadgeScreen.routeName,
   };
 
   /// title and routes of all typography widgets
