@@ -1,3 +1,7 @@
+## [0.0.3] - 21st Apr 2022
+
+* Support for Badges component
+
 ## [0.0.2] - 28th Mar 2022
 
 * TextScaler Bug Fix
