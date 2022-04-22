@@ -19,13 +19,13 @@ enum PillAppearance {
 }
 
 class MDSPill extends StatelessWidget with ColorMixin, SpacingMixin, FontMixin {
-  /// [pillCount] is text displayed on the Badge
+  /// [pillCount] is text displayed on the Pill
   final String pillCount;
 
-  /// type of the badge
+  /// type of the pill
   final PillType pillType;
 
-  /// badge appearance
+  /// pill appearance
   final PillAppearance pillAppearance;
 
   MDSPill({required this.pillCount, required this.pillType, required this.pillAppearance});
