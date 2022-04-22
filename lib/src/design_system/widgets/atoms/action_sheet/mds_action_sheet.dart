@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
-import 'package:innovaccer_design_system/src/design_system/widgets/miscellaneous/custom_bottom_sheet.dart' as custom_bottom_sheet;
+import 'package:innovaccer_design_system/src/design_system/widgets/miscellaneous/custom_bottom_sheet.dart'
+    as custom_bottom_sheet;
+import 'package:innovaccer_design_system/src/design_system/widgets/miscellaneous/custom_splash_factory.dart';
 
 class MDSActionSheet with SpacingMixin, ColorMixin {
   Future<void> open({
@@ -136,15 +138,18 @@ class MDSActionSheet with SpacingMixin, ColorMixin {
     return Ink(
       child: Material(
         color: ColorToken.transparent,
+        shadowColor: ColorToken.transparent,
+        animationDuration: Duration(seconds: 0),
         child: InkWell(
           onTap: onTap,
           hoverColor: secondaryLighter,
           splashColor: secondaryLighter,
           overlayColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> materialStates) {
-            return ColorToken.transparent;
+            return secondaryLighter;
           }),
           highlightColor: secondaryLighter,
+          splashFactory: CustomSplash.splashFactory,
           child: Padding(
             padding: p6,
             child: Row(
