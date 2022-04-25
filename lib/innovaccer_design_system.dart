@@ -7,6 +7,7 @@ export 'src/design_system/widgets/atoms/action_sheet/mds_action_sheet.dart';
 export 'src/design_system/widgets/atoms/bottom_sheet/mds_bottom_sheet.dart';
 export 'src/design_system/widgets/atoms/badges/mds_badge.dart';
 export 'src/design_system/widgets/atoms/pills/mds_pill.dart';
+export 'src/design_system/widgets/atoms/switch/mds_switch.dart';
 export 'src/design_system/widgets/atoms/buttons/mds_button.dart';
 export 'src/design_system/widgets/atoms/buttons/mds_icon_button.dart';
 export 'src/design_system/widgets/atoms/buttons/mds_icon_button.dart';
