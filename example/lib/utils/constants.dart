@@ -13,6 +13,7 @@ import 'package:example/screens/page_header/mds_compact_page_header/mds_compact_
 import 'package:example/screens/page_header/mds_page_header_with_subHeading/mds_page_header_with_subHeading_screen.dart';
 import 'package:example/screens/page_header/mds_page_header_without_subHeading/mds_page_header_without_subHeading_screen.dart';
 import 'package:example/screens/page_header/page_header_screen.dart';
+import 'package:example/screens/pills/mds_pills_screen.dart';
 import 'package:example/screens/typography/body/mds_body_screen.dart';
 import 'package:example/screens/typography/caption/mds_caption_screen.dart';
 import 'package:example/screens/typography/footnote/mds_footnote_screen.dart';
@@ -35,6 +36,7 @@ class Constants {
     'List': MDSListScreen.routeName,
     'Input': MDSInputScreen.routeName,
     'Badge': MDSBadgeScreen.routeName,
+    'Pills': MDSPillsScreen.routeName,
   };
 
   /// title and routes of all typography widgets
