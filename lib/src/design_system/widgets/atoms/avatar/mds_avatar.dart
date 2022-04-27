@@ -2,35 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 
 class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin {
-  final String avatarText;
-  final AvatarType avatarType;
+  final List<MdsAvatarType>? avatarList;
 
   MDSAvatar({
-    required this.avatarText,
-    this.avatarType = AvatarType.neel,
+    this.avatarList,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (avatarList!.length == 1) {
+      return _avatarItem(avatarList!.single, context);
+    } else if (avatarList!.length == 2) {
+      return Stack(
+        children: [
+          _avatarItem(avatarList![0], context),
+          Positioned(
+            right: 0,
+            left: 0,
+            child: Padding(
+              padding: pl4,
+              child: _avatarItem(avatarList![1], context),
+            ),
+          ),
+        ],
+      );
+    } else if (avatarList!.length > 2) {
+      return Row(
+        children: [
+          _avatarItem(avatarList![0], context),
+          _avatarItem(avatarList![1], context),
+          _avatarItem(
+              MdsAvatarType(
+                avatarText: '+2',
+                avatarType: AvatarType.stone,
+              ),
+              context),
+        ],
+      );
+    }
+    return Container();
+  }
+
+  Widget _avatarItem(MdsAvatarType? mdsAvatarType, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: _getAvatarTheme(avatarType).keys.first,
+        color: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
+            ? _getAvatarTheme(mdsAvatarType.avatarType).keys.first
+            : secondary,
         shape: BoxShape.circle,
       ),
       child: Padding(
         padding: p4 + p2,
-        child: MDSBody(
-          avatarText,
-          color: _getAvatarTheme(avatarType).values.first,
-        ).copyWith(
-          context,
-          fontSize: spacing2 + spacingXS,
-        ),
+        child: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
+            ? MDSBody(
+                mdsAvatarType.avatarText!.trim(),
+                color: _getAvatarTheme(mdsAvatarType.avatarType).values.first,
+              ).copyWith(
+                context,
+                fontSize: spacing2 + spacingXS,
+              )
+            : Icon(
+                Icons.person_outline,
+                size: spacingXL,
+              ),
       ),
     );
   }
 
-  Map<Color, Color> _getAvatarTheme(AvatarType avatarType) {
+  Map<Color, Color> _getAvatarTheme(AvatarType? avatarType) {
     Color avatarBackgroundColor = primary;
     Color avatarTextColor = ColorToken.white;
     if (avatarType == AvatarType.haldi) {
@@ -58,6 +97,16 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin {
     Map<Color, Color> _avatarTheme = {avatarBackgroundColor: avatarTextColor};
     return _avatarTheme;
   }
+}
+
+class MdsAvatarType {
+  final String? avatarText;
+  final AvatarType avatarType;
+
+  MdsAvatarType({
+    this.avatarText = '',
+    this.avatarType = AvatarType.neel,
+  });
 }
 
 enum AvatarType {

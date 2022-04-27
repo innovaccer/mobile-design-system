@@ -20,7 +20,7 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
     AvatarType.mirch,
     AvatarType.jal,
   ];
-  String avatarText = 'JL';
+  String avatarText = 'JD';
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +41,28 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 MDSAvatar(
-                  avatarText: avatarText,
-                  avatarType: _avatarList[0],
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[0],
+                    ),
+                  ],
                 ),
                 MDSAvatar(
-                  avatarText: avatarText,
-                  avatarType: _avatarList[1],
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[1],
+                    ),
+                  ],
                 ),
                 MDSAvatar(
-                  avatarText: avatarText,
-                  avatarType: _avatarList[2],
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[2],
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -61,38 +73,97 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 MDSAvatar(
-                  avatarText: avatarText,
-                  avatarType: _avatarList[3],
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[3],
+                    ),
+                  ],
                 ),
                 MDSAvatar(
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[4],
+                    ),
+                  ],
+                ),
+                MDSAvatar(avatarList: [
+                  MdsAvatarType(
+                    avatarText: avatarText,
+                    avatarType: _avatarList[5],
+                  ),
+                ]),
+              ],
+            ),
+            SizedBox(
+              height: spacing3,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                MDSAvatar(
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[6],
+                    ),
+                  ],
+                ),
+                MDSAvatar(
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[7],
+                    ),
+                  ],
+                ),
+                MDSAvatar(
+                  avatarList: [
+                    MdsAvatarType(
+                      avatarText: avatarText,
+                      avatarType: _avatarList[8],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: spacing3,
+            ),
+            MDSAvatar(
+              avatarList: [
+                MdsAvatarType(
                   avatarText: avatarText,
                   avatarType: _avatarList[4],
                 ),
-                MDSAvatar(
+                MdsAvatarType(
                   avatarText: avatarText,
-                  avatarType: _avatarList[5],
+                  avatarType: _avatarList[6],
                 ),
               ],
             ),
             SizedBox(
               height: spacing3,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                MDSAvatar(
+            MDSAvatar(
+              avatarList: [
+                MdsAvatarType(
+                  avatarText: avatarText,
+                  avatarType: _avatarList[4],
+                ),
+                MdsAvatarType(
                   avatarText: avatarText,
                   avatarType: _avatarList[6],
                 ),
-                MDSAvatar(
-                  avatarText: avatarText,
-                  avatarType: _avatarList[7],
-                ),
-                MDSAvatar(
+                MdsAvatarType(
                   avatarText: avatarText,
                   avatarType: _avatarList[8],
                 ),
               ],
+            ),
+            SizedBox(
+              height: spacing3,
             ),
           ],
         ),
