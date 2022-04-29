@@ -34,13 +34,13 @@ class MDSPill extends StatelessWidget with ColorMixin, SpacingMixin, FontMixin {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minWidth: spacingXL - spacingM,
+        minWidth: spacing5,
       ),
       child: Container(
-        height: spacingXL - spacingM,
-        padding: py2 + px3 + px2,
+        height: spacing5,
+        padding: py0_5 + px1 + px0_5,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(spacingL),
+          borderRadius: BorderRadius.circular(spacing3),
           color: _getPillBackgroundColor(),
         ),
         child: _pillWidget(),

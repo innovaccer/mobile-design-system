@@ -32,7 +32,7 @@ class _PageHeadersScreenState extends State<PageHeadersScreen> with SpacingMixin
         buildContext: context,
       ),
       body: Padding(
-        padding: p3,
+        padding: p1,
         child: ListView.builder(
           itemCount: Constants.pageHeaderWidgetMap.keys.length,
           shrinkWrap: true,

@@ -16,7 +16,7 @@ class ButtonScreen extends StatelessWidget with SpacingMixin {
         buildContext: context,
       ),
       body: Padding(
-        padding: p3,
+        padding: p1,
         child: ListView.builder(
           itemCount: Constants.buttonWidgetMap.keys.length,
           shrinkWrap: true,

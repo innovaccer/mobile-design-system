@@ -40,7 +40,7 @@ class _TextScalerScreenState extends State<TextScalerScreen> with SpacingMixin, 
             Expanded(
               flex: 8,
               child: Padding(
-                padding: p7,
+                padding: p6,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -62,7 +62,7 @@ class _TextScalerScreenState extends State<TextScalerScreen> with SpacingMixin, 
             Expanded(
               flex: 2,
               child: Container(
-                padding: px6,
+                padding: px4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

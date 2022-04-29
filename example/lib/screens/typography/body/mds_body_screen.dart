@@ -32,7 +32,7 @@ class _MDSBodyScreenState extends State<MDSBodyScreen> with SpacingMixin {
             Expanded(
               flex: 3,
               child: Container(
-                padding: p6,
+                padding: p4,
                 child: Center(
                   child: MDSBody(
                     sampleText,
@@ -55,7 +55,7 @@ class _MDSBodyScreenState extends State<MDSBodyScreen> with SpacingMixin {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: pt4,
+                            padding: pt2,
                             child: MDSSubhead(
                               'appearance:',
                               appearance: SubheadAppearance.medium,

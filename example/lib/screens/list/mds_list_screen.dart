@@ -45,10 +45,10 @@ class _MDSListScreenState extends State<MDSListScreen> with SpacingMixin, ColorM
       tertiaryList.add('Tertiary Item ${i}');
       prefixWidgetList.add(
         Padding(
-          padding: pt2,
+          padding: pt0_5,
           child: Container(
-            height: spacing4 - spacingL,
-            width: spacing4 - spacingL,
+            height: spacing4 - spacing3,
+            width: spacing4 - spacing3,
             child: Center(child: MDSBody('I$i', color: ColorToken.white)),
             decoration: BoxDecoration(
               color: randomColors[i % (randomColors.length)],
@@ -59,7 +59,7 @@ class _MDSListScreenState extends State<MDSListScreen> with SpacingMixin, ColorM
       );
       suffixWidgetList.add(
         Padding(
-          padding: pt3,
+          padding: pt1,
           child: Icon(
             Icons.arrow_forward_ios,
             size: 16,
@@ -120,7 +120,7 @@ class _MDSListScreenState extends State<MDSListScreen> with SpacingMixin, ColorM
             ),
           ),
           Padding(
-            padding: p6 + pb4,
+            padding: p4 + pb2,
             child: Column(
               children: [
                 Row(

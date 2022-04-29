@@ -52,22 +52,22 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
     if (Navigator.canPop(context)) {
       showBackButton = true;
     }
-    maxAppBarHeightWithSubheading = spacing6 + spacingL + spacingXS;
-    maxAppBarHeightWithoutSubheading = spacing6 - spacing;
+    maxAppBarHeightWithSubheading = spacing16 + spacing11;
+    maxAppBarHeightWithoutSubheading = spacing16 + spacing6;
     if (widget.subHeading != null && widget.subHeading!.isNotEmpty) {
       preferredSize = maxAppBarHeightWithSubheading;
     } else {
       preferredSize = maxAppBarHeightWithoutSubheading;
     }
-    headerPositionFromTop = spacing4 - spacingM - spacingS;
+    headerPositionFromTop = spacing11 - spacing0_5;
     headerPositionFromLeft = spacing2;
     headingFontSize = showBackButton ? fontSize28 : fontSize34;
     headingFontWeight = FontWeight.w700;
     appBarColor = secondaryLightest;
     subHeadingFontSize = fontSize15;
     subHeadingFontWeight = FontWeight.w500;
-    subHeadingLineHeight = fontSize20 + spacingS;
-    headingLineHeight = fontLineHeight36 + spacingS;
+    subHeadingLineHeight = fontSize20 + spacing0_5;
+    headingLineHeight = fontLineHeight36 + spacing0_5;
     headingLetterSpacing = letterSpacing7;
     subHeadingLetterSpacing = letterSpacing2;
     if (widget.controller != null) {
@@ -77,9 +77,9 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
           if (widget.controller!.position.userScrollDirection == ScrollDirection.reverse) {
             if (isCompactHeader) {
               setState(() {
-                headerPositionFromTop = widget.subHeading!.isNotEmpty ? spacingS : spacing - spacingXS;
+                headerPositionFromTop = widget.subHeading!.isNotEmpty ? spacing0_5 : spacing2;
                 headingFontSize = widget.subHeading!.isNotEmpty ? 17 : 22;
-                headerPositionFromLeft = spacing4 + spacingM;
+                headerPositionFromLeft = spacing14 - spacing1;
                 headingFontWeight = FontWeight.w600;
                 preferredSize = spacing4;
                 appBarColor = ColorToken.white;
@@ -99,15 +99,15 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
               if (widget.controller!.position.pixels == 0) {
                 if (isProminentHeader) {
                   setState(() {
-                    headerPositionFromTop = spacing4 - spacingM - spacingS;
+                    headerPositionFromTop = spacing11 - spacing0_5;
                     headerPositionFromLeft = spacing2;
                     headingFontSize = showBackButton ? fontSize28 : fontSize34;
                     headingFontWeight = FontWeight.w700;
                     appBarColor = secondaryLightest;
                     subHeadingFontSize = fontSize15;
                     subHeadingFontWeight = FontWeight.w500;
-                    subHeadingLineHeight = fontLineHeight20 + spacingS;
-                    headingLineHeight = fontLineHeight36 + spacingS;
+                    subHeadingLineHeight = fontLineHeight20 + spacing0_5;
+                    headingLineHeight = fontLineHeight36 + spacing0_5;
                     headingLetterSpacing = letterSpacing7;
                     subHeadingLetterSpacing = letterSpacing2;
                     if (widget.subHeading != null && widget.subHeading!.isNotEmpty) {
@@ -156,7 +156,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
                     Visibility(
                       visible: showBackButton,
                       child: Padding(
-                        padding: pl2,
+                        padding: pl0_5,
                         child: MDSIconButton(
                           onTap: () {
                             widget.backButtonCallback ?? Navigator.pop(context);
@@ -196,7 +196,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: animationDuration),
                               height: subHeadingLineHeight,
-                              padding: pt2,
+                              padding: pt0_5,
                               child: Center(
                                 child: AnimatedDefaultTextStyle(
                                   duration: Duration(milliseconds: animationDuration),
@@ -231,7 +231,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
     Widget? suffixWidget;
     if (widget.actionButtonText!.isNotEmpty) {
       suffixWidget = Padding(
-        padding: pr4,
+        padding: pr2,
         child: MDSLabelButton(
           onTap: () => widget.actionButtonTextCallback,
           title: widget.actionButtonText,
@@ -240,7 +240,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
     } else if (widget.listOfActionIcons != null) {
       if (widget.listOfActionIcons!.length > 2) {
         suffixWidget = Padding(
-          padding: pr4 + pr2,
+          padding: pr2 + pr0_5,
           child: MDSIconButton(
             onTap: () {},
             icon: Icons.more_horiz,
@@ -248,7 +248,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
         );
       } else {
         suffixWidget = Padding(
-          padding: pr4 + pr2,
+          padding: pr2 + pr0_5,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -260,8 +260,8 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
     return Align(alignment: Alignment.topRight, child: suffixWidget);
   }
 
-  bool get isCompactHeader => (headerPositionFromLeft != spacing4 + spacingM &&
-      headerPositionFromLeft != spacing4 + spacingM &&
+  bool get isCompactHeader => (headerPositionFromLeft != spacing14 - spacing1 &&
+      headerPositionFromLeft != spacing14 - spacing1 &&
       headingFontWeight != FontWeight.w600 &&
       preferredSize != spacing4 &&
       appBarColor != ColorToken.white &&
@@ -272,14 +272,14 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
       subHeadingLetterSpacing != letterSpacing3);
 
   bool get isProminentHeader => (headerPositionFromLeft != spacing2 &&
-      headerPositionFromTop != spacing4 - spacingM - spacingS &&
+      headerPositionFromTop != spacing11 - spacing0_5 &&
       headingFontSize != fontSize28 &&
       headingFontWeight != FontWeight.w700 &&
       appBarColor != secondaryLightest &&
       subHeadingFontSize != fontSize15 &&
       subHeadingFontWeight != FontWeight.w500 &&
-      subHeadingLineHeight != fontLineHeight20 + spacingS &&
-      headingLineHeight != fontLineHeight36 + spacingS &&
+      subHeadingLineHeight != fontLineHeight20 + spacing0_5 &&
+      headingLineHeight != fontLineHeight36 + spacing0_5 &&
       headingLetterSpacing != letterSpacing7 &&
       subHeadingLetterSpacing != letterSpacing2);
 }

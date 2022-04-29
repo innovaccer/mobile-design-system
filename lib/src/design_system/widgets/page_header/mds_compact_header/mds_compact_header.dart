@@ -45,12 +45,12 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
     if (Navigator.canPop(context)) {
       showBackButton = true;
     }
-    maxAppBarHeightWithSubheading = spacing6 + spacingL + spacingXS;
-    maxAppBarHeightWithoutSubheading = spacing6 - spacing;
+    maxAppBarHeightWithSubheading = spacing16 + spacing11;
+    maxAppBarHeightWithoutSubheading = spacing16 + spacing6;
     preferredSize = spacing4;
-    headerPositionFromTop = widget.subHeading.isNotEmpty ? spacingS : spacing - spacingXS;
+    headerPositionFromTop = widget.subHeading.isNotEmpty ? spacing0_5 : spacing2;
     headingFontSize = widget.subHeading.isNotEmpty ? 17 : 22;
-    headerPositionFromLeft = spacing4 + spacingM;
+    headerPositionFromLeft = spacing14 - spacing1;
     headingFontWeight = FontWeight.w600;
     appBarColor = ColorToken.white;
     subHeadingFontSize = fontSize13;
@@ -90,7 +90,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
                     Visibility(
                       visible: showBackButton,
                       child: Padding(
-                        padding: pl2,
+                        padding: pl0_5,
                         child: MDSIconButton(
                           onTap: () {
                             widget.backButtonCallback ?? Navigator.pop(context);
@@ -125,7 +125,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
                             visible: widget.subHeading.isNotEmpty,
                             child: Container(
                               height: subHeadingLineHeight,
-                              padding: pt2,
+                              padding: pt0_5,
                               child: Center(
                                 child: Text(
                                   widget.subHeading,
@@ -159,7 +159,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
     Widget? suffixWidget;
     if (widget.actionButtonText.isNotEmpty) {
       suffixWidget = Padding(
-        padding: pr4,
+        padding: pr2,
         child: MDSLabelButton(
           onTap: () => widget.actionButtonTextCallback,
           title: widget.actionButtonText,
@@ -168,7 +168,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
     } else if (widget.listOfActionIcons != null) {
       if (widget.listOfActionIcons!.length > 2) {
         suffixWidget = Padding(
-          padding: pr4 + pr2,
+          padding: pr2 + pr0_5,
           child: MDSIconButton(
             onTap: () {},
             icon: Icons.more_horiz,
@@ -176,7 +176,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
         );
       } else {
         suffixWidget = Padding(
-          padding: pr4 + pr2,
+          padding: pr2 + pr0_5,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,

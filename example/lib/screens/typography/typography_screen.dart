@@ -16,7 +16,7 @@ class TypographyScreen extends StatelessWidget with SpacingMixin {
         buildContext: context,
       ),
       body: Padding(
-        padding: p3,
+        padding: p1,
         child: ListView.builder(
           itemCount: Constants.typographyWidgetMap.keys.length,
           shrinkWrap: true,

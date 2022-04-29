@@ -21,7 +21,7 @@ class _MDSSwitchScreenState extends State<MDSSwitchScreen> with SpacingMixin {
         ),
       ),
       body: Padding(
-        padding: px6 + pt4,
+        padding: px4 + pt2,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

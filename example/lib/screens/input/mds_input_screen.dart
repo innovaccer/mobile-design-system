@@ -54,12 +54,12 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
         buildContext: context,
       ),
       body: Padding(
-        padding: p6,
+        padding: p4,
         child: ListView(
           shrinkWrap: true,
           children: [
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('1. Simple MDSInput', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -73,7 +73,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('2. Number MDSInput', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -86,7 +86,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('3. Phone Number MDSInput', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -101,7 +101,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('4. Password MDSInput', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -115,7 +115,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('5. Metric MDSInput', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -128,7 +128,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('6. MDSInput with Prefix and Suffix Icon', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -143,7 +143,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('7. MDSInput with Prefix and Suffix Text', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -159,7 +159,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('8. Compulsory MDSInput with label and helper Text', appearance: BodyAppearance.medium),
             ),
             MDSInput(
@@ -177,7 +177,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               height: spacing2,
             ),
             Padding(
-              padding: pb4,
+              padding: pb2,
               child: MDSBody('9. Verification Code MDSInput', appearance: BodyAppearance.medium),
             ),
             MDSInput(

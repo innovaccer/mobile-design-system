@@ -79,14 +79,14 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
   Widget build(BuildContext context) {
     return Container(
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(spacingM),
+        borderRadius: BorderRadius.circular(spacing1),
         child: _cardContent(),
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacingM),
+        borderRadius: BorderRadius.circular(spacing1),
         border: isFlatCard
             ? Border.all(
-                width: spacingXS,
+                width: spacing0_5,
                 style: BorderStyle.solid,
                 color: secondaryLight,
               )
@@ -96,8 +96,8 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
             : [
                 BoxShadow(
                   color: shadowColor,
-                  blurRadius: spacingM,
-                  offset: Offset(noSpacing, spacingXS),
+                  blurRadius: spacing1,
+                  offset: Offset(noSpacing, spacing0_5),
                   spreadRadius: noSpacing,
                 ),
               ],
@@ -121,14 +121,14 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         Visibility(
           visible: body != null,
           child: Padding(
-            padding: _showHeader ? px6 + pb6 : p6,
+            padding: _showHeader ? px4 + pb4 : p4,
             child: body,
           ),
         ),
         if (footer != null) ...[
           if (_showHeader || body != null) ...[
             Divider(
-              height: spacingXS,
+              height: spacing0_5,
               color: secondaryLight,
             ),
           ],
@@ -137,7 +137,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         if ((_showActionsInFooter || _showLabelInFooter) && footer == null) ...[
           if (_showHeader || body != null) ...[
             Divider(
-              height: spacingXS,
+              height: spacing0_5,
               color: secondaryLight,
             ),
           ],
@@ -156,7 +156,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         Flexible(
           child: Padding(
             padding:
-                headerSuffixIcon != null ? pl6 + py6 + pr3 : pl6 + py6 + pr6,
+                headerSuffixIcon != null ? pl4 + py4 + pr1 : pl4 + py4 + pr4,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -165,7 +165,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
                 if (isSubTitleOnTop && _showSubTitle) ...[
                   _subTitleWidget(),
                   SizedBox(
-                    height: spacingS,
+                    height: spacing0_5,
                   ),
                 ],
                 Flexible(
@@ -175,7 +175,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
                 ),
                 if (!isSubTitleOnTop && _showSubTitle) ...[
                   SizedBox(
-                    height: spacingS,
+                    height: spacing0_5,
                   ),
                   _subTitleWidget(),
                 ],
@@ -185,7 +185,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         ),
         if (headerSuffixIcon != null) ...[
           Padding(
-            padding: py3 + py2 + pr3,
+            padding: py1 + py0_5 + pr1,
             child: MDSIconButton(
               icon: headerSuffixIcon!,
               type: IconButtonType.transparent,
@@ -207,10 +207,10 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
           Icon(
             subTitlePrefixIcon,
             color: inverseLighter,
-            size: spacing2,
+            size: spacing4,
           ),
           SizedBox(
-            width: spacingM + spacingS,
+            width: spacing1_5,
           ),
         ],
         Flexible(
@@ -226,7 +226,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
   Widget _footer() {
     if (_showActionsInFooter) {
       return Padding(
-        padding: px4 + py3 + py2,
+        padding: px12 + py1 + py0_5,
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -244,7 +244,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
                   actionText2 != null &&
                   actionText2!.isNotEmpty,
               child: SizedBox(
-                width: spacing,
+                width: spacing2,
               ),
             ),
             if (actionText2 != null && actionText2!.isNotEmpty) ...[
@@ -279,7 +279,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
             children: [
               Flexible(
                 child: Padding(
-                  padding: pl6 + py6 + py3,
+                  padding: pl4 + py4 + py1,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,12 +291,12 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
                           size: spacing2,
                         ),
                         SizedBox(
-                          width: spacingM + spacingS,
+                          width: spacing1_5,
                         ),
                       ],
                       Flexible(
                         child: Padding(
-                          padding: footerSuffixIcon != null ? pr3 : pr6,
+                          padding: footerSuffixIcon != null ? pr1 : pr4,
                           child: MDSFootnote(
                             footerLabelText!,
                             appearance: FootnoteAppearance.subtle,
@@ -309,7 +309,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
               ),
               if (footerSuffixIcon != null) ...[
                 Padding(
-                  padding: py3 + py2 + pr3,
+                  padding: py1 + py0_5 + pr1,
                   child: MDSIconButton(
                     icon: footerSuffixIcon!,
                     type: IconButtonType.transparent,

@@ -43,7 +43,7 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: px6,
+                    padding: px4,
                     child: MDSButton(
                       title: 'Tap me',
                       onTap: () {
@@ -64,7 +64,7 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
           Expanded(
             flex: 8,
             child: Container(
-              padding: px6 + pt4,
+              padding: px4 + pt2,
               child: ListView(
                 padding: p0,
                 children: [
@@ -156,7 +156,7 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
                                       value: _isFullWidth,
                                       onChanged: _updateFullWidthValue,
                                     ),
-                              padding: pl4,
+                              padding: pl2,
                             ),
                           ],
                         ),
@@ -189,7 +189,7 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
                                       value: _prefixIcon != null,
                                       onChanged: _updatePrefixIconValue,
                                     ),
-                              padding: pl4,
+                              padding: pl2,
                             ),
                           ],
                         ),
@@ -218,7 +218,7 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
                                       value: _suffixIcon != null,
                                       onChanged: _updateSuffixIconValue,
                                     ),
-                              padding: pl4,
+                              padding: pl2,
                             ),
                           ],
                         ),
@@ -227,7 +227,7 @@ class _MDSButtonScreenState extends State<MDSButtonScreen>
                   ),
                   Divider(),
                   SizedBox(
-                    height: spacingXL,
+                    height: spacing6,
                   )
                 ],
               ),

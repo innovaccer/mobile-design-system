@@ -31,20 +31,20 @@ class MDSListItem extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
     return Container(
       color: Colors.transparent,
       child: Padding(
-        padding: pl6 + pt6,
+        padding: pl4 + pt4,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: [
             prefixWidget != null
                 ? Padding(
-                    padding: pr4,
+                    padding: pr2,
                     child: prefixWidget,
                   )
                 : Container(),
             prefixWidget != null
                 ? SizedBox(
-                    width: spacing,
+                    width: spacing2,
                   )
                 : Container(),
             Expanded(
@@ -69,7 +69,7 @@ class MDSListItem extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                                 : Container(),
                             secondaryText != null && secondaryText!.trim().isNotEmpty
                                 ? Padding(
-                                    padding: pt2,
+                                    padding: pt0_5,
                                     child: MDSSubhead(
                                       secondaryText!,
                                       appearance: SubheadAppearance.subtle,
@@ -80,7 +80,7 @@ class MDSListItem extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                                 : Container(),
                             tertiaryText != null && tertiaryText!.trim().isNotEmpty
                                 ? Padding(
-                                    padding: pt3,
+                                    padding: pt1,
                                     child: MDSFootnote(
                                       tertiaryText!,
                                       appearance: FootnoteAppearance.subtle,
@@ -94,17 +94,17 @@ class MDSListItem extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                       ),
                       suffixWidget != null
                           ? Padding(
-                              padding: pl4 + pr6,
+                              padding: pl2 + pr4,
                               child: suffixWidget,
                             )
                           : Container(),
                     ],
                   ),
                   Padding(
-                    padding: pt6,
+                    padding: pt4,
                     child: showDivider!
                         ? Divider(
-                            thickness: spacingXS,
+                            thickness: spacing0_5,
                             height: 0,
                           )
                         : Container(),

@@ -33,9 +33,9 @@ class MDSBadge extends StatelessWidget with ColorMixin, SpacingMixin, FontMixin 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: py2 + px3,
+      padding: py0_5 + px1,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacingM),
+        borderRadius: BorderRadius.circular(spacing1),
         color: _getBadgeBackgroundColor(),
       ),
       child: _badgeWidget(),

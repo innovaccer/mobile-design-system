@@ -38,7 +38,7 @@ class _MDSIconButtonScreenState extends State<MDSIconButtonScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: px6,
+                    padding: px4,
                     child: MDSIconButton(
                       icon: Icons.search,
                       onTap: () {
@@ -56,7 +56,7 @@ class _MDSIconButtonScreenState extends State<MDSIconButtonScreen>
           Expanded(
             flex: 8,
             child: Container(
-              padding: px6 + pt4,
+              padding: px4 + pt2,
               child: ListView(
                 padding: p0,
                 children: [
@@ -128,7 +128,7 @@ class _MDSIconButtonScreenState extends State<MDSIconButtonScreen>
                   ),
                   Divider(),
                   SizedBox(
-                    height: spacingXL,
+                    height: spacing6,
                   )
                 ],
               ),

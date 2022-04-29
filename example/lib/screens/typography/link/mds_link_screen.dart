@@ -20,7 +20,7 @@ class _MDSLinkScreenState extends State<MDSLinkScreen> with SpacingMixin {
       body: Column(
         children: [
           Padding(
-            padding: p6,
+            padding: p4,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
