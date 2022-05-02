@@ -21,14 +21,14 @@ class MDSCardOld extends StatelessWidget with ColorMixin, SpacingMixin {
   Widget build(BuildContext context) {
     return Container(
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(spacingM),
+        borderRadius: BorderRadius.circular(spacing1),
         child: child,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(spacingM),
+        borderRadius: BorderRadius.circular(spacing1),
         border: shadowType == CardShadowType.none
             ? Border.all(
-                width: spacingXS,
+                width: spacing0_5,
                 style: BorderStyle.solid,
                 color: secondaryLight,
               )
@@ -49,13 +49,13 @@ class MDSCardOld extends StatelessWidget with ColorMixin, SpacingMixin {
       case CardShadowType.none:
         return Offset(noSpacing, noSpacing);
       case CardShadowType.light:
-        return Offset(noSpacing, spacingXS);
+        return Offset(noSpacing, spacing0_5);
       case CardShadowType.medium:
-        return Offset(noSpacing, spacingS);
+        return Offset(noSpacing, spacing0_5);
       case CardShadowType.dark:
-        return Offset(noSpacing, spacingM);
+        return Offset(noSpacing, spacing1);
       default:
-        return Offset(noSpacing, spacingS);
+        return Offset(noSpacing, spacing0_5);
     }
   }
 
@@ -64,13 +64,13 @@ class MDSCardOld extends StatelessWidget with ColorMixin, SpacingMixin {
       case CardShadowType.none:
         return noSpacing;
       case CardShadowType.light:
-        return spacingM;
+        return spacing1;
       case CardShadowType.medium:
-        return spacing;
+        return spacing2;
       case CardShadowType.dark:
         return spacing2;
       default:
-        return spacing;
+        return spacing2;
     }
   }
 }

@@ -34,7 +34,7 @@ class _MDSCaptionScreenState extends State<MDSCaptionScreen> with SpacingMixin {
             Expanded(
               flex: 3,
               child: Container(
-                padding: p6,
+                padding: p4,
                 child: Center(
                   child: MDSCaption(
                     sampleText,
@@ -58,7 +58,7 @@ class _MDSCaptionScreenState extends State<MDSCaptionScreen> with SpacingMixin {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: pt4,
+                            padding: pt2,
                             child: MDSSubhead(
                               'type:',
                               appearance: SubheadAppearance.medium,
@@ -92,7 +92,7 @@ class _MDSCaptionScreenState extends State<MDSCaptionScreen> with SpacingMixin {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: pt4,
+                            padding: pt2,
                             child: MDSSubhead(
                               'appearance:',
                               appearance: SubheadAppearance.medium,

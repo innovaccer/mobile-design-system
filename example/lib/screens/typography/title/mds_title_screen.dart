@@ -34,7 +34,7 @@ class _MDSTitleScreenState extends State<MDSTitleScreen> with SpacingMixin {
             Expanded(
               flex: 3,
               child: Container(
-                padding: p6,
+                padding: p4,
                 child: Center(
                   child: MDSTitle(
                     sampleText,
@@ -58,7 +58,7 @@ class _MDSTitleScreenState extends State<MDSTitleScreen> with SpacingMixin {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: pt4,
+                            padding: pt2,
                             child: MDSSubhead(
                               'type:',
                               appearance: SubheadAppearance.medium,
@@ -102,7 +102,7 @@ class _MDSTitleScreenState extends State<MDSTitleScreen> with SpacingMixin {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: pt4,
+                            padding: pt2,
                             child: MDSSubhead(
                               'appearance:',
                               appearance: SubheadAppearance.medium,

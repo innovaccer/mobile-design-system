@@ -92,8 +92,8 @@ class MDSActionSheet with SpacingMixin, ColorMixin {
   BoxDecoration get _actionSheetDecoration => BoxDecoration(
         color: ColorToken.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(spacingL),
-          topRight: Radius.circular(spacingL),
+          topLeft: Radius.circular(spacing3),
+          topRight: Radius.circular(spacing3),
         ),
       );
 
@@ -108,7 +108,7 @@ class MDSActionSheet with SpacingMixin, ColorMixin {
       children: [
         Flexible(
           child: Padding(
-            padding: pl6 + py6 + pr2,
+            padding: pl4 + py4 + pr0_5,
             child: MDSBody(
               heading,
               appearance: BodyAppearance.subtle,
@@ -116,7 +116,7 @@ class MDSActionSheet with SpacingMixin, ColorMixin {
           ),
         ),
         Padding(
-          padding: py3 + py2 + pr3,
+          padding: py1 + py0_5 + pr1,
           child: MDSIconButton(
             icon: Icons.close,
             type: IconButtonType.transparent,
@@ -146,7 +146,7 @@ class MDSActionSheet with SpacingMixin, ColorMixin {
           }),
           highlightColor: secondaryLighter,
           child: Padding(
-            padding: p6,
+            padding: p4,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -156,7 +156,7 @@ class MDSActionSheet with SpacingMixin, ColorMixin {
                   Icon(
                     prefixIcon,
                     color: inverseLighter,
-                    size: spacingXL,
+                    size: spacing6,
                   ),
                   SizedBox(
                     width: spacing2,
@@ -177,7 +177,7 @@ class MDSActionSheet with SpacingMixin, ColorMixin {
                       if (secondaryText != null &&
                           secondaryText.isNotEmpty) ...[
                         SizedBox(
-                          height: spacingS,
+                          height: spacing0_5,
                         ),
                         Flexible(
                           child: MDSSubhead(

@@ -57,7 +57,7 @@ class _MDSListState extends State<MDSList> with ColorMixin, SpacingMixin, FontMi
                 ? GestureDetector(
                     onTap: () => widget.sectionHeadingOnClick!,
                     child: Padding(
-                      padding: p6,
+                      padding: p4,
                       child: MDSBody(
                         widget.sectionHeading!,
                         appearance: BodyAppearance.strong,
@@ -71,7 +71,7 @@ class _MDSListState extends State<MDSList> with ColorMixin, SpacingMixin, FontMi
                 ? GestureDetector(
                     onTap: () => widget.sectionHeadingActionOnClick,
                     child: Padding(
-                      padding: p6,
+                      padding: p4,
                       child: MDSLink(
                         widget.sectionHeadingAction!,
                       ),

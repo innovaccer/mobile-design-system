@@ -29,14 +29,14 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
   @override
   void initState() {
     super.initState();
-    maxAppBarHeightWithSubheading = spacing6 + spacingL + spacingXS;
-    maxAppBarHeightWithoutSubheading = spacing6 - spacing - spacingS;
+    maxAppBarHeightWithSubheading = spacing16 + spacing11;
+    maxAppBarHeightWithoutSubheading = spacing16 + spacing5 - spacing0_5;
     preferredSize = maxAppBarHeightWithoutSubheading;
-    headerPositionFromTop = spacing4 - spacingM - spacingS;
+    headerPositionFromTop = spacing11 - spacing0_5;
     headingFontSize = fontSize34;
     headingFontWeight = FontWeight.w700;
     appBarColor = secondaryLightest;
-    headingLineHeight = fontLineHeight36 + spacingS;
+    headingLineHeight = fontLineHeight36 + spacing0_5;
     headingLetterSpacing = letterSpacing7;
     if (widget.controller != null) {
       widget.controller?.addListener(() {
@@ -45,7 +45,7 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
           if (widget.controller?.position.userScrollDirection == ScrollDirection.reverse) {
             if (isCompactHeader) {
               setState(() {
-                headerPositionFromTop = spacing - spacingXS;
+                headerPositionFromTop = spacing2;
                 headingFontSize = 22;
                 headingFontWeight = FontWeight.w600;
                 preferredSize = spacing4;
@@ -62,11 +62,11 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
               if (widget.controller?.position.pixels == 0) {
                 if (isProminentHeader) {
                   setState(() {
-                    headerPositionFromTop = spacing4 - spacingM - spacingS;
+                    headerPositionFromTop = spacing11 - spacing0_5;
                     headingFontSize = fontSize34;
                     headingFontWeight = FontWeight.w700;
                     appBarColor = secondaryLightest;
-                    headingLineHeight = fontLineHeight36 + spacingS;
+                    headingLineHeight = fontLineHeight36 + spacing0_5;
                     headingLetterSpacing = letterSpacing7;
                     preferredSize = maxAppBarHeightWithoutSubheading;
                   });
@@ -150,10 +150,10 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
       appBarColor != ColorToken.white &&
       headingLetterSpacing != letterSpacing1);
 
-  bool get isProminentHeader => (headerPositionFromTop != spacing4 - spacingM - spacingS &&
+  bool get isProminentHeader => (headerPositionFromTop != spacing11 - spacing0_5 &&
       headingFontSize != fontSize28 &&
       headingFontWeight != FontWeight.w700 &&
       appBarColor != secondaryLightest &&
-      headingLineHeight != fontLineHeight36 + spacingS &&
+      headingLineHeight != fontLineHeight36 + spacing0_5 &&
       headingLetterSpacing != letterSpacing7);
 }

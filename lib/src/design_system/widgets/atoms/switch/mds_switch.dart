@@ -29,14 +29,14 @@ class MDSSwitch extends StatelessWidget with ColorMixin, SpacingMixin {
 
   Widget _switchWidget() {
     return CustomSwitch(
-      height: spacingXL,
-      width: spacing4,
+      height: spacing6,
+      width: spacing12,
       activeColor: _getSwitchColor(),
       inactiveColor: _getSwitchColor(),
-      padding: spacingS,
-      toggleSize: spacingXL - spacingM,
+      padding: spacing0_5,
+      toggleSize: spacing5,
       value: isOn,
-      borderRadius: spacingXL - spacingM,
+      borderRadius: spacing5,
       showOnOff: false,
       onToggle: (bool value) => switchType != SwitchType.disabledType ? onChange(value) : null,
     );
