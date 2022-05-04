@@ -25,6 +25,7 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorToken.white,
       appBar: AppBar(
         title: MDSTitle(
           'Avatar',

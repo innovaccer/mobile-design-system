@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 
-class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin {
+class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin {
   final List<MdsAvatarType>? avatarList;
 
   MDSAvatar({
@@ -11,55 +11,68 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin {
   @override
   Widget build(BuildContext context) {
     if (avatarList!.length == 1) {
-      return _avatarItem(avatarList!.single, context);
+      return _avatarItem(avatarList!.single, context, false);
     } else if (avatarList!.length == 2) {
-      return Stack(
-        children: [
-          _avatarItem(avatarList![0], context),
-          Positioned(
-            right: 0,
-            left: 0,
-            child: Padding(
-              padding: pl4,
-              child: _avatarItem(avatarList![1], context),
+      return Container(
+        width: 40 + 40 + 8 + 8,
+        color: ColorToken.white,
+        child: Stack(
+          children: [
+            _avatarItem(avatarList![0], context, false),
+            Positioned(
+              left: 40,
+              bottom: -4,
+              child: _avatarItem(avatarList![1], context, true),
             ),
-          ),
-        ],
+          ],
+        ),
       );
     } else if (avatarList!.length > 2) {
-      return Row(
-        children: [
-          _avatarItem(avatarList![0], context),
-          _avatarItem(avatarList![1], context),
-          _avatarItem(
-              MdsAvatarType(
-                avatarText: '+2',
-                avatarType: AvatarType.stone,
-              ),
-              context),
-        ],
+      return Container(
+        width: 40 + 40 + 40 + 8 + 8,
+        color: ColorToken.white,
+        child: Stack(
+          children: [
+            _avatarItem(avatarList![0], context, false),
+            Positioned(
+              left: 40,
+              bottom: -4,
+              child: _avatarItem(avatarList![1], context, true),
+            ),
+            Positioned(
+              left: 80,
+              bottom: -4,
+              child: _avatarItem(MdsAvatarType(avatarText: '+2', avatarType: AvatarType.stone), context, true),
+            ),
+          ],
+        ),
       );
     }
     return Container();
   }
 
-  Widget _avatarItem(MdsAvatarType? mdsAvatarType, BuildContext context) {
+  Widget _avatarItem(MdsAvatarType? mdsAvatarType, BuildContext context, bool haveBorder) {
     return Container(
       decoration: BoxDecoration(
         color: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
             ? _getAvatarTheme(mdsAvatarType.avatarType).keys.first
             : secondary,
         shape: BoxShape.circle,
+        border: Border.all(
+          width: spacingM,
+          color: haveBorder ? ColorToken.white : ColorToken.transparent,
+        ),
       ),
       child: Padding(
-        padding: p4 + p2,
+        padding: p4 + p2 + (haveBorder ? p3 : p0),
         child: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
             ? MDSBody(
                 mdsAvatarType.avatarText!.trim(),
                 color: _getAvatarTheme(mdsAvatarType.avatarType).values.first,
               ).copyWith(
                 context,
-                fontSize: spacing2 + spacingXS,
+                fontSize: fontSize17,
+                fontWeight: FontWeight.w600,
               )
             : Icon(
                 Icons.person_outline,
