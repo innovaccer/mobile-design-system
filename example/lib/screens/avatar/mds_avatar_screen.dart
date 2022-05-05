@@ -11,13 +11,13 @@ class MDSAvatarScreen extends StatefulWidget {
 class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, ColorMixin {
   AvatarType _avatarType = AvatarType.jal;
   AvatarScenario _avatarScenario = AvatarScenario.defaultAvatar;
-  late List<MdsAvatarType> _avatarTypeList;
+  late List<MDSAvatarType> _avatarTypeList;
 
   @override
   void initState() {
     super.initState();
     _avatarTypeList = [
-      MdsAvatarType(
+      MDSAvatarType(
         avatarText: 'JL',
         avatarType: _avatarType,
       ),
@@ -174,7 +174,7 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
       if (_avatarScenario == AvatarScenario.defaultAvatar) {
         _avatarType = value!;
         _avatarTypeList = [
-          MdsAvatarType(
+          MDSAvatarType(
             avatarText: 'JL',
             avatarType: _avatarType,
           ),
@@ -207,43 +207,43 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
   }
 
   void _updateType(AvatarScenario? avatarScenario) {
-    List<MdsAvatarType> avatarList = [];
+    List<MDSAvatarType> avatarList = [];
     if (avatarScenario == AvatarScenario.fallbackAvatar) {
       avatarList = [
-        MdsAvatarType(
+        MDSAvatarType(
           avatarText: '',
           avatarType: AvatarType.jal,
         ),
       ];
     } else if (avatarScenario == AvatarScenario.avatarGroup1) {
       avatarList = [
-        MdsAvatarType(
+        MDSAvatarType(
           avatarText: 'JL',
           avatarType: AvatarType.jal,
         ),
-        MdsAvatarType(
+        MDSAvatarType(
           avatarText: 'SH',
           avatarType: AvatarType.neem,
         ),
       ];
     } else if (avatarScenario == AvatarScenario.avatarGroup2) {
       avatarList = [
-        MdsAvatarType(
+        MDSAvatarType(
           avatarText: 'JL',
           avatarType: AvatarType.jal,
         ),
-        MdsAvatarType(
+        MDSAvatarType(
           avatarText: 'SH',
           avatarType: AvatarType.neem,
         ),
-        MdsAvatarType(
+        MDSAvatarType(
           avatarText: 'AS',
           avatarType: AvatarType.neel,
         ),
       ];
     } else {
       avatarList = [
-        MdsAvatarType(
+        MDSAvatarType(
           avatarText: 'JL',
           avatarType: _avatarType,
         ),

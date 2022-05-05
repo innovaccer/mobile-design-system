@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 
 class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin {
-  final List<MdsAvatarType>? avatarList;
+  final List<MDSAvatarType>? avatarList;
 
   MDSAvatar({
     required this.avatarList,
@@ -52,7 +52,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
               left: spacing10 + spacing10,
               bottom: -spacing1,
               child: _avatarItem(
-                  MdsAvatarType(avatarText: '+' + (avatarList!.length - 2).toString(), avatarType: AvatarType.stone),
+                  MDSAvatarType(avatarText: '+' + (avatarList!.length - 2).toString(), avatarType: AvatarType.stone),
                   context,
                   true),
             ),
@@ -64,7 +64,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
   }
 
   /// single item of avatar
-  Widget _avatarItem(MdsAvatarType? mdsAvatarType, BuildContext context, bool haveBorder) {
+  Widget _avatarItem(MDSAvatarType? mdsAvatarType, BuildContext context, bool haveBorder) {
     return Container(
       decoration: BoxDecoration(
         color: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
@@ -127,11 +127,11 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
   }
 }
 
-class MdsAvatarType {
+class MDSAvatarType {
   final String? avatarText;
   final AvatarType avatarType;
 
-  MdsAvatarType({
+  MDSAvatarType({
     this.avatarText = '',
     this.avatarType = AvatarType.neel,
   });
