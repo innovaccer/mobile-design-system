@@ -10,9 +10,15 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
 
   @override
   Widget build(BuildContext context) {
+    /// if one single item of avatar is there
     if (avatarList!.length == 1) {
       return _avatarItem(avatarList!.single, context, false);
-    } else if (avatarList!.length == 2) {
+    }
+
+    /// AVATAR GROUP ///
+
+    /// if two items of avatar are there
+    else if (avatarList!.length == 2) {
       return Container(
         width: spacing10 + spacing10 + spacing2 + spacing1_5,
         color: ColorToken.white,
@@ -27,7 +33,10 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
           ],
         ),
       );
-    } else if (avatarList!.length > 2) {
+    }
+
+    /// if more than two items of avatar are there
+    else if (avatarList!.length > 2) {
       return Container(
         width: spacing10 + spacing10 + spacing10 + spacing2 + spacing1_5,
         color: ColorToken.white,
@@ -54,6 +63,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
     return Container();
   }
 
+  /// single item of avatar
   Widget _avatarItem(MdsAvatarType? mdsAvatarType, BuildContext context, bool haveBorder) {
     return Container(
       decoration: BoxDecoration(
@@ -85,6 +95,8 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
     );
   }
 
+  /// getting text color and background color of avatar based on
+  /// the type of avatar
   Map<Color, Color> _getAvatarTheme(AvatarType? avatarType) {
     Color avatarBackgroundColor = primary;
     Color avatarTextColor = ColorToken.white;
@@ -125,6 +137,7 @@ class MdsAvatarType {
   });
 }
 
+/// themes of avatar available
 enum AvatarType {
   neel,
   haldi,
