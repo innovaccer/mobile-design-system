@@ -42,7 +42,7 @@ class _MDSBottomSheetScreenState extends State<MDSBottomSheetScreen> with Spacin
         ),
       ),
       body: Padding(
-        padding: p6,
+        padding: p4,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -114,11 +114,11 @@ class _MDSBottomSheetScreenState extends State<MDSBottomSheetScreen> with Spacin
               ],
             ),
             SizedBox(
-              height: spacing,
+              height: spacing2,
             ),
             Divider(),
             SizedBox(
-              height: spacing,
+              height: spacing2,
             ),
             MDSBody(
               'Content Type',

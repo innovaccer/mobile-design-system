@@ -185,7 +185,7 @@ class MDSInput extends StatefulWidget {
     this.isMetric = false,
     this.isVerificationCode = false,
     this.verificationCodeLength = 4,
-  });
+  }) : assert(textEditingController != null && parentContext != null, 'Either textEditingController or parentContext is null');
 
   @override
   _MDSInputState createState() => _MDSInputState();
@@ -296,14 +296,14 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
         decoration: BoxLooseDecoration(
           textStyle: TextStyle(fontSize: fontSize16, color: ColorToken.black),
           strokeColorBuilder: PinListenColorBuilder(primary, secondary),
-          strokeWidth: spacingXS,
-          radius: Radius.circular(spacing),
+          strokeWidth: spacing0_5,
+          radius: Radius.circular(spacing2),
           bgColorBuilder: PinListenColorBuilder(ColorToken.white, ColorToken.white),
         ),
         cursor: Cursor(
-          width: spacingS,
+          width: spacing0_5,
           color: primary,
-          radius: Radius.circular(spacingXS),
+          radius: Radius.circular(spacing0_5),
           enabled: true,
         ),
         focusNode: _textFieldFocusNode,
@@ -329,16 +329,16 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: pb2,
+                    padding: pb0_5,
                     child: MDSSubhead(
                       widget.labelText!,
                     ),
                   ),
                   widget.isCompulsory!
                       ? Padding(
-                          padding: pl3 + pt3,
+                          padding: pl1 + pt1,
                           child: Container(
-                            padding: p3 - p1,
+                            padding: p1,
                             decoration: BoxDecoration(
                               color: ColorToken.mirch,
                               shape: BoxShape.circle,
@@ -375,10 +375,10 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
             filled: true,
             fillColor: widget.backgroundColor ?? ColorToken.white,
             contentPadding: EdgeInsets.only(
-              top: spacingL,
-              bottom: spacingL,
-              left: (widget.prefixIcon != null || widget.isMetric!) ? spacing : spacing2,
-              right: (widget.suffixIcon != null || widget.isMetric!) ? spacing : spacing2,
+              top: spacing3,
+              bottom: spacing3,
+              left: (widget.prefixIcon != null || widget.isMetric!) ? spacing2 : spacing2,
+              right: (widget.suffixIcon != null || widget.isMetric!) ? spacing2 : spacing2,
             ),
             hintText: widget.placeholderText,
             hintStyle: TextStyle(
@@ -406,7 +406,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
                     },
                     child: widget.prefixText != null
                         ? Padding(
-                            padding: p5,
+                            padding: p3,
                             child: MDSSubhead(
                               widget.prefixText!,
                               appearance: SubheadAppearance.subtle,
@@ -415,7 +415,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
                         : Icon(
                             _prefixIcon ?? Icons.remove,
                             color: widget.isMetric! ? ColorToken.black : inverseLightest,
-                            size: spacing2 + spacingM,
+                            size: spacing1_5,
                           ),
                   )
                 : null,
@@ -451,7 +451,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
                         },
                         child: widget.suffixText != null
                             ? Padding(
-                                padding: p5,
+                                padding: p3,
                                 child: MDSSubhead(
                                   widget.suffixText!,
                                   appearance: SubheadAppearance.subtle,
@@ -461,45 +461,45 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
                                 Icon(
                                   _getSuffixIcon(),
                                   color: widget.isMetric! ? ColorToken.black : inverseLightest,
-                                  size: spacing2 + spacingM,
+                                  size: spacing1_5,
                                 ),
                       )
                     : widget.isClearButtonEnabled != null && widget.isClearButtonEnabled!
                         ? clearButton()
                         : null,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(spacing),
+              borderRadius: BorderRadius.circular(spacing2),
               borderSide: BorderSide(
                 color: secondary,
-                width: spacingXS,
+                width: spacing0_5,
               ),
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(spacing),
+              borderRadius: BorderRadius.circular(spacing2),
               borderSide: BorderSide(
                 color: alert,
-                width: spacingXS,
+                width: spacing0_5,
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(spacing),
+              borderRadius: BorderRadius.circular(spacing2),
               borderSide: BorderSide(
                 color: primary,
-                width: spacingXS,
+                width: spacing0_5,
               ),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(spacing),
+              borderRadius: BorderRadius.circular(spacing2),
               borderSide: BorderSide(
                 color: secondary,
-                width: spacingXS,
+                width: spacing0_5,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(spacing),
+              borderRadius: BorderRadius.circular(spacing2),
               borderSide: BorderSide(
                 color: alert,
-                width: spacingXS,
+                width: spacing0_5,
               ),
             ),
           ),
@@ -553,7 +553,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
         ),
         widget.helperText != null
             ? Padding(
-                padding: pt3,
+                padding: pt1,
                 child: MDSCaption(
                   widget.helperText!,
                   appearance: CaptionAppearance.subtle,
@@ -676,9 +676,9 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
       child: Align(
         alignment: Alignment.topRight,
         child: Padding(
-          padding: py3,
+          padding: py1,
           child: CupertinoButton(
-            padding: py4 + pr7,
+            padding: py2 + pr4,
             child: Text(
               'Done',
               style: TextStyle(

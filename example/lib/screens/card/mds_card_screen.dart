@@ -66,7 +66,7 @@ class _MDSCardScreenState extends State<MDSCardScreen>
           Expanded(
             flex: mediaWidgetOnTop != null ? 7 : 5,
             child: Padding(
-              padding: p6,
+              padding: p4,
               child: Center(
                 child: MDSCard(
                   isFlatCard: isFlatCard,
@@ -94,7 +94,7 @@ class _MDSCardScreenState extends State<MDSCardScreen>
           Expanded(
             flex: mediaWidgetOnTop != null ? 3 : 5,
             child: Container(
-              padding: px6,
+              padding: px4,
               child: ListView(
                 children: [
                   Row(
@@ -350,7 +350,7 @@ class _MDSCardScreenState extends State<MDSCardScreen>
                     'First name',
                     appearance: SubheadAppearance.subtle,
                   ),
-                  SizedBox(height: spacingM),
+                  SizedBox(height: spacing1),
                   MDSBody(
                     'Joy',
                   ),
@@ -368,7 +368,7 @@ class _MDSCardScreenState extends State<MDSCardScreen>
                     'Last name',
                     appearance: SubheadAppearance.subtle,
                   ),
-                  SizedBox(height: spacingM),
+                  SizedBox(height: spacing1),
                   MDSBody(
                     'Lawson',
                   ),
@@ -378,7 +378,7 @@ class _MDSCardScreenState extends State<MDSCardScreen>
           ],
         ),
         SizedBox(
-          height: spacingL,
+          height: spacing3,
         ),
         Row(
           mainAxisSize: MainAxisSize.max,
@@ -394,7 +394,7 @@ class _MDSCardScreenState extends State<MDSCardScreen>
                     'Date of Birth',
                     appearance: SubheadAppearance.subtle,
                   ),
-                  SizedBox(height: spacingM),
+                  SizedBox(height: spacing1),
                   MDSBody(
                     '02/01/1980',
                   ),
@@ -412,7 +412,7 @@ class _MDSCardScreenState extends State<MDSCardScreen>
                     'Gender',
                     appearance: SubheadAppearance.subtle,
                   ),
-                  SizedBox(height: spacingM),
+                  SizedBox(height: spacing1),
                   MDSBody(
                     'Male',
                   ),

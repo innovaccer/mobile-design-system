@@ -51,8 +51,8 @@ class MDSIconButton extends StatelessWidget with ColorMixin, SpacingMixin, FontM
     Color? buttonActiveColor = _buttonColorMapping[type]?[IconButtonState.active];
 
     return Ink(
-      height: spacing4 - spacingM,
-      width: spacing4 - spacingM,
+      height: spacing11,
+      width: spacing11,
       decoration: BoxDecoration(
         color: buttonColor,
         borderRadius: BorderRadius.circular(spacing3),
@@ -73,7 +73,7 @@ class MDSIconButton extends StatelessWidget with ColorMixin, SpacingMixin, FontM
           child: Icon(
             icon,
             color: contentColor,
-            size: spacingXL,
+            size: spacing6,
           ),
         ),
       ),
@@ -85,19 +85,19 @@ class MDSIconButton extends StatelessWidget with ColorMixin, SpacingMixin, FontM
     Color? buttonColor = _buttonColorMapping[type]?[state];
 
     return Ink(
-      height: spacing4 - spacingM,
-      width: spacing4 - spacingM,
+      height: spacing11,
+      width: spacing11,
       decoration: BoxDecoration(
         color: buttonColor,
         borderRadius: BorderRadius.circular(spacing3),
       ),
       child: Center(
         child: SizedBox(
-          height: spacingXL - spacingM,
-          width: spacingXL - spacingM,
+          height: spacing5,
+          width: spacing5,
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color?>(contentColor),
-            strokeWidth: spacingS + spacingXS,
+            strokeWidth: spacing0_5,
           ),
         ),
       ),

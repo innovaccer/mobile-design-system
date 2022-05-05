@@ -104,12 +104,12 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
       _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
     }
     return Padding(
-      padding: px6,
+      padding: px4,
       child: MDSCardOld(
         shadowType: CardShadowType.dark,
         child: Container(
           color: _getToastColor(),
-          padding: px6 + py5,
+          padding: px4 + py3,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +121,7 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                   children: [
                     if (appearanceType != ToastAppearanceType.defaultType) ...[
                       Padding(
-                        padding: pt1,
+                        padding: pt0_5,
                         child: Icon(
                           _getLeadingIcon(),
                           size: spacing2,
@@ -129,7 +129,7 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                         ),
                       ),
                       SizedBox(
-                        width: spacingL,
+                        width: spacing3,
                       ),
                     ],
                     Flexible(
@@ -154,7 +154,7 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                           if ((actionButtonTitle1 != null && actionButtonCallback1 != null) ||
                               (actionButtonTitle2 != null && actionButtonCallback2 != null)) ...[
                             SizedBox(
-                              height: spacingL,
+                              height: spacing3,
                             ),
                             Flexible(
                               child: Row(
@@ -169,7 +169,7 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                                       callback: actionButtonCallback1,
                                     ),
                                     SizedBox(
-                                      width: spacing,
+                                      width: spacing2,
                                     ),
                                   ],
                                   if (actionButtonTitle2 != null && actionButtonCallback2 != null) ...[
@@ -190,10 +190,10 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                 ),
               ),
               SizedBox(
-                width: spacingL,
+                width: spacing3,
               ),
               Padding(
-                padding: pt1,
+                padding: pt0_5,
                 child: GestureDetector(
                   onTap: () => dismissToast(),
                   child: Icon(
@@ -230,9 +230,9 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
         child: InkWell(
           onTap: () => callback!(),
           child: Ink(
-            padding: py3 + px4,
+            padding: py1 + px2,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(spacingM),
+              borderRadius: BorderRadius.circular(spacing1),
             ),
             // todo: use MDSText
             child: Text(
