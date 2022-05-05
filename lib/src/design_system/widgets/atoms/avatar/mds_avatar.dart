@@ -14,14 +14,14 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
       return _avatarItem(avatarList!.single, context, false);
     } else if (avatarList!.length == 2) {
       return Container(
-        width: 40 + 40 + 8 + 6,
+        width: spacing10 + spacing10 + spacing2 + spacing1_5,
         color: ColorToken.white,
         child: Stack(
           children: [
             _avatarItem(avatarList![0], context, false),
             Positioned(
-              left: 40,
-              bottom: -4,
+              left: spacing10,
+              bottom: -spacing1,
               child: _avatarItem(avatarList![1], context, true),
             ),
           ],
@@ -29,19 +29,19 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
       );
     } else if (avatarList!.length > 2) {
       return Container(
-        width: 40 + 40 + 40 + 8 + 6,
+        width: spacing10 + spacing10 + spacing10 + spacing2 + spacing1_5,
         color: ColorToken.white,
         child: Stack(
           children: [
             _avatarItem(avatarList![0], context, false),
             Positioned(
-              left: 40,
-              bottom: -4,
+              left: spacing10,
+              bottom: -spacing1,
               child: _avatarItem(avatarList![1], context, true),
             ),
             Positioned(
-              left: 80,
-              bottom: -4,
+              left: spacing10 + spacing10,
+              bottom: -spacing1,
               child: _avatarItem(
                   MdsAvatarType(avatarText: '+' + (avatarList!.length - 2).toString(), avatarType: AvatarType.stone),
                   context,
@@ -62,12 +62,12 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
             : secondary,
         shape: BoxShape.circle,
         border: Border.all(
-          width: spacingM,
+          width: spacing1,
           color: haveBorder ? ColorToken.white : ColorToken.transparent,
         ),
       ),
       child: Padding(
-        padding: p4 + p2 + (haveBorder ? p3 : p0),
+        padding: p2 + p0_5 + (haveBorder ? p1 : p0),
         child: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
             ? MDSBody(
                 mdsAvatarType.avatarText!.trim(),
@@ -79,7 +79,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
               )
             : Icon(
                 Icons.person_outline,
-                size: spacingXL,
+                size: spacing6,
               ),
       ),
     );
