@@ -14,7 +14,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
       return _avatarItem(avatarList!.single, context, false);
     } else if (avatarList!.length == 2) {
       return Container(
-        width: 40 + 40 + 8 + 8,
+        width: 40 + 40 + 8 + 6,
         color: ColorToken.white,
         child: Stack(
           children: [
@@ -29,7 +29,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
       );
     } else if (avatarList!.length > 2) {
       return Container(
-        width: 40 + 40 + 40 + 8 + 8,
+        width: 40 + 40 + 40 + 8 + 6,
         color: ColorToken.white,
         child: Stack(
           children: [
@@ -42,7 +42,10 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
             Positioned(
               left: 80,
               bottom: -4,
-              child: _avatarItem(MdsAvatarType(avatarText: '+2', avatarType: AvatarType.stone), context, true),
+              child: _avatarItem(
+                  MdsAvatarType(avatarText: '+' + (avatarList!.length - 2).toString(), avatarType: AvatarType.stone),
+                  context,
+                  true),
             ),
           ],
         ),
