@@ -5,7 +5,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
   final List<MdsAvatarType>? avatarList;
 
   MDSAvatar({
-    this.avatarList,
+    required this.avatarList,
   });
 
   @override
