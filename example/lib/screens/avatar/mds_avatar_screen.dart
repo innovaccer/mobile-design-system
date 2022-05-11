@@ -87,56 +87,59 @@ class _MDSAvatarScreenState extends State<MDSAvatarScreen> with SpacingMixin, Co
                   ],
                 ),
                 Divider(),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: MDSSubhead('Appearance'),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Wrap(
-                        children: [
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.jal,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.stone,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.neem,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.haldi,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.mirch,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.tawak,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.nimbu,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.neel,
-                            groupValue: _avatarType,
-                          ),
-                          _appearanceOptionWidget(
-                            avatarType: AvatarType.jamun,
-                            groupValue: _avatarType,
-                          ),
-                        ],
+                Visibility(
+                  visible: _avatarScenario == AvatarScenario.defaultAvatar,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: MDSSubhead('Appearance'),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        flex: 7,
+                        child: Wrap(
+                          children: [
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.jal,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.stone,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.neem,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.haldi,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.mirch,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.tawak,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.nimbu,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.neel,
+                              groupValue: _avatarType,
+                            ),
+                            _appearanceOptionWidget(
+                              avatarType: AvatarType.jamun,
+                              groupValue: _avatarType,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

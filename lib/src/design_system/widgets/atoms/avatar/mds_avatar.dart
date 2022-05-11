@@ -12,7 +12,7 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
   Widget build(BuildContext context) {
     /// if one single item of avatar is there
     if (avatarList!.length == 1) {
-      return _avatarItem(avatarList!.single, context, false);
+      return _avatarItem(mdsAvatarType: avatarList!.single, context: context, haveBorder: false, additionalPadding: p0);
     }
 
     /// AVATAR GROUP ///
@@ -20,15 +20,15 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
     /// if two items of avatar are there
     else if (avatarList!.length == 2) {
       return Container(
-        width: spacing10 + spacing10 + spacing2 + spacing1_5,
+        width: spacing10 + spacing10 + spacing2 + spacing3,
         color: ColorToken.white,
         child: Stack(
           children: [
-            _avatarItem(avatarList![0], context, false),
+            _avatarItem(mdsAvatarType: avatarList![0], context: context, haveBorder: false, additionalPadding: p0),
             Positioned(
               left: spacing10,
-              bottom: -spacing1,
-              child: _avatarItem(avatarList![1], context, true),
+              child:
+                  _avatarItem(mdsAvatarType: avatarList![1], context: context, haveBorder: true, additionalPadding: p0),
             ),
           ],
         ),
@@ -42,19 +42,22 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
         color: ColorToken.white,
         child: Stack(
           children: [
-            _avatarItem(avatarList![0], context, false),
+            _avatarItem(mdsAvatarType: avatarList![0], context: context, haveBorder: false, additionalPadding: p0),
             Positioned(
               left: spacing10,
-              bottom: -spacing1,
-              child: _avatarItem(avatarList![1], context, true),
+              bottom: noSpacing,
+              child:
+                  _avatarItem(mdsAvatarType: avatarList![1], context: context, haveBorder: true, additionalPadding: p0),
             ),
             Positioned(
               left: spacing10 + spacing10,
               bottom: -spacing1,
               child: _avatarItem(
-                  MDSAvatarType(avatarText: '+' + (avatarList!.length - 2).toString(), avatarType: AvatarType.stone),
-                  context,
-                  true),
+                  mdsAvatarType: MDSAvatarType(
+                      avatarText: '+' + (avatarList!.length - 2).toString(), avatarType: AvatarType.stone),
+                  context: context,
+                  haveBorder: true,
+                  additionalPadding: p1),
             ),
           ],
         ),
@@ -64,7 +67,8 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
   }
 
   /// single item of avatar
-  Widget _avatarItem(MDSAvatarType? mdsAvatarType, BuildContext context, bool haveBorder) {
+  Widget _avatarItem(
+      {MDSAvatarType? mdsAvatarType, BuildContext? context, bool? haveBorder, EdgeInsets? additionalPadding}) {
     return Container(
       decoration: BoxDecoration(
         color: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
@@ -73,17 +77,24 @@ class MDSAvatar extends StatelessWidget with SpacingMixin, ColorMixin, FontMixin
         shape: BoxShape.circle,
         border: Border.all(
           width: spacing1,
-          color: haveBorder ? ColorToken.white : ColorToken.transparent,
+          color: haveBorder != null
+              ? haveBorder
+                  ? ColorToken.white
+                  : ColorToken.transparent
+              : ColorToken.transparent,
         ),
       ),
       child: Padding(
-        padding: p2 + p0_5 + (haveBorder ? p1 : p0),
+        ///Since icon has its own padding by default.
+        padding: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
+            ? p2 + p0_5 + (additionalPadding ?? p0)
+            : p2,
         child: mdsAvatarType?.avatarText != null && mdsAvatarType!.avatarText!.trim().isNotEmpty
             ? MDSBody(
                 mdsAvatarType.avatarText!.trim(),
                 color: _getAvatarTheme(mdsAvatarType.avatarType).values.first,
               ).copyWith(
-                context,
+                context!,
                 fontSize: fontSize17,
                 fontWeight: FontWeight.w600,
               )
