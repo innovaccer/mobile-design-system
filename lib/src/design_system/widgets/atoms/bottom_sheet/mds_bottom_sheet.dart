@@ -159,7 +159,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
   BoxDecoration _bottomSheetDecoration(bool isDismissible) {
     return BoxDecoration(
         color: ColorToken.white,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(spacingL), topRight: Radius.circular(spacingL)),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(spacing3), topRight: Radius.circular(spacing3)),
         boxShadow:
             !isDismissible ? [BoxShadow(color: secondaryLight, spreadRadius: 1, blurRadius: 10, offset: Offset(0, 3))] : null);
   }
@@ -176,7 +176,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
           children: [
             Flexible(
               child: Padding(
-                padding: pl6 + py6 + pr2,
+                padding: pl4 + py4 + pr0_5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -199,7 +199,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
             /// closing Icon for bottom sheet
             isDismissible
                 ? Padding(
-                    padding: py3 + py2 + pr3,
+                    padding: py1 + py0_5 + pr3,
                     child: MDSIconButton(
                       icon: Icons.close,
                       type: IconButtonType.transparent,
@@ -215,14 +215,14 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
 
   Widget _dragHandleWidget() {
     return Padding(
-      padding: pt6,
+      padding: pt4,
       child: Container(
-        height: spacing,
-        width: spacing4 + spacing,
+        height: spacing2,
+        width: spacing4 + spacing2,
         decoration: BoxDecoration(
           color: secondary,
           borderRadius: BorderRadius.all(
-            Radius.circular(spacingM),
+            Radius.circular(spacing1),
           ),
         ),
       ),

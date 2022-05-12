@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> with ColorMixin, SpacingMixin {
       ),
       backgroundColor: backgroundColor,
       body: Container(
-        margin: m4 + mt1,
+        margin: m2 + mt0_5,
         child: GridView.builder(
           itemCount: colorVariants.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),

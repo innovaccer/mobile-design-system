@@ -36,11 +36,11 @@ class MDSLabelButton extends StatelessWidget with ColorMixin, SpacingMixin, Font
     Widget widget = TextButton(
       style: ButtonStyle(
         padding: MaterialStateProperty.resolveWith<EdgeInsets>((Set<MaterialState> materialStates) {
-          return px4 + py5;
+          return px2 + py3;
         }),
         shape: MaterialStateProperty.resolveWith<OutlinedBorder>((Set<MaterialState> materialStates) {
           return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(spacingM + spacingS),
+            borderRadius: BorderRadius.circular(spacing1_5),
           );
         }),
         overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> materialStates) {
@@ -70,10 +70,10 @@ class MDSLabelButton extends StatelessWidget with ColorMixin, SpacingMixin, Font
           /// aligning icon to left of [title]
           if (prefixIcon != null) ...[
             Padding(
-              padding: pr3 + pr2,
+              padding: pr1 + pr0_5,
               child: Icon(
                 prefixIcon,
-                size: spacing2 + spacingM,
+                size: spacing5,
               ),
             ),
           ],

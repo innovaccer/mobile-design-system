@@ -79,8 +79,8 @@ class MDSButton extends StatelessWidget
         padding: MaterialStateProperty.resolveWith<EdgeInsets>(
             (Set<MaterialState> materialStates) {
           return (prefixIcon == null && suffixIcon == null)
-              ? py5 - py2 + px6
-              : py5 - py2 + px5;
+              ? py3 - py0_5 + px4
+              : py3 - py0_5 + px3;
         }),
         minimumSize: MaterialStateProperty.resolveWith<Size>(
             (Set<MaterialState> materialStates) {
@@ -89,7 +89,7 @@ class MDSButton extends StatelessWidget
         shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
             (Set<MaterialState> materialStates) {
           return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(spacing),
+            borderRadius: BorderRadius.circular(spacing2),
           );
         }),
         overlayColor: MaterialStateProperty.resolveWith<Color>(
@@ -131,11 +131,11 @@ class MDSButton extends StatelessWidget
                 /// aligning icon to left of [title]
                 if (prefixIcon != null) ...[
                   Padding(
-                    padding: pr3 + pr2 + pt2,
+                    padding: pr1 + pr0_5 + pt0_5,
                     child: Icon(
                       prefixIcon,
                       color: contentColor,
-                      size: spacing2 + spacingM,
+                      size: spacing5,
                     ),
                   ),
                 ],
@@ -159,11 +159,11 @@ class MDSButton extends StatelessWidget
                 /// aligning icon to right of [title]
                 if (suffixIcon != null) ...[
                   Padding(
-                    padding: pl3 + pl2 + pt2,
+                    padding: pl1 + pl0_5 + pt0_5,
                     child: Icon(
                       suffixIcon,
                       color: contentColor,
-                      size: spacing2 + spacingM,
+                      size: spacing5,
                     ),
                   ),
                 ],
@@ -179,11 +179,11 @@ class MDSButton extends StatelessWidget
               visible: _isInLoadingState,
               child: Center(
                 child: SizedBox(
-                  height: spacingXL - spacingM,
-                  width: spacingXL - spacingM,
+                  height: spacing5,
+                  width: spacing5,
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color?>(contentColor),
-                    strokeWidth: spacingS + spacingXS,
+                    strokeWidth: spacing0_5,
                   ),
                 ),
               ),
