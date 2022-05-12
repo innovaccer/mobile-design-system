@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
+import 'package:innovaccer_design_system/src/design_system/widgets/miscellaneous/custom_splash_factory.dart';
 
 class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
   // Body widget to show between header and footer
@@ -115,9 +116,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         if (mediaWidgetOnTop != null) ...[
           mediaWidgetOnTop!,
         ],
-        if (_showHeader)...[
-          _header()
-        ],
+        if (_showHeader) ...[_header()],
         Visibility(
           visible: body != null,
           child: Padding(
@@ -263,15 +262,18 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
     return Ink(
       child: Material(
         color: ColorToken.transparent,
+        shadowColor: ColorToken.transparent,
+        animationDuration: Duration(seconds: 0),
         child: InkWell(
           onTap: onFooterTap,
           hoverColor: secondaryLighter,
           splashColor: secondaryLighter,
           overlayColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> materialStates) {
-            return ColorToken.transparent;
+            return secondaryLighter;
           }),
           highlightColor: secondaryLighter,
+          splashFactory: CustomSplash.splashFactory,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,

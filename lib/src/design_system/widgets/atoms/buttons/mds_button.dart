@@ -89,7 +89,7 @@ class MDSButton extends StatelessWidget
         shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
             (Set<MaterialState> materialStates) {
           return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(spacing1_5),
+            borderRadius: BorderRadius.circular(spacing2),
           );
         }),
         overlayColor: MaterialStateProperty.resolveWith<Color>(

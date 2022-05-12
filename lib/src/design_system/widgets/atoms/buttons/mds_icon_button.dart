@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innovaccer_design_system/src/design_system/widgets/miscellaneous/custom_splash_factory.dart';
 
 import '../../../../../innovaccer_design_system.dart';
 
@@ -55,21 +56,24 @@ class MDSIconButton extends StatelessWidget with ColorMixin, SpacingMixin, FontM
       width: spacing11,
       decoration: BoxDecoration(
         color: buttonColor,
-        borderRadius: BorderRadius.circular(spacing3),
+        borderRadius: BorderRadius.circular(spacing8),
       ),
       child: Material(
         color: ColorToken.transparent,
+        shadowColor: ColorToken.transparent,
+        animationDuration: Duration(seconds: 0),
         child: InkWell(
           onTap: () {
             onTap!();
           },
-          borderRadius: BorderRadius.circular(spacing3),
+          borderRadius: BorderRadius.circular(spacing8),
           hoverColor: buttonActiveColor,
           splashColor: buttonActiveColor,
           overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> materialStates) {
-            return ColorToken.transparent;
+            return buttonActiveColor!;
           }),
           highlightColor: buttonActiveColor,
+          splashFactory: CustomSplash.splashFactory,
           child: Icon(
             icon,
             color: contentColor,

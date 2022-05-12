@@ -48,7 +48,7 @@ class MDSLabelButton extends StatelessWidget with ColorMixin, SpacingMixin, Font
         }),
         foregroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> materialStates) {
           if (state == LabelButtonState.disabled) {
-            return inverseLightest;
+            return primaryLighter;
           }
           if (state == LabelButtonState.active ||
               materialStates.contains(MaterialState.hovered) ||
@@ -73,7 +73,7 @@ class MDSLabelButton extends StatelessWidget with ColorMixin, SpacingMixin, Font
               padding: pr1 + pr0_5,
               child: Icon(
                 prefixIcon,
-                size: spacing1_5,
+                size: spacing5,
               ),
             ),
           ],
