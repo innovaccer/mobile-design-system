@@ -13,7 +13,6 @@ import 'package:example/screens/page_header/mds_basic_header/mds_basic_page_head
 import 'package:example/screens/page_header/mds_compact_page_header/mds_compact_header_screen.dart';
 import 'package:example/screens/page_header/mds_page_header_with_subHeading/mds_page_header_with_subHeading_screen.dart';
 import 'package:example/screens/page_header/mds_page_header_without_subHeading/mds_page_header_without_subHeading_screen.dart';
-import 'package:example/screens/page_header/page_header_screen.dart';
 import 'package:example/screens/pills/mds_pills_screen.dart';
 import 'package:example/screens/switch/mds_switch_screen.dart';
 import 'package:example/screens/typography/body/mds_body_screen.dart';
@@ -31,7 +30,7 @@ class Constants {
   static final Map<String, String> widgetMap = {
     'Typography': TypographyScreen.routeName,
     'Buttons': ButtonScreen.routeName,
-    'PageHeaders': PageHeadersScreen.routeName,
+    //'PageHeaders': PageHeadersScreen.routeName,
     'Action Sheet': MDSActionSheetScreen.routeName,
     'Card': MDSCardScreen.routeName,
     'Bottom Sheet': MDSBottomSheetScreen.routeName,
