@@ -4,6 +4,7 @@ export 'src/design_system/utils/common.dart';
 export 'src/design_system/utils/constants.dart';
 export 'src/design_system/utils/us_number_formatter.dart';
 export 'src/design_system/widgets/atoms/action_sheet/mds_action_sheet.dart';
+export 'src/design_system/widgets/atoms/avatar/mds_avatar.dart';
 export 'src/design_system/widgets/atoms/bottom_sheet/mds_bottom_sheet.dart';
 export 'src/design_system/widgets/atoms/badges/mds_badge.dart';
 export 'src/design_system/widgets/atoms/pills/mds_pill.dart';

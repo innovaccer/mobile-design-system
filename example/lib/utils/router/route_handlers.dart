@@ -1,4 +1,5 @@
 import 'package:example/screens/action_sheet/mds_action_sheet_screen.dart';
+import 'package:example/screens/avatar/mds_avatar_screen.dart';
 import 'package:example/screens/badge/mds_badge_screen.dart';
 import 'package:example/screens/bottom_sheet/mds_bottom_sheet_screen.dart';
 import 'package:example/screens/buttons/button/mds_button_screen.dart';
@@ -117,6 +118,9 @@ mixin RouteHandlers {
   });
   var mdsInputScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
     return MDSInputScreen();
+  });
+  var mdsAvatarHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+    return MDSAvatarScreen();
   });
   var mdsBadgeScreenHandler = Handler(handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
     return MDSBadgeScreen();
