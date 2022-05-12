@@ -9,7 +9,7 @@ class MDSPillsScreen extends StatefulWidget {
 }
 
 class _MDSPillsScreenState extends State<MDSPillsScreen> with SpacingMixin, ColorMixin {
-  String _defaultCount = '9';
+  final String _defaultCount = '9';
   PillType _pillType = PillType.solid;
   PillAppearance _pillAppearance = PillAppearance.jal;
 

@@ -9,7 +9,7 @@ class MDSBadgeScreen extends StatefulWidget {
 }
 
 class _MDSBadgeScreenState extends State<MDSBadgeScreen> with SpacingMixin, ColorMixin {
-  String _defaultText = 'BADGE';
+  final String _defaultText = 'BADGE';
   BadgeType _badgeType = BadgeType.solid;
   BadgeAppearance _badgeAppearance = BadgeAppearance.jal;
 
