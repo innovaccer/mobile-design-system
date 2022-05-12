@@ -1,6 +1,6 @@
 ## [0.0.4] - 22nd Apr 2022
 
-* Button sizing changes, updated label button disabled state and fixed the issue of splash transition time issue in icon button
+* Support for Badges, Pills, Avatar, Button sizing changes, updated label button disabled state and fixed the issue of splash transition time issue in icon button
 
 ## [0.0.3] - 21st Apr 2022
 
