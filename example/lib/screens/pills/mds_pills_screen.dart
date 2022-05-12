@@ -22,7 +22,7 @@ class _MDSPillsScreenState extends State<MDSPillsScreen> with SpacingMixin, Colo
         ),
       ),
       body: Padding(
-        padding: px6 + pt4,
+        padding: px4 + pt2,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

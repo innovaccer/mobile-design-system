@@ -38,7 +38,7 @@ class _MDSLabelButtonScreenState extends State<MDSLabelButtonScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: px6,
+                    padding: px4,
                     child: MDSLabelButton(
                       title: 'This is a label button. Tap here.',
                       onTap: () {
@@ -56,7 +56,7 @@ class _MDSLabelButtonScreenState extends State<MDSLabelButtonScreen>
           Expanded(
             flex: 8,
             child: Container(
-              padding: px6 + pt4,
+              padding: px4 + pt2,
               child: ListView(
                 padding: p0,
                 children: [
@@ -112,7 +112,7 @@ class _MDSLabelButtonScreenState extends State<MDSLabelButtonScreen>
                                       value: _iconData != null,
                                       onChanged: _updateIconDataValue,
                                     ),
-                              padding: pl4,
+                              padding: pl2,
                             ),
                           ],
                         ),
@@ -121,7 +121,7 @@ class _MDSLabelButtonScreenState extends State<MDSLabelButtonScreen>
                   ),
                   Divider(),
                   SizedBox(
-                    height: spacingXL,
+                    height: spacing6,
                   )
                 ],
               ),
