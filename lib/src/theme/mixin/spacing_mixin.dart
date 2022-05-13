@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 mixin SpacingMixin {
   /// Sizes
   // double get noSpacing => 0;
@@ -18,6 +19,7 @@ mixin SpacingMixin {
   // double get spacing9 => 256;
 
   double get noSpacing => 0;
+  double get spacing0_25 => 1;
   double get spacing0_5 => 2;
   double get spacing1 => 4;
   double get spacing1_5 => 6;
@@ -33,7 +35,6 @@ mixin SpacingMixin {
   double get spacing12 => 48;
   double get spacing14 => 56;
   double get spacing16 => 64;
-
 
   /// Utilities for setting margin in all directions
   // EdgeInsets get m0 => EdgeInsets.all(noSpacing);

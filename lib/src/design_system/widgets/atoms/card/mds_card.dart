@@ -87,7 +87,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         borderRadius: BorderRadius.circular(spacing1),
         border: isFlatCard
             ? Border.all(
-                width: spacing0_5,
+                width: spacing0_25,
                 style: BorderStyle.solid,
                 color: secondaryLight,
               )
@@ -98,7 +98,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
                 BoxShadow(
                   color: shadowColor,
                   blurRadius: spacing1,
-                  offset: Offset(noSpacing, spacing0_5),
+                  offset: Offset(noSpacing, spacing0_25),
                   spreadRadius: noSpacing,
                 ),
               ],
@@ -127,7 +127,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         if (footer != null) ...[
           if (_showHeader || body != null) ...[
             Divider(
-              height: spacing0_5,
+              height: spacing0_25,
               color: secondaryLight,
             ),
           ],
@@ -136,7 +136,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
         if ((_showActionsInFooter || _showLabelInFooter) && footer == null) ...[
           if (_showHeader || body != null) ...[
             Divider(
-              height: spacing0_5,
+              height: spacing0_25,
               color: secondaryLight,
             ),
           ],
@@ -154,8 +154,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
       children: [
         Flexible(
           child: Padding(
-            padding:
-                headerSuffixIcon != null ? pl4 + py4 + pr1 : pl4 + py4 + pr4,
+            padding: headerSuffixIcon != null ? pl4 + py4 + pr1 : pl4 + py4 + pr4,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,7 +163,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
                 if (isSubTitleOnTop && _showSubTitle) ...[
                   _subTitleWidget(),
                   SizedBox(
-                    height: spacing0_5,
+                    height: spacing0_25,
                   ),
                 ],
                 Flexible(
@@ -174,7 +173,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
                 ),
                 if (!isSubTitleOnTop && _showSubTitle) ...[
                   SizedBox(
-                    height: spacing0_5,
+                    height: spacing0_25,
                   ),
                   _subTitleWidget(),
                 ],
@@ -238,10 +237,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
               ),
             ],
             Visibility(
-              visible: actionText1 != null &&
-                  actionText1!.isNotEmpty &&
-                  actionText2 != null &&
-                  actionText2!.isNotEmpty,
+              visible: actionText1 != null && actionText1!.isNotEmpty && actionText2 != null && actionText2!.isNotEmpty,
               child: SizedBox(
                 width: spacing2,
               ),
@@ -268,8 +264,7 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
           onTap: onFooterTap,
           hoverColor: secondaryLighter,
           splashColor: secondaryLighter,
-          overlayColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> materialStates) {
+          overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> materialStates) {
             return secondaryLighter;
           }),
           highlightColor: secondaryLighter,
@@ -328,8 +323,6 @@ class MDSCard extends StatelessWidget with ColorMixin, SpacingMixin {
   bool get _showSubTitle => (subTitle != null && subTitle!.isNotEmpty);
   bool get _showHeader => (title != null && title!.isNotEmpty);
   bool get _showActionsInFooter =>
-      ((actionText1 != null && actionText1!.isNotEmpty) ||
-          (actionText2 != null && actionText2!.isNotEmpty));
-  bool get _showLabelInFooter =>
-      (footerLabelText != null && footerLabelText!.isNotEmpty);
+      ((actionText1 != null && actionText1!.isNotEmpty) || (actionText2 != null && actionText2!.isNotEmpty));
+  bool get _showLabelInFooter => (footerLabelText != null && footerLabelText!.isNotEmpty);
 }

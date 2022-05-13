@@ -47,8 +47,8 @@ class _MDSListScreenState extends State<MDSListScreen> with SpacingMixin, ColorM
         Padding(
           padding: pt0_5,
           child: Container(
-            height: spacing4 - spacing3,
-            width: spacing4 - spacing3,
+            height: spacing8,
+            width: spacing8,
             child: Center(child: MDSBody('I$i', color: ColorToken.white)),
             decoration: BoxDecoration(
               color: randomColors[i % (randomColors.length)],
