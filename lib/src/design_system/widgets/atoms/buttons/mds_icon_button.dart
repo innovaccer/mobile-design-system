@@ -93,7 +93,7 @@ class MDSIconButton extends StatelessWidget with ColorMixin, SpacingMixin, FontM
       width: spacing11,
       decoration: BoxDecoration(
         color: buttonColor,
-        borderRadius: BorderRadius.circular(spacing3),
+        borderRadius: BorderRadius.circular(spacing5 + spacing0_5),
       ),
       child: Center(
         child: SizedBox(
