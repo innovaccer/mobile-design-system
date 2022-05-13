@@ -60,7 +60,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
       preferredSize = maxAppBarHeightWithoutSubheading;
     }
     headerPositionFromTop = spacing11 - spacing0_5;
-    headerPositionFromLeft = spacing2;
+    headerPositionFromLeft = spacing4;
     headingFontSize = showBackButton ? fontSize28 : fontSize34;
     headingFontWeight = FontWeight.w700;
     appBarColor = secondaryLightest;
@@ -77,11 +77,11 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
           if (widget.controller!.position.userScrollDirection == ScrollDirection.reverse) {
             if (isCompactHeader) {
               setState(() {
-                headerPositionFromTop = widget.subHeading!.isNotEmpty ? spacing0_5 : spacing2;
+                headerPositionFromTop = widget.subHeading!.isNotEmpty ? spacing0_5 : spacing4;
                 headingFontSize = widget.subHeading!.isNotEmpty ? 17 : 22;
                 headerPositionFromLeft = spacing14 - spacing1;
                 headingFontWeight = FontWeight.w600;
-                preferredSize = spacing4;
+                preferredSize = spacing12;
                 appBarColor = ColorToken.white;
                 subHeadingFontSize = fontSize13;
                 subHeadingFontWeight = FontWeight.w600;
@@ -100,7 +100,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
                 if (isProminentHeader) {
                   setState(() {
                     headerPositionFromTop = spacing11 - spacing0_5;
-                    headerPositionFromLeft = spacing2;
+                    headerPositionFromLeft = spacing4;
                     headingFontSize = showBackButton ? fontSize28 : fontSize34;
                     headingFontWeight = FontWeight.w700;
                     appBarColor = secondaryLightest;
@@ -170,7 +170,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
                       duration: Duration(milliseconds: animationDuration),
                       curve: Curves.linear,
                       top: headerPositionFromTop,
-                      left: showBackButton ? headerPositionFromLeft : spacing2,
+                      left: showBackButton ? headerPositionFromLeft : spacing4,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -263,7 +263,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
   bool get isCompactHeader => (headerPositionFromLeft != spacing14 - spacing1 &&
       headerPositionFromLeft != spacing14 - spacing1 &&
       headingFontWeight != FontWeight.w600 &&
-      preferredSize != spacing4 &&
+      preferredSize != spacing12 &&
       appBarColor != ColorToken.white &&
       subHeadingFontSize != fontSize13 &&
       subHeadingFontWeight != FontWeight.w600 &&
@@ -271,7 +271,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithSubheading>
       headingLetterSpacing != letterSpacing1 &&
       subHeadingLetterSpacing != letterSpacing3);
 
-  bool get isProminentHeader => (headerPositionFromLeft != spacing2 &&
+  bool get isProminentHeader => (headerPositionFromLeft != spacing4 &&
       headerPositionFromTop != spacing11 - spacing0_5 &&
       headingFontSize != fontSize28 &&
       headingFontWeight != FontWeight.w700 &&

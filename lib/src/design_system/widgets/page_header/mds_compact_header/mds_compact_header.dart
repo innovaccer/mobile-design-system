@@ -47,7 +47,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
     }
     maxAppBarHeightWithSubheading = spacing16 + spacing11;
     maxAppBarHeightWithoutSubheading = spacing16 + spacing6;
-    preferredSize = spacing4;
+    preferredSize = spacing12;
     headerPositionFromTop = widget.subHeading.isNotEmpty ? spacing0_5 : spacing2;
     headingFontSize = widget.subHeading.isNotEmpty ? 17 : 22;
     headerPositionFromLeft = spacing14 - spacing1;
@@ -102,7 +102,7 @@ class _PageHeaderScreenState extends State<MDSCompactPageHeader> with SpacingMix
                     ),
                     Positioned(
                       top: headerPositionFromTop,
-                      left: showBackButton ? headerPositionFromLeft : spacing2,
+                      left: showBackButton ? headerPositionFromLeft : spacing12,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

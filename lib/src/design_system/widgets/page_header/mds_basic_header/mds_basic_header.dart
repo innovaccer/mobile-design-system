@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 import 'package:innovaccer_design_system/src/design_system/utils/page_header_mixin.dart';
 
-
 class MDSBasicPageHeader extends StatefulWidget {
   final String? heading;
 
@@ -30,7 +29,7 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
   void initState() {
     super.initState();
     maxAppBarHeightWithSubheading = spacing16 + spacing11;
-    maxAppBarHeightWithoutSubheading = spacing16 + spacing5 - spacing0_5;
+    maxAppBarHeightWithoutSubheading = spacing16 + spacing5 + spacing0_5;
     preferredSize = maxAppBarHeightWithoutSubheading;
     headerPositionFromTop = spacing11 - spacing0_5;
     headingFontSize = fontSize34;
@@ -48,7 +47,7 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
                 headerPositionFromTop = spacing2;
                 headingFontSize = 22;
                 headingFontWeight = FontWeight.w600;
-                preferredSize = spacing4;
+                preferredSize = spacing12;
                 appBarColor = ColorToken.white;
                 headingLineHeight = fontLineHeight28;
                 headingLetterSpacing = letterSpacing1;
@@ -110,7 +109,7 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
                       duration: Duration(milliseconds: animationDuration),
                       curve: Curves.linear,
                       top: headerPositionFromTop,
-                      left: spacing2,
+                      left: spacing4,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -146,7 +145,7 @@ class _PageHeaderScreenState extends State<MDSBasicPageHeader> with SpacingMixin
   }
 
   bool get isCompactHeader => (headingFontWeight != FontWeight.w600 &&
-      preferredSize != spacing4 &&
+      preferredSize != spacing12 &&
       appBarColor != ColorToken.white &&
       headingLetterSpacing != letterSpacing1);
 
