@@ -24,13 +24,14 @@ import 'package:example/screens/typography/scaler/text_scaler_screen.dart';
 import 'package:example/screens/typography/subhead/mds_subhead_screen.dart';
 import 'package:example/screens/typography/title/mds_title_screen.dart';
 import 'package:example/screens/typography/typography_screen.dart';
+import '../screens/page_header/page_header_screen.dart';
 
 class Constants {
   /// title and routes of all core-ui widgets
   static final Map<String, String> widgetMap = {
     'Typography': TypographyScreen.routeName,
     'Buttons': ButtonScreen.routeName,
-    //'PageHeaders': PageHeadersScreen.routeName,
+    'PageHeaders': PageHeadersScreen.routeName,
     'Action Sheet': MDSActionSheetScreen.routeName,
     'Card': MDSCardScreen.routeName,
     'Bottom Sheet': MDSBottomSheetScreen.routeName,

@@ -10,6 +10,7 @@ class MDSCompactPageHeaderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MDSCompactPageHeader(
       heading: 'Heading',
+      subHeading: 'Sub Heading',
       listOfActionIcons: [
         MDSIconButton(
           type: IconButtonType.transparent,

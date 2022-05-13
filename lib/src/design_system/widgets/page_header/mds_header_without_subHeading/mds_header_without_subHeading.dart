@@ -54,7 +54,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithOutSubHeading>
     maxAppBarHeightWithoutSubheading = spacing16 + spacing6;
     preferredSize = maxAppBarHeightWithoutSubheading;
     headerPositionFromTop = spacing11 - spacing0_5;
-    headerPositionFromLeft = spacing2;
+    headerPositionFromLeft = spacing4;
     headingFontSize = fontSize34;
     headingFontWeight = FontWeight.w700;
     appBarColor = secondaryLightest;
@@ -71,7 +71,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithOutSubHeading>
                 headingFontSize = 22;
                 headerPositionFromLeft = spacing14 - spacing1;
                 headingFontWeight = FontWeight.w600;
-                preferredSize = spacing4;
+                preferredSize = spacing12;
                 appBarColor = ColorToken.white;
                 headingLineHeight = fontLineHeight28;
                 headingLetterSpacing = letterSpacing1;
@@ -86,7 +86,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithOutSubHeading>
                 if (isProminentHeader) {
                   setState(() {
                     headerPositionFromTop = spacing11 - spacing0_5;
-                    headerPositionFromLeft = spacing2;
+                    headerPositionFromLeft = spacing4;
                     headingFontSize = fontSize34;
                     headingFontWeight = FontWeight.w700;
                     appBarColor = secondaryLightest;
@@ -148,7 +148,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithOutSubHeading>
                       duration: Duration(milliseconds: animationDuration),
                       curve: Curves.linear,
                       top: headerPositionFromTop,
-                      left: showBackButton ? headerPositionFromLeft : spacing2,
+                      left: showBackButton ? headerPositionFromLeft : spacing4,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -224,7 +224,7 @@ class _PageHeaderScreenState extends State<MDSPageHeaderWithOutSubHeading>
       appBarColor != ColorToken.white &&
       headingLetterSpacing != letterSpacing1);
 
-  bool get isProminentHeader => (headerPositionFromLeft != spacing2 &&
+  bool get isProminentHeader => (headerPositionFromLeft != spacing4 &&
       headerPositionFromTop != spacing11 - spacing0_5 &&
       headingFontSize != fontSize28 &&
       headingFontWeight != FontWeight.w700 &&
