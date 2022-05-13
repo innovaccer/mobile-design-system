@@ -10,8 +10,7 @@ class MDSCardScreen extends StatefulWidget {
   _MDSCardScreenState createState() => _MDSCardScreenState();
 }
 
-class _MDSCardScreenState extends State<MDSCardScreen>
-    with SpacingMixin, ColorMixin {
+class _MDSCardScreenState extends State<MDSCardScreen> with SpacingMixin, ColorMixin {
   late bool isFlatCard;
   Widget? body;
   late String? title;
@@ -46,12 +45,29 @@ class _MDSCardScreenState extends State<MDSCardScreen>
     footerLabelText = 'Footer Text';
     footerPrefixIcon = Icons.event;
     footerSuffixIcon = Icons.chevron_right;
-    onHeaderSuffixIconTap =
-        () => print('onHeaderSuffixIconTap');
+    onHeaderSuffixIconTap = () => print('onHeaderSuffixIconTap');
     onAction1Tap = () => print('onAction1Tap');
     onAction2Tap = () => print('onAction2Tap');
     onFooterTap = () => print('onFooterTap');
     footerEnabled = true;
+  }
+
+  Widget getWrapper({required Widget child}) {
+    return mediaWidgetOnTop != null
+        ? ListView(
+            children: [
+              Padding(
+                padding: p4,
+                child: child,
+              )
+            ],
+          )
+        : Padding(
+            padding: p4,
+            child: Center(
+              child: child,
+            ),
+          );
   }
 
   @override
@@ -64,35 +80,32 @@ class _MDSCardScreenState extends State<MDSCardScreen>
       body: Column(
         children: [
           Expanded(
-            flex: mediaWidgetOnTop != null ? 7 : 5,
-            child: Padding(
-              padding: p4,
-              child: Center(
-                child: MDSCard(
-                  isFlatCard: isFlatCard,
-                  title: title,
-                  subTitle: subTitle,
-                  subTitlePrefixIcon: subTitleIcon,
-                  headerSuffixIcon: headerSuffixIcon,
-                  isSubTitleOnTop: isSubTitleOnTop,
-                  onHeaderSuffixIconTap: onHeaderSuffixIconTap,
-                  body: body,
-                  actionText1: actionText1,
-                  actionText2: actionText2,
-                  footerLabelText: footerLabelText,
-                  footerPrefixIcon: footerPrefixIcon,
-                  footerSuffixIcon: footerSuffixIcon,
-                  onAction1Tap: onAction1Tap,
-                  onAction2Tap: onAction2Tap,
-                  onFooterTap: onFooterTap,
-                  mediaWidgetOnTop: mediaWidgetOnTop,
-                ),
+            flex: 6,
+            child: getWrapper(
+              child: MDSCard(
+                isFlatCard: isFlatCard,
+                title: title,
+                subTitle: subTitle,
+                subTitlePrefixIcon: subTitleIcon,
+                headerSuffixIcon: headerSuffixIcon,
+                isSubTitleOnTop: isSubTitleOnTop,
+                onHeaderSuffixIconTap: onHeaderSuffixIconTap,
+                body: body,
+                actionText1: actionText1,
+                actionText2: actionText2,
+                footerLabelText: footerLabelText,
+                footerPrefixIcon: footerPrefixIcon,
+                footerSuffixIcon: footerSuffixIcon,
+                onAction1Tap: onAction1Tap,
+                onAction2Tap: onAction2Tap,
+                onFooterTap: onFooterTap,
+                mediaWidgetOnTop: mediaWidgetOnTop,
               ),
             ),
           ),
           Divider(),
           Expanded(
-            flex: mediaWidgetOnTop != null ? 3 : 5,
+            flex: 4,
             child: Container(
               padding: px4,
               child: ListView(
@@ -276,13 +289,11 @@ class _MDSCardScreenState extends State<MDSCardScreen>
                               children: [
                                 MDSCommon.isAndroid()
                                     ? Switch(
-                                        value: actionText1 != null &&
-                                            actionText2 != null,
+                                        value: actionText1 != null && actionText2 != null,
                                         onChanged: _enableActionsInFooter,
                                       )
                                     : CupertinoSwitch(
-                                        value: actionText1 != null &&
-                                            actionText2 != null,
+                                        value: actionText1 != null && actionText2 != null,
                                         onChanged: _enableActionsInFooter,
                                       ),
                               ],
