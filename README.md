@@ -7,7 +7,7 @@
   Mobile Design System
 </h1>
 
-> Mobile Design System is based on [Masala Design System](https://design.innovaccer.com/0ee0e5c39/v/0/p/236af3--guidelines/b/254b8b) (MDS) is an open-source design system built at Innovaccer.
+> Mobile Design System is based on [Masala Design System](https://design.innovaccer.com/) (MDS) is an open-source design system built at Innovaccer.
 > This is a simple and customizable component library for mobile apps to build faster, beautiful,
 > and more accessible Flutter applications on the guidelines and principles of
 > Masala Design System.
