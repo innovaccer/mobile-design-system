@@ -234,6 +234,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
     _prefixIcon = widget.prefixIcon;
     _textInputType = widget.textInputType;
     _textFieldFocusNode = widget.textFieldFocusNode ?? FocusNode();
+    _overlayEntry = null;
 
     _textFieldFocusNode.addListener(_handleTextFieldFocusChange);
 
@@ -312,6 +313,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
         onCodeSubmitted: (code) {
           widget.textEditingController!.text = code.trim();
         },
+        inputFormatters:[FilteringTextInputFormatter.digitsOnly],
         onCodeChanged: (code) {
           if (code!.length == widget.verificationCodeLength || code.isEmpty) {
             FocusScope.of(context).requestFocus(FocusNode());
