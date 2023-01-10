@@ -16,6 +16,7 @@ dependencies:
   flutter_styled_toast: ^2.0.0
   flutter_linkify: ^5.0.2
   sms_autofill: ^2.2.0
+  decimal: ^2.3.2
 
 dev_dependencies:
   flutter_test:
