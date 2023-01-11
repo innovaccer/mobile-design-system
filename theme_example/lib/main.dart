@@ -5,7 +5,9 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ThemeManager.shared.fetchPersistedThemeFromLocalStorage().then((theme) {
+  await ThemeManagerHelper()
+      .fetchPersistedThemeFromLocalStorage()
+      .then((theme) {
     ThemeManager.init(persistedTheme: theme);
   });
 
@@ -45,7 +47,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with ColorMixin, SpacingMixin {
   @override
   Widget build(BuildContext context) {
-    final colorVariants = [primary, secondary, success, alert, warning, accent1, accent2, accent3, accent4];
+    final colorVariants = [
+      primary,
+      secondary,
+      success,
+      alert,
+      warning,
+      accent1,
+      accent2,
+      accent3,
+      accent4
+    ];
     final colorVariantsName = [
       'primary',
       'secondary',
@@ -66,14 +78,17 @@ class _MyHomePageState extends State<MyHomePage> with ColorMixin, SpacingMixin {
             color: textBlackColor,
           ),
         ),
-        systemOverlayStyle: brightness == Brightness.dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
+        systemOverlayStyle: brightness == Brightness.dark
+            ? SystemUiOverlayStyle.light
+            : SystemUiOverlayStyle.dark,
       ),
       backgroundColor: backgroundColor,
       body: Container(
         margin: m2 + mt0_5,
         child: GridView.builder(
           itemCount: colorVariants.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
           itemBuilder: (_, index) {
             return Container(
               color: colorVariants[index],
@@ -91,14 +106,15 @@ class _MyHomePageState extends State<MyHomePage> with ColorMixin, SpacingMixin {
       ),
       floatingActionButton: InkWell(
         onTap: () {
-          if (ThemeManager.shared.currentTheme == ColorThemes.mdsStandardTheme) {
+          if (ThemeManager.shared.currentTheme ==
+              ColorThemes.mdsStandardTheme) {
             ThemeManager.shared.updateTheme(to: ThemeType.mdsStandardDarkTheme);
           } else {
             ThemeManager.shared.updateTheme(to: ThemeType.mdsStandardTheme);
           }
         },
         child: Container(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           color: secondary,
           child: Icon(
             Icons.autorenew,

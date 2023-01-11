@@ -3,13 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+final String persistedThemeKey = 'persistedThemeKey';
+
 class ThemeManager extends ChangeNotifier {
   ///The singleton instance of the Theme Manager
   static ThemeManager? _sharedInstance;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   factory ThemeManager.init({ColorTheme? persistedTheme}) {
-    _sharedInstance ??= ThemeManager._(persistedTheme: persistedTheme ?? ColorThemes.mdsStandardTheme);
+    _sharedInstance ??= ThemeManager._(
+        persistedTheme: persistedTheme ?? ColorThemes.mdsStandardTheme);
     // since you are sure you will return non-null value, add '!' operator
     return _sharedInstance!;
   }
@@ -24,8 +27,6 @@ class ThemeManager extends ChangeNotifier {
   static ThemeManager get shared {
     return _sharedInstance ?? ThemeManager.init();
   }
-
-  final String persistedThemeKey = 'persistedThemeKey';
 
   ColorTheme currentTheme = ColorThemes.mdsStandardTheme;
 
@@ -49,18 +50,6 @@ class ThemeManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<ColorTheme> fetchPersistedThemeFromLocalStorage() async {
-    final SharedPreferences prefs = await _prefs;
-    String? persistedTheme = prefs.getString(persistedThemeKey);
-    if (persistedTheme == ThemeType.mdsStandardDarkTheme.key) {
-      return ColorThemes.mdsStandardDarkTheme;
-    } else if (persistedTheme == ThemeType.mdsStandardTheme.key) {
-      return ColorThemes.mdsStandardTheme;
-    } else {
-      return ColorThemes.mdsStandardTheme;
-    }
-  }
-
   void _persistTheme(ThemeType type) async {
     final SharedPreferences prefs = await _prefs;
     await prefs.setString(persistedThemeKey, type.key);
@@ -72,5 +61,20 @@ class ThemeManager extends ChangeNotifier {
         statusBarBrightness: currentTheme.brightness,
       ),
     );
+  }
+}
+
+class ThemeManagerHelper {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  Future<ColorTheme> fetchPersistedThemeFromLocalStorage() async {
+    final SharedPreferences prefs = await _prefs;
+    String? persistedTheme = prefs.getString(persistedThemeKey);
+    if (persistedTheme == ThemeType.mdsStandardDarkTheme.key) {
+      return ColorThemes.mdsStandardDarkTheme;
+    } else if (persistedTheme == ThemeType.mdsStandardTheme.key) {
+      return ColorThemes.mdsStandardTheme;
+    } else {
+      return ColorThemes.mdsStandardTheme;
+    }
   }
 }
