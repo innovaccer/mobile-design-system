@@ -1,10 +1,19 @@
+## [0.0.7] - 20th Jan 2023
+
+* Updated Dependencies
+
+## [0.0.6] - 15th Jan 2023
+
+* Updated Dependencies
+
 ## [0.0.5] - 22nd Apr 2022
 
 * Spacing UI Bug Fixes, Page Header animation fix
 
 ## [0.0.4] - 22nd Apr 2022
 
-* Support for Badges, Pills, Avatar, Button sizing changes, updated label button disabled state and fixed the issue of splash transition time issue in icon button
+* Support for Badges, Pills, Avatar, Button sizing changes, updated label button disabled state and
+  fixed the issue of splash transition time issue in icon button
 
 ## [0.0.3] - 21st Apr 2022
 
