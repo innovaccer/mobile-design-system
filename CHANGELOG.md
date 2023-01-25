@@ -1,3 +1,7 @@
+## [0.0.8] - 20th Jan 2023
+
+* Bug Fixes in Input and support of Pin Codes
+
 ## [0.0.7] - 20th Jan 2023
 
 * Updated Dependencies
