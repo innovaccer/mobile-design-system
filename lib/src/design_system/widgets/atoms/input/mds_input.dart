@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sms_autofill/sms_autofill.dart';
+import 'package:decimal/decimal.dart';
 
 import '../../../../../innovaccer_design_system.dart';
 
@@ -185,13 +186,15 @@ class MDSInput extends StatefulWidget {
     this.isMetric = false,
     this.isVerificationCode = false,
     this.verificationCodeLength = 4,
-  }) : assert(textEditingController != null && parentContext != null, 'Either textEditingController or parentContext is null');
+  }) : assert(textEditingController != null && parentContext != null,
+            'Either textEditingController or parentContext is null');
 
   @override
   _MDSInputState createState() => _MDSInputState();
 }
 
-class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, FontMixin {
+class _MDSInputState extends State<MDSInput>
+    with SpacingMixin, ColorMixin, FontMixin {
   /// [_textFieldFocusNode] is the property for [MDSInput] used to
   /// get its focus
   late FocusNode _textFieldFocusNode;
@@ -221,7 +224,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
   List<TextInputFormatter>? _inputFormatters;
 
   /// local value for metric
-  late int _metricValue;
+  late double _metricValue;
 
   TextInputType? _textInputType;
 
@@ -234,6 +237,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
     _prefixIcon = widget.prefixIcon;
     _textInputType = widget.textInputType;
     _textFieldFocusNode = widget.textFieldFocusNode ?? FocusNode();
+    _overlayEntry = null;
 
     _textFieldFocusNode.addListener(_handleTextFieldFocusChange);
 
@@ -269,11 +273,17 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
       _suffixIcon = null;
     } else {
       /// limiting length to only numberOfCharactersAllowed
-      _inputFormatters = [LengthLimitingTextInputFormatter(widget.numberOfCharactersAllowed)];
+      _inputFormatters = [
+        LengthLimitingTextInputFormatter(widget.numberOfCharactersAllowed)
+      ];
     }
     if (widget.isMetric!) {
+      // restricting the user from type the invalid value
+      _inputFormatters = [
+        FilteringTextInputFormatter.allow(RegExp(r'^-?\d*\.?\d*'))
+      ];
       _textInputType = TextInputType.number;
-      widget.textEditingController!.text = _metricValue.toString();
+      widget.textEditingController!.text = _metricValue.toInt().toString();
     }
   }
 
@@ -298,7 +308,8 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
           strokeColorBuilder: PinListenColorBuilder(primary, secondary),
           strokeWidth: spacing0_5,
           radius: Radius.circular(spacing2),
-          bgColorBuilder: PinListenColorBuilder(ColorToken.white, ColorToken.white),
+          bgColorBuilder:
+              PinListenColorBuilder(ColorToken.white, ColorToken.white),
         ),
         cursor: Cursor(
           width: spacing0_5,
@@ -312,6 +323,7 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
         onCodeSubmitted: (code) {
           widget.textEditingController!.text = code.trim();
         },
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         onCodeChanged: (code) {
           if (code!.length == widget.verificationCodeLength || code.isEmpty) {
             FocusScope.of(context).requestFocus(FocusNode());
@@ -350,8 +362,11 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
               )
             : Container(),
         TextFormField(
-          onTap: () => widget.textFieldOnTap != null ? widget.textFieldOnTap!() : {},
-          keyboardType: widget.isMultiLine! ? TextInputType.multiline : _textInputType ?? TextInputType.text,
+          onTap: () =>
+              widget.textFieldOnTap != null ? widget.textFieldOnTap!() : {},
+          keyboardType: widget.isMultiLine!
+              ? TextInputType.multiline
+              : _textInputType ?? TextInputType.text,
           textInputAction: widget.textInputAction,
           key: widget.textFormFieldKey,
           obscureText: _obscureText,
@@ -362,10 +377,13 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
           textCapitalization: widget.textCapitalization!,
           enableInteractiveSelection: widget.isInteractiveSelectionEnabled!,
           controller: widget.textEditingController,
-          autovalidateMode: _isFirstFocus ? AutovalidateMode.disabled : AutovalidateMode.onUserInteraction,
+          autovalidateMode: _isFirstFocus
+              ? AutovalidateMode.disabled
+              : AutovalidateMode.onUserInteraction,
           validator: widget.validator,
           inputFormatters: widget.inputFormatters ?? _inputFormatters,
-          textAlign: widget.isMetric! ? TextAlign.center : widget.textAlignment!,
+          textAlign:
+              widget.isMetric! ? TextAlign.center : widget.textAlignment!,
           style: TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: fontSize16,
@@ -377,8 +395,12 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
             contentPadding: EdgeInsets.only(
               top: spacing3,
               bottom: spacing3,
-              left: (widget.prefixIcon != null || widget.isMetric!) ? spacing2 : spacing2,
-              right: (widget.suffixIcon != null || widget.isMetric!) ? spacing2 : spacing2,
+              left: (widget.prefixIcon != null || widget.isMetric!)
+                  ? spacing2
+                  : spacing2,
+              right: (widget.suffixIcon != null || widget.isMetric!)
+                  ? spacing2
+                  : spacing2,
             ),
             hintText: widget.placeholderText,
             hintStyle: TextStyle(
@@ -388,19 +410,22 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
               height: fontLineHeight20 / fontSize16,
             ),
 
-            prefixIcon: _prefixIcon != null || widget.prefixText != null || widget.isMetric!
+            prefixIcon: _prefixIcon != null ||
+                    widget.prefixText != null ||
+                    widget.isMetric!
                 ? GestureDetector(
                     onTap: () {
                       if (widget.prefixIconCallback != null) {
                         widget.prefixIconCallback!();
                       } else if (widget.isMetric!) {
-                        /// decreasing _metricValue by tapping on + icon
-                        FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
-                        if (_metricValue > 0) {
-                          _metricValue -= 1;
-                        }
+                        /// decreasing _metricValue by tapping on - icon
+                        FocusScope.of(widget.parentContext!)
+                            .requestFocus(FocusNode());
+                        _metricValue = (Decimal.parse(_metricValue.toString())                             -Decimal.one
+                            ).toDouble();
                         setState(() {
-                          widget.textEditingController!.text = _metricValue.toString();
+                          widget.textEditingController!.text =
+                              _metricValue.toString();
                         });
                       }
                     },
@@ -414,7 +439,9 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
                           )
                         : Icon(
                             _prefixIcon ?? Icons.remove,
-                            color: widget.isMetric! ? ColorToken.black : inverseLightest,
+                            color: widget.isMetric!
+                                ? ColorToken.black
+                                : inverseLightest,
                             size: spacing1_5,
                           ),
                   )
@@ -422,51 +449,58 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
 
             /// bypassing the null check for suffix icon in case of TextInputType
             /// as password field
-            suffixIcon:
-                (_suffixIcon != null || widget.suffixIconWidget != null || (_textInputType == TextInputType.visiblePassword)) ||
-                        widget.suffixText != null ||
-                        widget.isMetric!
-                    ? GestureDetector(
-                        onTap: () {
-                          /// making text visibility in field on and off when
-                          /// user clicks on suffixIcon if textInputType is visiblePassword
-                          if (_textInputType == TextInputType.visiblePassword) {
-                            setState(() {
-                              _obscureText = !_obscureText;
-                            });
-                          }
+            suffixIcon: (_suffixIcon != null ||
+                        widget.suffixIconWidget != null ||
+                        (_textInputType == TextInputType.visiblePassword)) ||
+                    widget.suffixText != null ||
+                    widget.isMetric!
+                ? GestureDetector(
+                    onTap: () {
+                      /// making text visibility in field on and off when
+                      /// user clicks on suffixIcon if textInputType is visiblePassword
+                      if (_textInputType == TextInputType.visiblePassword) {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      }
 
-                          if (widget.suffixIconCallback != null) {
-                            widget.suffixIconCallback!();
-                          }
+                      if (widget.suffixIconCallback != null) {
+                        widget.suffixIconCallback!();
+                      }
 
-                          /// increasing _metricValue by tapping on + icon
-                          if (widget.isMetric!) {
-                            FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
-                            _metricValue += 1;
-                            setState(() {
-                              widget.textEditingController!.text = _metricValue.toString();
-                            });
-                          }
-                        },
-                        child: widget.suffixText != null
-                            ? Padding(
-                                padding: p3,
-                                child: MDSSubhead(
-                                  widget.suffixText!,
-                                  appearance: SubheadAppearance.subtle,
-                                ),
-                              )
-                            : widget.suffixIconWidget ??
-                                Icon(
-                                  _getSuffixIcon(),
-                                  color: widget.isMetric! ? ColorToken.black : inverseLightest,
-                                  size: spacing1_5,
-                                ),
-                      )
-                    : widget.isClearButtonEnabled != null && widget.isClearButtonEnabled!
-                        ? clearButton()
-                        : null,
+                      /// increasing _metricValue by tapping on + icon
+                      if (widget.isMetric!) {
+                        FocusScope.of(widget.parentContext!)
+                            .requestFocus(FocusNode());
+                        _metricValue = (Decimal.parse(_metricValue.toString()) +
+                            Decimal.one).toDouble();
+                        setState(() {
+                          widget.textEditingController!.text =
+                              _metricValue.toString();
+                        });
+                      }
+                    },
+                    child: widget.suffixText != null
+                        ? Padding(
+                            padding: p3,
+                            child: MDSSubhead(
+                              widget.suffixText!,
+                              appearance: SubheadAppearance.subtle,
+                            ),
+                          )
+                        : widget.suffixIconWidget ??
+                            Icon(
+                              _getSuffixIcon(),
+                              color: widget.isMetric!
+                                  ? ColorToken.black
+                                  : inverseLightest,
+                              size: spacing1_5,
+                            ),
+                  )
+                : widget.isClearButtonEnabled != null &&
+                        widget.isClearButtonEnabled!
+                    ? clearButton()
+                    : null,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(spacing2),
               borderSide: BorderSide(
@@ -512,20 +546,28 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
                   widget.isUSPhoneNumber!) {
                 /// removing focus when 14(10 numbers + 4 extras) digits is entered
                 FocusScope.of(widget.parentContext!).nextFocus();
-              } else if (value.length == widget.numberOfCharactersAllowed && widget.parentContext != null) {
+              } else if (value.length == widget.numberOfCharactersAllowed &&
+                  widget.parentContext != null) {
                 /// removing focus when 10 numbers is entered
                 FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
               }
             } else {
               if (widget.isMetric!) {
-                setState(() {
-                  _metricValue = int.parse(widget.textEditingController!.text.trim());
-                });
+                try {
+                  double parsedValue =
+                      double.parse(widget.textEditingController!.text.trim());
+                  setState(() {
+                    _metricValue = parsedValue;
+                  });
+                } catch (e) {
+                  print('invalid input');
+                }
               }
 
               /// when numberOfCharactersAllowed equals to length of text entered
               /// then removing focus
-              if (value.length == widget.numberOfCharactersAllowed && widget.parentContext != null) {
+              if (value.length == widget.numberOfCharactersAllowed &&
+                  widget.parentContext != null) {
                 FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
               }
             }
@@ -547,7 +589,9 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
             }
           },
           onFieldSubmitted: (String submittedValue) {
-            widget.onFieldSubmitted != null ? widget.onFieldSubmitted!(submittedValue) : _textFormFieldSubmitted(submittedValue);
+            widget.onFieldSubmitted != null
+                ? widget.onFieldSubmitted!(submittedValue)
+                : _textFormFieldSubmitted(submittedValue);
           },
           onSaved: widget.onSaved,
         ),
@@ -642,7 +686,8 @@ class _MDSInputState extends State<MDSInput> with SpacingMixin, ColorMixin, Font
     if (widget.parentContext != null &&
         !kIsWeb &&
         Platform.isIOS &&
-        (_textInputType == TextInputType.number || _textInputType == TextInputType.phone)) {
+        (_textInputType == TextInputType.number ||
+            _textInputType == TextInputType.phone)) {
       if (_overlayEntry != null) {
         return;
       }
