@@ -12,7 +12,15 @@ class MDSInputScreen extends StatefulWidget {
 }
 
 class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
-  late GlobalKey<FormFieldState> _key1, _key2, _key3, _key4, _key5, _key6, _key7, _key8, _key9;
+  late GlobalKey<FormFieldState> _key1,
+      _key2,
+      _key3,
+      _key4,
+      _key5,
+      _key6,
+      _key7,
+      _key8,
+      _key9;
   late TextEditingController _controller1,
       _controller2,
       _controller3,
@@ -60,7 +68,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
           children: [
             Padding(
               padding: pb2,
-              child: MDSBody('1. Simple MDSInput', appearance: BodyAppearance.medium),
+              child: MDSBody('1. Simple MDSInput',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               textInputType: TextInputType.text,
@@ -74,7 +83,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('2. Number MDSInput', appearance: BodyAppearance.medium),
+              child: MDSBody('2. Number MDSInput',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               textInputType: TextInputType.number,
@@ -87,7 +97,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('3. Phone Number MDSInput', appearance: BodyAppearance.medium),
+              child: MDSBody('3. Phone Number MDSInput',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               parentContext: context,
@@ -102,7 +113,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('4. Password MDSInput', appearance: BodyAppearance.medium),
+              child: MDSBody('4. Password MDSInput',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               textInputType: TextInputType.visiblePassword,
@@ -116,7 +128,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('5. Metric MDSInput', appearance: BodyAppearance.medium),
+              child: MDSBody('5. Metric MDSInput',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               parentContext: context,
@@ -129,7 +142,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('6. MDSInput with Prefix and Suffix Icon', appearance: BodyAppearance.medium),
+              child: MDSBody('6. MDSInput with Prefix and Suffix Icon',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               parentContext: context,
@@ -144,7 +158,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('7. MDSInput with Prefix and Suffix Text', appearance: BodyAppearance.medium),
+              child: MDSBody('7. MDSInput with Prefix and Suffix Text',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               parentContext: context,
@@ -160,7 +175,9 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('8. Compulsory MDSInput with label and helper Text', appearance: BodyAppearance.medium),
+              child: MDSBody(
+                  '8. Compulsory MDSInput with label and helper Text',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               parentContext: context,
@@ -178,7 +195,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             ),
             Padding(
               padding: pb2,
-              child: MDSBody('9. Verification Code MDSInput', appearance: BodyAppearance.medium),
+              child: MDSBody('9. Verification Code MDSInput',
+                  appearance: BodyAppearance.medium),
             ),
             MDSInput(
               parentContext: context,
@@ -186,6 +204,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               textEditingController: _controller9,
               isVerificationCode: true,
               verificationCodeLength: 6,
+              isVerificationCodeNumberOnly: false,
             ),
             SizedBox(
               height: spacing4,
