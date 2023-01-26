@@ -142,51 +142,54 @@ class MDSInput extends StatefulWidget {
 
   final bool? isVerificationCode;
 
+  final bool? isVerificationCodeNumberOnly;
+
   final int? verificationCodeLength;
 
-  MDSInput({
-    required this.parentContext,
-    required this.textEditingController,
-    required this.textFormFieldKey,
-    this.validator,
-    this.textInputType,
-    this.textFieldFocusCallback,
-    this.textFieldUnFocusCallback,
-    this.textFieldOnTap,
-    this.textInputAction = TextInputAction.done,
-    this.suffixIcon,
-    this.prefixIcon,
-    this.placeholderText,
-    this.prefixIconCallback,
-    this.suffixIconCallback,
-    this.textCapitalization = TextCapitalization.none,
-    this.textAlignment = TextAlign.left,
-    this.minLines = 1,
-    this.maxLines = 1,
-    this.isMultiLine = false,
-    this.isObscureText = false,
-    this.isReadOnly = false,
-    this.isInitialFocus = false,
-    this.numberOfCharactersAllowed,
-    this.isUSPhoneNumber = true,
-    this.isInteractiveSelectionEnabled = true,
-    this.suffixIconWidget,
-    this.onFieldSubmitted,
-    this.onSaved,
-    this.textFieldDidUpdate,
-    this.backgroundColor,
-    this.isClearButtonEnabled = false,
-    this.inputFormatters,
-    this.textFieldFocusNode,
-    this.labelText,
-    this.helperText,
-    this.prefixText,
-    this.suffixText,
-    this.isCompulsory = false,
-    this.isMetric = false,
-    this.isVerificationCode = false,
-    this.verificationCodeLength = 4,
-  }) : assert(textEditingController != null && parentContext != null,
+  MDSInput(
+      {required this.parentContext,
+      required this.textEditingController,
+      required this.textFormFieldKey,
+      this.validator,
+      this.textInputType,
+      this.textFieldFocusCallback,
+      this.textFieldUnFocusCallback,
+      this.textFieldOnTap,
+      this.textInputAction = TextInputAction.done,
+      this.suffixIcon,
+      this.prefixIcon,
+      this.placeholderText,
+      this.prefixIconCallback,
+      this.suffixIconCallback,
+      this.textCapitalization = TextCapitalization.none,
+      this.textAlignment = TextAlign.left,
+      this.minLines = 1,
+      this.maxLines = 1,
+      this.isMultiLine = false,
+      this.isObscureText = false,
+      this.isReadOnly = false,
+      this.isInitialFocus = false,
+      this.numberOfCharactersAllowed,
+      this.isUSPhoneNumber = true,
+      this.isInteractiveSelectionEnabled = true,
+      this.suffixIconWidget,
+      this.onFieldSubmitted,
+      this.onSaved,
+      this.textFieldDidUpdate,
+      this.backgroundColor,
+      this.isClearButtonEnabled = false,
+      this.inputFormatters,
+      this.textFieldFocusNode,
+      this.labelText,
+      this.helperText,
+      this.prefixText,
+      this.suffixText,
+      this.isCompulsory = false,
+      this.isMetric = false,
+      this.isVerificationCode = false,
+      this.verificationCodeLength = 4,
+      this.isVerificationCodeNumberOnly = true})
+      : assert(textEditingController != null && parentContext != null,
             'Either textEditingController or parentContext is null');
 
   @override
@@ -300,6 +303,10 @@ class _MDSInputState extends State<MDSInput>
   Widget build(BuildContext context) {
     /// design for pin-field
     if (widget.isVerificationCode!) {
+      List<TextInputFormatter>? inputFormatters = [];
+      if (widget.isVerificationCodeNumberOnly!) {
+        inputFormatters = [FilteringTextInputFormatter.digitsOnly];
+      }
       return PinFieldAutoFill(
         key: widget.textFormFieldKey,
         controller: widget.textEditingController,
@@ -323,7 +330,7 @@ class _MDSInputState extends State<MDSInput>
         onCodeSubmitted: (code) {
           widget.textEditingController!.text = code.trim();
         },
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        inputFormatters: inputFormatters,
         onCodeChanged: (code) {
           if (code!.length == widget.verificationCodeLength || code.isEmpty) {
             FocusScope.of(context).requestFocus(FocusNode());
@@ -421,8 +428,9 @@ class _MDSInputState extends State<MDSInput>
                         /// decreasing _metricValue by tapping on - icon
                         FocusScope.of(widget.parentContext!)
                             .requestFocus(FocusNode());
-                        _metricValue = (Decimal.parse(_metricValue.toString())                             -Decimal.one
-                            ).toDouble();
+                        _metricValue = (Decimal.parse(_metricValue.toString()) -
+                                Decimal.one)
+                            .toDouble();
                         setState(() {
                           widget.textEditingController!.text =
                               _metricValue.toString();
@@ -473,7 +481,8 @@ class _MDSInputState extends State<MDSInput>
                         FocusScope.of(widget.parentContext!)
                             .requestFocus(FocusNode());
                         _metricValue = (Decimal.parse(_metricValue.toString()) +
-                            Decimal.one).toDouble();
+                                Decimal.one)
+                            .toDouble();
                         setState(() {
                           widget.textEditingController!.text =
                               _metricValue.toString();
