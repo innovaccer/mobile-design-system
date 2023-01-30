@@ -1,3 +1,7 @@
+## [0.0.9] - 20th Jan 2023
+
+* Support for characters added in Input Verification
+
 ## [0.0.8] - 20th Jan 2023
 
 * Bug Fixes in Input and support of Pin Codes
