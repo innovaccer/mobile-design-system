@@ -78,7 +78,8 @@ class MDSToast extends StatelessWidget {
   }
 }
 
-class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMixin {
+class ToastWidget extends StatelessWidget
+    with ColorMixin, SpacingMixin, FontMixin {
   final String message;
   final ToastAppearanceType? appearanceType;
   final String? actionButtonTitle1;
@@ -121,10 +122,10 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                   children: [
                     if (appearanceType != ToastAppearanceType.defaultType) ...[
                       Padding(
-                        padding: pt0_5,
+                        padding: pt0,
                         child: Icon(
                           _getLeadingIcon(),
-                          size: spacing2,
+                          size: spacing5,
                           color: _getContentColor(),
                         ),
                       ),
@@ -151,8 +152,10 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                               textScaleFactor: _textScaleFactor,
                             ),
                           ),
-                          if ((actionButtonTitle1 != null && actionButtonCallback1 != null) ||
-                              (actionButtonTitle2 != null && actionButtonCallback2 != null)) ...[
+                          if ((actionButtonTitle1 != null &&
+                                  actionButtonCallback1 != null) ||
+                              (actionButtonTitle2 != null &&
+                                  actionButtonCallback2 != null)) ...[
                             SizedBox(
                               height: spacing3,
                             ),
@@ -162,7 +165,8 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  if (actionButtonTitle1 != null && actionButtonCallback1 != null) ...[
+                                  if (actionButtonTitle1 != null &&
+                                      actionButtonCallback1 != null) ...[
                                     _actionButtonWidget(
                                       context,
                                       buttonTitle: actionButtonTitle1,
@@ -172,7 +176,8 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                                       width: spacing2,
                                     ),
                                   ],
-                                  if (actionButtonTitle2 != null && actionButtonCallback2 != null) ...[
+                                  if (actionButtonTitle2 != null &&
+                                      actionButtonCallback2 != null) ...[
                                     _actionButtonWidget(
                                       context,
                                       buttonTitle: actionButtonTitle2,
@@ -193,12 +198,12 @@ class ToastWidget extends StatelessWidget with ColorMixin, SpacingMixin, FontMix
                 width: spacing3,
               ),
               Padding(
-                padding: pt0_5,
+                padding: pt0,
                 child: GestureDetector(
                   onTap: () => dismissToast(),
                   child: Icon(
                     Icons.close,
-                    size: spacing2,
+                    size: spacing5,
                     color: _getContentColor(),
                   ),
                 ),

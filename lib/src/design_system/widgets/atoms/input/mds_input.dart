@@ -2,12 +2,12 @@ library core_ui;
 
 import 'dart:io';
 
+import 'package:decimal/decimal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-import 'package:decimal/decimal.dart';
 
 import '../../../../../innovaccer_design_system.dart';
 
@@ -146,8 +146,9 @@ class MDSInput extends StatefulWidget {
 
   final int? verificationCodeLength;
 
-  MDSInput(
-      {required this.parentContext,
+  const MDSInput(
+      {Key? key,
+      required this.parentContext,
       required this.textEditingController,
       required this.textFormFieldKey,
       this.validator,
@@ -190,7 +191,8 @@ class MDSInput extends StatefulWidget {
       this.verificationCodeLength = 4,
       this.isVerificationCodeNumberOnly = true})
       : assert(textEditingController != null && parentContext != null,
-            'Either textEditingController or parentContext is null');
+            'Either textEditingController or parentContext is null'),
+        super(key: key);
 
   @override
   _MDSInputState createState() => _MDSInputState();
@@ -404,7 +406,7 @@ class _MDSInputState extends State<MDSInput>
               bottom: spacing3,
               left: (widget.prefixIcon != null || widget.isMetric!)
                   ? spacing2
-                  : spacing2,
+                  : spacing3,
               right: (widget.suffixIcon != null || widget.isMetric!)
                   ? spacing2
                   : spacing2,
@@ -450,7 +452,7 @@ class _MDSInputState extends State<MDSInput>
                             color: widget.isMetric!
                                 ? ColorToken.black
                                 : inverseLightest,
-                            size: spacing1_5,
+                            size: spacing5,
                           ),
                   )
                 : null,
@@ -491,7 +493,7 @@ class _MDSInputState extends State<MDSInput>
                     },
                     child: widget.suffixText != null
                         ? Padding(
-                            padding: p3,
+                            padding: pl0 + pr3 + py3,
                             child: MDSSubhead(
                               widget.suffixText!,
                               appearance: SubheadAppearance.subtle,
@@ -503,7 +505,7 @@ class _MDSInputState extends State<MDSInput>
                               color: widget.isMetric!
                                   ? ColorToken.black
                                   : inverseLightest,
-                              size: spacing1_5,
+                              size: spacing5,
                             ),
                   )
                 : widget.isClearButtonEnabled != null &&
@@ -663,6 +665,7 @@ class _MDSInputState extends State<MDSInput>
         child: Icon(
           Icons.clear,
           color: inverseLightest,
+          size: spacing5,
         ),
         onTap: () {
           widget.textEditingController!.clear();
