@@ -144,8 +144,8 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                                 actionSheetContext,
                                 isDismissible,
                                 heading,
-                                subHeading!,
-                                dragHandle!,
+                                subHeading,
+                                dragHandle,
                               ),
                             ),
                             Flexible(
@@ -191,11 +191,11 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
   }
 
   Widget _header(BuildContext context, bool isDismissible, String heading,
-      String? subHeading, bool dragHandle) {
+      String? subHeading, bool? dragHandle) {
     return Column(
       children: [
         /// drag handle to update bottomSheet height
-        dragHandle ? _dragHandleWidget() : Container(),
+        dragHandle != null && dragHandle ? _dragHandleWidget() : Container(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,

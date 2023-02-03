@@ -1,3 +1,7 @@
+## [0.1.1] - 2nd Feb 2023
+
+* Bug Fixes
+
 ## [0.1.0] - 2nd Feb 2023
 
 * Bug Fixes in Input, BottomSheet & Icon Sizes
