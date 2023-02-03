@@ -1,3 +1,7 @@
+## [0.1.0] - 2nd Feb 2023
+
+* Bug Fixes in Input, BottomSheet & Icon Sizes
+
 ## [0.0.9] - 20th Jan 2023
 
 * Support for characters added in Input Verification
