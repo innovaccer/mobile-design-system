@@ -12,13 +12,23 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
     String? subHeading,
     bool? dragHandle,
     Color? barrierColor,
-    bool? isDismissible,
+    bool isDismissible = true,
   }) async {
     /// defaultMaxBottomSheetHeight is 60% height
-    double defaultMaxBottomSheetHeight = MediaQuery.of(context).size.height * 0.60 - MediaQuery.of(context).padding.bottom;
+    double defaultMaxBottomSheetHeight =
+        MediaQuery.of(context).size.height * 0.60;
 
     /// defaultMaxBottomSheetHeight is 93% height
-    double maxActionSheetScrollableHeight = MediaQuery.of(context).size.height * 0.93 - MediaQuery.of(context).padding.bottom;
+    double maxActionSheetScrollableHeight =
+        MediaQuery.of(context).size.height * 0.93;
+
+    /// removing the bottom padding if the bottom sheet is non-dismissible
+    if (isDismissible) {
+      defaultMaxBottomSheetHeight =
+          defaultMaxBottomSheetHeight - MediaQuery.of(context).padding.bottom;
+      maxActionSheetScrollableHeight = maxActionSheetScrollableHeight -
+          MediaQuery.of(context).padding.bottom;
+    }
     double childHeight = defaultMaxBottomSheetHeight;
     double headerHeight = 56;
 
@@ -32,7 +42,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
       barrierColor: barrierColor,
       isScrollControlled: true,
       enableDrag: false,
-      isDismissible: isDismissible ?? true,
+      isDismissible: isDismissible,
       builder: (BuildContext actionSheetContext) {
         return StatefulBuilder(
           builder: (
@@ -44,14 +54,18 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
             if (defaultMaxBottomSheetHeight > contentHeight) {
               heightContainer = contentHeight;
             }
+            if (!isDismissible) {
+              heightContainer += MediaQuery.of(context).padding.bottom;
+            }
             return Container(
-              decoration: _bottomSheetDecoration(isDismissible!),
-              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              decoration: _bottomSheetDecoration(isDismissible),
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
               child: SafeArea(
                 top: false,
                 left: false,
                 right: false,
-                bottom: true,
+                bottom: isDismissible,
                 child: AnimatedContainer(
                   height: heightContainer,
                   decoration: _bottomSheetDecoration(isDismissible),
@@ -72,7 +86,8 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                       /// if any textField is there and user taps outside it
                       /// then un-focusing the textField
                       FocusScope.of(context).requestFocus(FocusNode());
-                      if (contentHeight >= defaultMaxBottomSheetHeight && heightContainer == defaultMaxBottomSheetHeight) {
+                      if (contentHeight >= defaultMaxBottomSheetHeight &&
+                          heightContainer == defaultMaxBottomSheetHeight) {
                         actionSheetSetState(() {
                           heightContainer = maxActionSheetScrollableHeight;
                         });
@@ -92,7 +107,8 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                           /// if scroll in up direction
                           /// if original contentHeight is more than 60% of screen
                           /// that means it can goes up to 93%
-                          if (contentHeight >= defaultMaxBottomSheetHeight && heightContainer == defaultMaxBottomSheetHeight) {
+                          if (contentHeight >= defaultMaxBottomSheetHeight &&
+                              heightContainer == defaultMaxBottomSheetHeight) {
                             actionSheetSetState(() {
                               heightContainer = maxActionSheetScrollableHeight;
                             });
@@ -100,7 +116,8 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
                         } else if (val.direction == ScrollDirection.forward) {
                           /// if scroll up in down direction
                           /// in this condition bringing back expanded 93% height to 60%
-                          if (val.metrics.pixels == val.metrics.minScrollExtent) {
+                          if (val.metrics.pixels ==
+                              val.metrics.minScrollExtent) {
                             actionSheetSetState(() {
                               heightContainer = defaultMaxBottomSheetHeight;
                             });
@@ -159,12 +176,22 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
   BoxDecoration _bottomSheetDecoration(bool isDismissible) {
     return BoxDecoration(
         color: ColorToken.white,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(spacing3), topRight: Radius.circular(spacing3)),
-        boxShadow:
-            !isDismissible ? [BoxShadow(color: secondaryLight, spreadRadius: 1, blurRadius: 10, offset: Offset(0, 3))] : null);
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(spacing3),
+            topRight: Radius.circular(spacing3)),
+        boxShadow: !isDismissible
+            ? [
+                BoxShadow(
+                    color: secondaryLight,
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    offset: Offset(0, 3))
+              ]
+            : null);
   }
 
-  Widget _header(BuildContext context, bool isDismissible, String heading, String? subHeading, bool dragHandle) {
+  Widget _header(BuildContext context, bool isDismissible, String heading,
+      String? subHeading, bool dragHandle) {
     return Column(
       children: [
         /// drag handle to update bottomSheet height
