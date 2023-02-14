@@ -12,14 +12,14 @@ enum ToastAppearanceType {
   warning,
 }
 
-void displayToast({
-  required String message,
-  ToastAppearanceType? appearanceType,
-  String? actionButtonTitle1,
-  Function? actionButtonCallback1,
-  String? actionButtonTitle2,
-  Function? actionButtonCallback2,
-}) {
+void displayToast(
+    {required String message,
+    ToastAppearanceType? appearanceType,
+    String? actionButtonTitle1,
+    Function? actionButtonCallback1,
+    String? actionButtonTitle2,
+    Function? actionButtonCallback2,
+    Duration? toastDuration}) {
   showToastWidget(
     ToastWidget(
       message: message,
@@ -29,6 +29,7 @@ void displayToast({
       actionButtonTitle2: actionButtonTitle2,
       actionButtonCallback2: actionButtonCallback2,
     ),
+    duration: toastDuration,
   );
 }
 
