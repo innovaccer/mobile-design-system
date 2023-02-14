@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return TextScaler<TextScalingFactor>(
-      initialScaleFactor: TextScalingFactor(scaleFactor: 1.0),
+      initialScaleFactor: const TextScalingFactor(scaleFactor: 1.0),
       child:  MDSToast(
         child: MaterialApp(
             title: 'Core UI Examples',
@@ -35,7 +35,6 @@ class _MyAppState extends State<MyApp> {
             initialRoute: HomeScreen.routeName,
           ),
       ),
-
     );
   }
 }

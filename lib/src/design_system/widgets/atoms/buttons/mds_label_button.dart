@@ -36,7 +36,7 @@ class MDSLabelButton extends StatelessWidget with ColorMixin, SpacingMixin, Font
     Widget widget = TextButton(
       style: ButtonStyle(
         padding: MaterialStateProperty.resolveWith<EdgeInsets>((Set<MaterialState> materialStates) {
-          return px2 + py3;
+          return py3;
         }),
         shape: MaterialStateProperty.resolveWith<OutlinedBorder>((Set<MaterialState> materialStates) {
           return RoundedRectangleBorder(

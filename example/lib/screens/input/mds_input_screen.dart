@@ -156,7 +156,7 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
             SizedBox(
               height: spacing2,
             ),
-            Padding(
+            Padding( 
               padding: pb2,
               child: MDSBody('7. MDSInput with Prefix and Suffix Text',
                   appearance: BodyAppearance.medium),
