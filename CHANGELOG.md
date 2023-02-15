@@ -1,3 +1,7 @@
+## [0.1.2] - 14th Feb 2023
+
+* Bug Fixes in MDSInput
+
 ## [0.1.1] - 2nd Feb 2023
 
 * Bug Fixes
