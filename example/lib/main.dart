@@ -3,6 +3,7 @@ import 'package:example/utils/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 import 'utils/locator/locator.dart';
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 
 void main() {
   setupLocator();
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return TextScaler<TextScalingFactor>(
+    return t.TextScaler<TextScalingFactor>(
       initialScaleFactor: const TextScalingFactor(scaleFactor: 1.0),
       child:  MDSToast(
         child: MaterialApp(

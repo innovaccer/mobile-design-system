@@ -1,3 +1,4 @@
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -203,7 +204,7 @@ class MDSBottomSheet with SpacingMixin, ColorMixin {
           children: [
             Flexible(
               child: Padding(
-                padding: pl4 + py4 + pr0_5,
+                padding: pl4  + pr0_5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

@@ -11,7 +11,12 @@ class MDSPageHeaderWithOutSubHeadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MDSPageHeaderWithOutSubHeading(
       heading: 'Heading',
-      actionButtonText: 'Action',
+      listOfActionIcons: [
+        MDSIconButton(
+          icon: Icons.chat,
+          onTap: () {},
+        )
+      ],
       controller: scrollController,
       body: MDSList(
         scrollController: scrollController,

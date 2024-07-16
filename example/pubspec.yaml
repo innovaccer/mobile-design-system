@@ -32,7 +32,7 @@ dependencies:
   innovaccer_design_system:
     path: ../
   get_it: 7.1.3
-  fluro: 2.0.3
+  fluro: 2.0.5
 
 
   # The following adds the Cupertino Icons font to your application.

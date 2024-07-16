@@ -6,6 +6,7 @@
 
 import 'dart:math' as math;
 
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 import 'package:flutter/material.dart';
 
 const Duration _kUnconfirmedSplashDuration = Duration(milliseconds: 0);

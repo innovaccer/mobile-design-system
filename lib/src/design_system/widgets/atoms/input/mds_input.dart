@@ -5,8 +5,10 @@ import 'dart:io';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pinput/pinput.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../../../../innovaccer_design_system.dart';
@@ -241,6 +243,7 @@ class _MDSInputState extends State<MDSInput>
     _suffixIcon = widget.suffixIcon;
     _prefixIcon = widget.prefixIcon;
     _textInputType = widget.textInputType;
+    print(_textInputType);
     _textFieldFocusNode = widget.textFieldFocusNode ?? FocusNode();
     _overlayEntry = null;
 
@@ -305,41 +308,100 @@ class _MDSInputState extends State<MDSInput>
   Widget build(BuildContext context) {
     /// design for pin-field
     if (widget.isVerificationCode!) {
+      var defaultPinTheme = PinTheme(
+        width: 50,
+        height: 50,
+        textStyle: const TextStyle(fontSize: 16, color: Colors.black),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: secondary),
+        ),
+      );
       List<TextInputFormatter>? inputFormatters = [];
       if (widget.isVerificationCodeNumberOnly!) {
         inputFormatters = [FilteringTextInputFormatter.digitsOnly];
       }
-      return PinFieldAutoFill(
-        key: widget.textFormFieldKey,
-        controller: widget.textEditingController,
-        decoration: BoxLooseDecoration(
-          textStyle: TextStyle(fontSize: fontSize16, color: ColorToken.black),
-          strokeColorBuilder: PinListenColorBuilder(primary, secondary),
-          strokeWidth: spacing0_5,
-          radius: Radius.circular(spacing2),
-          bgColorBuilder:
-              PinListenColorBuilder(ColorToken.white, ColorToken.white),
-        ),
-        cursor: Cursor(
-          width: spacing0_5,
-          color: primary,
-          radius: Radius.circular(spacing0_5),
-          enabled: true,
-        ),
-        focusNode: _textFieldFocusNode,
-        codeLength: widget.verificationCodeLength!,
-        currentCode: widget.textEditingController!.text,
-        onCodeSubmitted: (code) {
-          widget.textEditingController!.text = code.trim();
-        },
-        inputFormatters: inputFormatters,
-        onCodeChanged: (code) {
-          if (code!.length == widget.verificationCodeLength || code.isEmpty) {
-            FocusScope.of(context).requestFocus(FocusNode());
+      return Directionality(
+        // Specify direction if desired
+        textDirection: TextDirection.ltr,
+        child: Pinput(
+          inputFormatters: inputFormatters,
+          length:  widget.verificationCodeLength!,
+          focusNode: _textFieldFocusNode,
+          key: widget.textFormFieldKey,
+          controller: widget.textEditingController,
+          androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
+          listenForMultipleSmsOnAndroid: true,
+          defaultPinTheme: defaultPinTheme,
+          separatorBuilder: (index) => const SizedBox(width: 8),
+          hapticFeedbackType: HapticFeedbackType.lightImpact,
+          onCompleted: (code) {
             widget.textEditingController!.text = code.trim();
-          }
-        },
+          },
+          onChanged: (code) {
+            if (code!.length == widget.verificationCodeLength || code.isEmpty) {
+              FocusScope.of(context).requestFocus(FocusNode());
+              widget.textEditingController!.text = code.trim();
+              widget.textFieldDidUpdate!(code);
+            }
+          },
+          cursor: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: py3,
+                width: spacing0_5,
+                height: 18,
+                color: primary,
+              ),
+            ],
+          ),
+          focusedPinTheme: defaultPinTheme.copyWith(
+            decoration: defaultPinTheme.decoration!.copyWith(
+              borderRadius: BorderRadius.circular(spacing2),
+              border: Border.all(color: primary, width: spacing0_5),
+            ),
+          ),
+          submittedPinTheme: defaultPinTheme.copyWith(
+            decoration: defaultPinTheme.decoration!.copyWith(
+              borderRadius: BorderRadius.circular(spacing2),
+              border: Border.all(color: primary, width: spacing0_5),
+            ),
+          ),
+          errorPinTheme: defaultPinTheme.copyBorderWith(
+            border: Border.all(color: Colors.redAccent),
+          ),
+        ),
       );
+      // return PinFieldAutoFill(
+      //
+      //   key: widget.textFormFieldKey,
+      //   controller: widget.textEditingController,
+      //   decoration: BoxLooseDecoration(
+      //     textStyle: TextStyle(fontSize: fontSize16, color: ColorToken.black),
+      //     strokeColorBuilder: PinListenColorBuilder(primary, secondary),
+      //     strokeWidth: spacing0_5,
+      //     radius: Radius.circular(spacing2),
+      //     bgColorBuilder:
+      //         PinListenColorBuilder(ColorToken.white, ColorToken.white),
+      //   ),
+      //   cursor: Cursor(
+      //     width: spacing0_5,
+      //     color: primary,
+      //     radius: Radius.circular(spacing0_5),
+      //     enabled: true,
+      //   ),
+      //   focusNode: _textFieldFocusNode,
+      //   codeLength: widget.verificationCodeLength!,
+      //   currentCode: widget.textEditingController!.text,
+      //   onCodeSubmitted: (code) {
+      //     widget.textEditingController!.text = code.trim();
+      //   },
+      //   inputFormatters: inputFormatters,
+      //   onCodeChanged: (code) {
+
+      //   },111
+      // );
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -422,39 +484,44 @@ class _MDSInputState extends State<MDSInput>
             prefixIcon: _prefixIcon != null ||
                     widget.prefixText != null ||
                     widget.isMetric!
-                ? GestureDetector(
-                    onTap: () {
-                      if (widget.prefixIconCallback != null) {
-                        widget.prefixIconCallback!();
-                      } else if (widget.isMetric!) {
-                        /// decreasing _metricValue by tapping on - icon
-                        FocusScope.of(widget.parentContext!)
-                            .requestFocus(FocusNode());
-                        _metricValue = (Decimal.parse(_metricValue.toString()) -
-                                Decimal.one)
-                            .toDouble();
-                        setState(() {
-                          widget.textEditingController!.text =
-                              _metricValue.toString();
-                        });
-                      }
-                    },
-                    child: widget.prefixText != null
-                        ? Padding(
-                            padding: p3,
-                            child: MDSSubhead(
-                              widget.prefixText!,
-                              appearance: SubheadAppearance.subtle,
+                ? Container(
+
+                  width: 10,
+                  child: GestureDetector(
+                      onTap: () {
+                        if (widget.prefixIconCallback != null) {
+                          widget.prefixIconCallback!();
+                        } else if (widget.isMetric!) {
+                          /// decreasing _metricValue by tapping on - icon
+                          FocusScope.of(widget.parentContext!)
+                              .requestFocus(FocusNode());
+                          _metricValue = (Decimal.parse(_metricValue.toString()) -
+                                  Decimal.one)
+                              .toDouble();
+                          setState(() {
+                            widget.textEditingController!.text =
+                                _metricValue.toString();
+                          });
+                        }
+                      },
+                      child: widget.prefixText != null
+                          ? Container(
+
+                              padding: p3 +pl1,
+                              child: MDSSubhead(
+                                widget.prefixText!,
+                                appearance: SubheadAppearance.subtle,
+                              ),
+                            )
+                          : Icon(
+                              _prefixIcon ?? Icons.remove,
+                              color: widget.isMetric!
+                                  ? ColorToken.black
+                                  : inverseLightest,
+                              size: spacing5,
                             ),
-                          )
-                        : Icon(
-                            _prefixIcon ?? Icons.remove,
-                            color: widget.isMetric!
-                                ? ColorToken.black
-                                : inverseLightest,
-                            size: spacing5,
-                          ),
-                  )
+                    ),
+                )
                 : null,
 
             /// bypassing the null check for suffix icon in case of TextInputType
@@ -556,7 +623,7 @@ class _MDSInputState extends State<MDSInput>
                   widget.parentContext != null &&
                   widget.isUSPhoneNumber!) {
                 /// removing focus when 14(10 numbers + 4 extras) digits is entered
-                FocusScope.of(widget.parentContext!).nextFocus();
+               // FocusScope.of(widget.parentContext!).nextFocus();
               } else if (value.length == widget.numberOfCharactersAllowed &&
                   widget.parentContext != null) {
                 /// removing focus when 10 numbers is entered
@@ -579,7 +646,7 @@ class _MDSInputState extends State<MDSInput>
               /// then removing focus
               if (value.length == widget.numberOfCharactersAllowed &&
                   widget.parentContext != null) {
-                FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
+               // FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
               }
             }
 

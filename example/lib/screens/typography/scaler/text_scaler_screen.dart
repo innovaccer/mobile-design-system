@@ -18,10 +18,10 @@ class _TextScalerScreenState extends State<TextScalerScreen> with SpacingMixin, 
   void didChangeDependencies() {
     if (isInit) {
       // ignore: unnecessary_null_comparison
-      if (TextScaler.of<TextScalingFactor>(context) != null) {
-        sliderValue = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
-        sliderValue = (sliderValue ?? 0.0) - 1.0;
-      }
+      // if (TextScaler.of<TextScalingFactor>(context) != null) {
+      //   sliderValue = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
+      //   sliderValue = (sliderValue ?? 0.0) - 1.0;
+      // }
       isInit = false;
     }
     super.didChangeDependencies();
@@ -75,14 +75,14 @@ class _TextScalerScreenState extends State<TextScalerScreen> with SpacingMixin, 
                       value: (sliderValue ?? 0.0),
                       onChanged: (value) {
                         // ignore: unnecessary_null_comparison
-                        if (TextScaler.of<TextScalingFactor>(context) != null) {
-                          TextScaler.update(context, TextScalingFactor(scaleFactor: 1.0 + value));
-                          sliderValue = value;
-                        } else {
-                          setState(() {
-                            sliderValue = value;
-                          });
-                        }
+                        // if (TextScaler.of<TextScalingFactor>(context) != null) {
+                        //   TextScaler.update(context, TextScalingFactor(scaleFactor: 1.0 + value));
+                        //   sliderValue = value;
+                        // } else {
+                        //   setState(() {
+                        //     sliderValue = value;
+                        //   });
+                        // }
                       },
                     ),
                   ],

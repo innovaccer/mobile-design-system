@@ -5,6 +5,7 @@
 import 'dart:ui' show lerpDouble;
 
 import 'package:flutter/foundation.dart';
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 import 'package:flutter/material.dart';
 
 const Duration _bottomSheetEnterDuration = Duration(milliseconds: 240);

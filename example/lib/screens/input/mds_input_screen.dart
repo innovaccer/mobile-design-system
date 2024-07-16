@@ -54,9 +54,12 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
     _controller9 = TextEditingController();
   }
 
+  bool isValid = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: ExampleAppBar(
         title: 'MDSInput',
         buildContext: context,
@@ -204,7 +207,8 @@ class _MDSInputScreenState extends State<MDSInputScreen> with SpacingMixin {
               textEditingController: _controller9,
               isVerificationCode: true,
               verificationCodeLength: 6,
-              isVerificationCodeNumberOnly: false,
+              isVerificationCodeNumberOnly: true, // 122323
+
             ),
             SizedBox(
               height: spacing4,

@@ -1,3 +1,4 @@
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
 
@@ -115,6 +116,9 @@ class MDSButton extends StatelessWidget
           return buttonColor;
         }),
       ),
+
+      /// sending callback on button click
+      onPressed: onTap,
       child: Stack(
         fit: StackFit.passthrough,
         children: [
@@ -191,9 +195,6 @@ class MDSButton extends StatelessWidget
           ),
         ],
       ),
-
-      /// sending callback on button click
-      onPressed: onTap,
     );
 
     if (isFullWidth) {

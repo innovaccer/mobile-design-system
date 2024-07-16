@@ -1,3 +1,4 @@
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:innovaccer_design_system/innovaccer_design_system.dart';
@@ -102,9 +103,9 @@ class ToastWidget extends StatelessWidget
   Widget build(BuildContext context) {
     double? _textScaleFactor = 1.0;
     // ignore: unnecessary_null_comparison
-    if (TextScaler.of<TextScalingFactor>(context) != null) {
-      _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
-    }
+    // if (TextScaler.of<TextScalingFactor>(context) != null) {
+    //   _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
+    // }
     return Padding(
       padding: px4,
       child: MDSCardOld(
@@ -227,9 +228,9 @@ class ToastWidget extends StatelessWidget
   }) {
     double? _textScaleFactor = 1.0;
     // ignore: unnecessary_null_comparison
-    if (TextScaler.of<TextScalingFactor>(context) != null) {
-      _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
-    }
+    // if (TextScaler.of<TextScalingFactor>(context) != null) {
+    //   _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
+    // }
     return Flexible(
       child: Material(
         color: _getActionButtonColor(),

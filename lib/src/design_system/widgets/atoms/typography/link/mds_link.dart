@@ -1,7 +1,10 @@
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
 import 'package:flutter/material.dart';
-import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart';
+import '';
 import 'package:innovaccer_design_system/src/theme/mixin/color_mixin.dart';
 import 'package:innovaccer_design_system/src/theme/mixin/font_mixin.dart';
+
+import '../../../../../../innovaccer_design_system.dart';
 
 class MDSLink extends StatelessWidget with ColorMixin, FontMixin {
   final TextAlign? textAlign;
@@ -26,9 +29,9 @@ class MDSLink extends StatelessWidget with ColorMixin, FontMixin {
 
     double? _textScaleFactor = 1.0;
     // ignore: unnecessary_null_comparison
-    if (TextScaler.of<TextScalingFactor>(context) != null) {
-      _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
-    }
+    // if (TextScaler.of<TextScalingFactor>(context) != null) {
+    //   _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
+    // }
 
     return Padding(
       padding:
