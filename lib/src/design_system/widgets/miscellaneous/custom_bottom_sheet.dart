@@ -731,7 +731,7 @@ Future<T?> showModalBottomSheet<T>({
 ///    sheet.
 ///  * [Scaffold.of], for information about how to obtain the [BuildContext].
 ///  * <https://material.io/design/components/sheets-bottom.html#standard-bottom-sheet>
-PersistentBottomSheetController<T> showBottomSheet<T>({
+PersistentBottomSheetController showBottomSheet<T>({
   required BuildContext context,
   required WidgetBuilder builder,
   Color? backgroundColor,
@@ -743,7 +743,7 @@ PersistentBottomSheetController<T> showBottomSheet<T>({
 }) {
   assert(debugCheckHasScaffold(context));
 
-  return Scaffold.of(context).showBottomSheet<T>(
+  return Scaffold.of(context).showBottomSheet(
     builder,
     backgroundColor: backgroundColor,
     elevation: elevation,

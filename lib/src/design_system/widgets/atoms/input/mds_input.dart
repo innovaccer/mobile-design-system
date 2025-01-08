@@ -5,11 +5,11 @@ import 'dart:io';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/input/sms_retriever.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pinput/pinput.dart';
-import 'package:sms_autofill/sms_autofill.dart';
+import 'package:smart_auth/smart_auth.dart';
 
 import '../../../../../innovaccer_design_system.dart';
 
@@ -235,6 +235,9 @@ class _MDSInputState extends State<MDSInput>
 
   TextInputType? _textInputType;
 
+  /// migration of Pinput from 4.0.0 to 5.0.0 https://github.com/Tkko/Flutter_PinPut/blob/master/MIGRATION.md
+  late final SmsRetrieverImpl smsRetrieverImpl;
+  
   @override
   void initState() {
     super.initState();
@@ -293,6 +296,7 @@ class _MDSInputState extends State<MDSInput>
       _textInputType = TextInputType.number;
       widget.textEditingController!.text = _metricValue.toInt().toString();
     }
+    smsRetrieverImpl = SmsRetrieverImpl(smartAuth: SmartAuth());
   }
 
   @override
@@ -326,12 +330,13 @@ class _MDSInputState extends State<MDSInput>
         textDirection: TextDirection.ltr,
         child: Pinput(
           inputFormatters: inputFormatters,
-          length:  widget.verificationCodeLength!,
+          length: widget.verificationCodeLength!,
           focusNode: _textFieldFocusNode,
           key: widget.textFormFieldKey,
           controller: widget.textEditingController,
-          androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
-          listenForMultipleSmsOnAndroid: true,
+          /// * Breaking change from 4.0.0 to 5.0.0
+          /// * use smart_Auth for sms autofil <https://github.com/Tkko/Flutter_PinPut/blob/master/MIGRATION.md>
+          smsRetriever: smsRetrieverImpl,
           defaultPinTheme: defaultPinTheme,
           separatorBuilder: (index) => const SizedBox(width: 8),
           hapticFeedbackType: HapticFeedbackType.lightImpact,
@@ -339,7 +344,7 @@ class _MDSInputState extends State<MDSInput>
             widget.textEditingController!.text = code.trim();
           },
           onChanged: (code) {
-            if (code!.length == widget.verificationCodeLength || code.isEmpty) {
+            if (code.length == widget.verificationCodeLength || code.isEmpty) {
               FocusScope.of(context).requestFocus(FocusNode());
               widget.textEditingController!.text = code.trim();
               widget.textFieldDidUpdate!(code);
@@ -485,9 +490,8 @@ class _MDSInputState extends State<MDSInput>
                     widget.prefixText != null ||
                     widget.isMetric!
                 ? Container(
-
-                  width: 10,
-                  child: GestureDetector(
+                    width: 10,
+                    child: GestureDetector(
                       onTap: () {
                         if (widget.prefixIconCallback != null) {
                           widget.prefixIconCallback!();
@@ -495,9 +499,10 @@ class _MDSInputState extends State<MDSInput>
                           /// decreasing _metricValue by tapping on - icon
                           FocusScope.of(widget.parentContext!)
                               .requestFocus(FocusNode());
-                          _metricValue = (Decimal.parse(_metricValue.toString()) -
-                                  Decimal.one)
-                              .toDouble();
+                          _metricValue =
+                              (Decimal.parse(_metricValue.toString()) -
+                                      Decimal.one)
+                                  .toDouble();
                           setState(() {
                             widget.textEditingController!.text =
                                 _metricValue.toString();
@@ -506,8 +511,7 @@ class _MDSInputState extends State<MDSInput>
                       },
                       child: widget.prefixText != null
                           ? Container(
-
-                              padding: p3 +pl1,
+                              padding: p3 + pl1,
                               child: MDSSubhead(
                                 widget.prefixText!,
                                 appearance: SubheadAppearance.subtle,
@@ -521,7 +525,7 @@ class _MDSInputState extends State<MDSInput>
                               size: spacing5,
                             ),
                     ),
-                )
+                  )
                 : null,
 
             /// bypassing the null check for suffix icon in case of TextInputType
@@ -623,7 +627,7 @@ class _MDSInputState extends State<MDSInput>
                   widget.parentContext != null &&
                   widget.isUSPhoneNumber!) {
                 /// removing focus when 14(10 numbers + 4 extras) digits is entered
-               // FocusScope.of(widget.parentContext!).nextFocus();
+                // FocusScope.of(widget.parentContext!).nextFocus();
               } else if (value.length == widget.numberOfCharactersAllowed &&
                   widget.parentContext != null) {
                 /// removing focus when 10 numbers is entered
@@ -646,7 +650,7 @@ class _MDSInputState extends State<MDSInput>
               /// then removing focus
               if (value.length == widget.numberOfCharactersAllowed &&
                   widget.parentContext != null) {
-               // FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
+                // FocusScope.of(widget.parentContext!).requestFocus(FocusNode());
               }
             }
 

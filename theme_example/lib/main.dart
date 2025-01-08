@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget with ColorMixin {
   Widget build(BuildContext context) {
     return Consumer<ThemeManager>(
       builder: (_, themeProvider, __) {
-        return MaterialApp(
+        return const MaterialApp(
           title: 'Flutter Demo',
-          home: MyHomePage(title: 'Flutter Demo Home Page'),
+          home: MyHomePage(title: 'Flutter Demo Home Page', ),
         );
       },
     );
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget with ColorMixin {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+ const  MyHomePage({super.key,required this.title});
 
   final String title;
 
