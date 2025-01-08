@@ -334,8 +334,6 @@ class _MDSInputState extends State<MDSInput>
           focusNode: _textFieldFocusNode,
           key: widget.textFormFieldKey,
           controller: widget.textEditingController,
-          /// * Breaking change from 4.0.0 to 5.0.0
-          /// * use smart_Auth for sms autofil <https://github.com/Tkko/Flutter_PinPut/blob/master/MIGRATION.md>
           smsRetriever: smsRetrieverImpl,
           defaultPinTheme: defaultPinTheme,
           separatorBuilder: (index) => const SizedBox(width: 8),
