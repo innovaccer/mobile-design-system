@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: 2.3.5
+  shared_preferences: 2.3.3
   url_launcher: 6.3.1
   pinput: 5.0.0
   flutter_styled_toast: 2.2.1
@@ -23,4 +23,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: 5.0.0
+  flutter_lints: 4.0.0
