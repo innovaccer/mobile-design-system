@@ -1,4 +1,5 @@
-import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart'
+    as t;
 import 'package:flutter/material.dart';
 import '';
 import 'package:innovaccer_design_system/src/theme/mixin/color_mixin.dart';
@@ -25,7 +26,7 @@ class MDSTitle extends StatelessWidget with ColorMixin, FontMixin {
   final int? maxLines;
   final TextOverflow? textOverflow;
   final String text;
-
+  final String? semanticsLabel;
   MDSTitle(
     this.text, {
     this.type = TitleType.title1,
@@ -33,6 +34,7 @@ class MDSTitle extends StatelessWidget with ColorMixin, FontMixin {
     this.textAlign,
     this.maxLines,
     this.textOverflow,
+    this.semanticsLabel,
   });
 
   @override
@@ -62,6 +64,7 @@ class MDSTitle extends StatelessWidget with ColorMixin, FontMixin {
         maxLines: maxLines,
         overflow: textOverflow,
         textScaleFactor: _textScaleFactor,
+        semanticsLabel: semanticsLabel,
       ),
     );
   }
