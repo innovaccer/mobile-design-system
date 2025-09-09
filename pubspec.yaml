@@ -15,7 +15,7 @@ dependencies:
   pinput: 5.0.0
   flutter_styled_toast: 2.2.1
   flutter_linkify: 6.0.0
-  sms_autofill: 2.4.1
+  sms_autofill:  2.4.1
   decimal: 2.3.3
   provider: 6.1.2
   smart_auth: 2.0.0
