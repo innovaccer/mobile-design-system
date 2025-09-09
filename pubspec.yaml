@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: 2.3.3
-  url_launcher: 6.3.1
+  shared_preferences: 2.5.3
+  url_launcher: 6.3.2
   pinput: 5.0.0
   flutter_styled_toast: 2.2.1
   flutter_linkify: 6.0.0
