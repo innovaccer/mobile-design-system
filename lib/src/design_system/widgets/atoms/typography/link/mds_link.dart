@@ -16,6 +16,7 @@ class MDSLink extends StatelessWidget with ColorMixin, FontMixin {
   final String? semanticsLabel;
   MDSLink(
     this.text, {
+    super.key,
     this.textAlign,
     this.maxLines,
     this.textOverflow,
@@ -39,6 +40,7 @@ class MDSLink extends StatelessWidget with ColorMixin, FontMixin {
       padding:
           EdgeInsets.symmetric(vertical: (fontLineHeight20 - fontSize15) / 2),
       child: Text(
+        key: key,
         text,
         style: _getStyle(),
         textAlign: textAlign ?? TextAlign.left,

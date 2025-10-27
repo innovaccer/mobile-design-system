@@ -21,6 +21,7 @@ class MDSHeadline extends StatelessWidget with ColorMixin, FontMixin {
 
   MDSHeadline(
     this.text, {
+    super.key,
     this.appearance = HeadlineAppearance.defaultType,
     this.textAlign,
     this.maxLines,
@@ -49,6 +50,7 @@ class MDSHeadline extends StatelessWidget with ColorMixin, FontMixin {
         vertical: verticalPadding,
       ),
       child: Text(
+        key: key,
         text,
         style: _getStyle(),
         textAlign: textAlign ?? TextAlign.left,

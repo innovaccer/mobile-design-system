@@ -29,6 +29,7 @@ class MDSCaption extends StatelessWidget with ColorMixin, FontMixin {
 
   MDSCaption(
     this.text, {
+    super.key,
     this.type = CaptionType.caption1,
     this.appearance = CaptionAppearance.defaultType,
     this.textAlign,
@@ -58,6 +59,7 @@ class MDSCaption extends StatelessWidget with ColorMixin, FontMixin {
         vertical: verticalPadding,
       ),
       child: Text(
+        key: key,
         text,
         style: _getStyle(),
         textAlign: textAlign ?? TextAlign.left,

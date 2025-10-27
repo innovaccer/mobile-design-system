@@ -28,6 +28,7 @@ class MDSBody extends StatelessWidget with ColorMixin, FontMixin {
 
   MDSBody(
     this.text, {
+    super.key,
     this.appearance = BodyAppearance.defaultType,
     this.textAlign,
     this.maxLines,
@@ -85,6 +86,7 @@ class MDSBody extends StatelessWidget with ColorMixin, FontMixin {
                   (fontSize ?? fontSize17)) /
               2),
       child: Text(
+        key: key,
         text,
         style: textStyle,
         textAlign: textAlign ?? TextAlign.left,

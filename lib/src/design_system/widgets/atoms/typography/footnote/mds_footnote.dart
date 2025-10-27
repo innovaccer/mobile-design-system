@@ -27,6 +27,7 @@ class MDSFootnote extends StatelessWidget with ColorMixin, FontMixin {
   final String? semanticsLabel;
   MDSFootnote(
     this.text, {
+    super.key,
     this.appearance,
     this.textAlign,
     this.maxLines,
@@ -51,6 +52,7 @@ class MDSFootnote extends StatelessWidget with ColorMixin, FontMixin {
       padding:
           EdgeInsets.symmetric(vertical: (fontLineHeight16 - fontSize13) / 2),
       child: Text(
+        key: key,
         text,
         style: _getStyle(),
         textAlign: textAlign ?? TextAlign.left,
