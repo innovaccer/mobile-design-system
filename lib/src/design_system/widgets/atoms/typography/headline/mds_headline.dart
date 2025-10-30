@@ -1,4 +1,5 @@
-import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart'
+    as t;
 import 'package:flutter/material.dart';
 import 'package:innovaccer_design_system/src/theme/mixin/color_mixin.dart';
 import 'package:innovaccer_design_system/src/theme/mixin/font_mixin.dart';
@@ -16,13 +17,16 @@ class MDSHeadline extends StatelessWidget with ColorMixin, FontMixin {
   final int? maxLines;
   final TextOverflow? textOverflow;
   final String text;
+  final String? semanticsLabel;
 
   MDSHeadline(
     this.text, {
+    super.key,
     this.appearance = HeadlineAppearance.defaultType,
     this.textAlign,
     this.maxLines,
     this.textOverflow,
+    this.semanticsLabel,
   });
 
   @override
@@ -33,7 +37,7 @@ class MDSHeadline extends StatelessWidget with ColorMixin, FontMixin {
 
     double? _textScaleFactor = 1.0;
     // ignore: unnecessary_null_comparison
-     // if (TextScaler.of<TextScalingFactor>(context) != null) {
+    // if (TextScaler.of<TextScalingFactor>(context) != null) {
     //   _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
     // }
     double verticalPadding =
@@ -46,12 +50,14 @@ class MDSHeadline extends StatelessWidget with ColorMixin, FontMixin {
         vertical: verticalPadding,
       ),
       child: Text(
+        key: key,
         text,
         style: _getStyle(),
         textAlign: textAlign ?? TextAlign.left,
         maxLines: maxLines,
         overflow: textOverflow,
         textScaleFactor: _textScaleFactor,
+        semanticsLabel: semanticsLabel,
       ),
     );
   }

@@ -1,4 +1,5 @@
-import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart'
+    as t;
 import 'package:flutter/material.dart';
 import '';
 import 'package:innovaccer_design_system/src/theme/mixin/color_mixin.dart';
@@ -22,13 +23,15 @@ class MDSSubhead extends StatelessWidget with ColorMixin, FontMixin {
   final int? maxLines;
   final TextOverflow? textOverflow;
   final String text;
-
+  final String? semanticsLabel;
   MDSSubhead(
     this.text, {
+    super.key,
     this.appearance = SubheadAppearance.defaultType,
     this.textAlign,
     this.maxLines,
     this.textOverflow,
+    this.semanticsLabel,
   });
 
   @override
@@ -39,7 +42,7 @@ class MDSSubhead extends StatelessWidget with ColorMixin, FontMixin {
 
     double? _textScaleFactor = 1.0;
     // ignore: unnecessary_null_comparison
-     // if (TextScaler.of<TextScalingFactor>(context) != null) {
+    // if (TextScaler.of<TextScalingFactor>(context) != null) {
     //   _textScaleFactor = TextScaler.of<TextScalingFactor>(context)?.scaleFactor;
     // }
 
@@ -47,12 +50,14 @@ class MDSSubhead extends StatelessWidget with ColorMixin, FontMixin {
       padding:
           EdgeInsets.symmetric(vertical: (fontLineHeight20 - fontSize15) / 2),
       child: Text(
+        key: key,
         text,
         style: _getStyle(),
         textAlign: textAlign ?? TextAlign.left,
         maxLines: maxLines,
         overflow: textOverflow,
         textScaleFactor: _textScaleFactor,
+        semanticsLabel: semanticsLabel,
       ),
     );
   }

@@ -29,6 +29,7 @@ class _MyAppState extends State<MyApp> {
       child:  MDSToast(
         child: MaterialApp(
             title: 'Core UI Examples',
+            theme: ThemeData(useMaterial3: false),
             debugShowCheckedModeBanner: false,
             navigatorKey: appNavigator.navigatorKey,
             onGenerateRoute: AppRouter.shared.generator,

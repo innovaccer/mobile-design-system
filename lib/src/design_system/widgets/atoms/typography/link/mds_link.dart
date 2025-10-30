@@ -1,4 +1,5 @@
-import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart'
+    as t;
 import 'package:flutter/material.dart';
 import '';
 import 'package:innovaccer_design_system/src/theme/mixin/color_mixin.dart';
@@ -12,13 +13,15 @@ class MDSLink extends StatelessWidget with ColorMixin, FontMixin {
   final TextOverflow? textOverflow;
   final String text;
   final bool useDefaultTextColor;
-
+  final String? semanticsLabel;
   MDSLink(
     this.text, {
+    super.key,
     this.textAlign,
     this.maxLines,
     this.textOverflow,
     this.useDefaultTextColor = false,
+    this.semanticsLabel,
   });
 
   @override
@@ -37,12 +40,14 @@ class MDSLink extends StatelessWidget with ColorMixin, FontMixin {
       padding:
           EdgeInsets.symmetric(vertical: (fontLineHeight20 - fontSize15) / 2),
       child: Text(
+        key: key,
         text,
         style: _getStyle(),
         textAlign: textAlign ?? TextAlign.left,
         maxLines: maxLines,
         overflow: textOverflow,
         textScaleFactor: _textScaleFactor,
+        semanticsLabel: semanticsLabel,
       ),
     );
   }

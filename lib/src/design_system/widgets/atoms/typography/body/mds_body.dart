@@ -1,4 +1,5 @@
-import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart' as t;
+import 'package:innovaccer_design_system/src/design_system/widgets/atoms/typography/scaler/text_scaler.dart'
+    as t;
 import 'package:flutter/material.dart';
 import '';
 import 'package:innovaccer_design_system/src/theme/mixin/color_mixin.dart';
@@ -23,15 +24,18 @@ class MDSBody extends StatelessWidget with ColorMixin, FontMixin {
   final TextOverflow? textOverflow;
   final String text;
   final Color? color;
+  final String? semanticsLabel;
 
   MDSBody(
     this.text, {
+    super.key,
     this.appearance = BodyAppearance.defaultType,
     this.textAlign,
     this.maxLines,
     this.textOverflow,
     this.color,
-  })  : assert(text.isNotEmpty);
+    this.semanticsLabel,
+  }) : assert(text.isNotEmpty);
 
   @override
   Widget build(BuildContext context) {
@@ -82,12 +86,14 @@ class MDSBody extends StatelessWidget with ColorMixin, FontMixin {
                   (fontSize ?? fontSize17)) /
               2),
       child: Text(
+        key: key,
         text,
         style: textStyle,
         textAlign: textAlign ?? TextAlign.left,
         maxLines: maxLines,
         overflow: textOverflow,
         textScaleFactor: _textScaleFactor,
+        semanticsLabel: semanticsLabel,
       ),
     );
   }
